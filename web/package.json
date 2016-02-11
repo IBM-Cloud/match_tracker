@@ -1,0 +1,37 @@
+{
+  "name": "match_tracker_frontend",
+  "version": "1.0.0",
+  "description": "Front-end web application for Match Tracker ",
+  "main": "app.js",
+  "engines" : { "node" : ">=4.0.0" },
+  "scripts": {
+    "start": "node app.js",
+    "start-dev": "webpack -w & npm start",
+    "build": "webpack",
+    "test": "mocha tests"
+  },
+  "author": "James Thomas <james@jamesthom.as>",
+  "license": "MIT",
+  "dependencies": {
+    "cfenv": "^1.0.3",
+    "classnames": "^2.2.3",
+    "cloudant": "^1.4.1",
+    "compression": "^1.6.1",
+    "express": "^4.13.3",
+    "immutable": "^3.7.6",
+    "keymirror": "^0.1.1",
+    "mockery": "^1.4.0",
+    "react": "^0.14.6",
+    "react-dom": "^0.14.6",
+    "request": "^2.69.0",
+    "superagent": "^1.6.1",
+    "winston": "^2.1.1"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^1.1.1",
+    "bootstrap": "^3.3.6",
+    "mocha": "^2.4.2",
+    "babel-preset-react": "^6.3.13",
+    "webpack": "^1.12.11"
+  }
+}
