@@ -1,0 +1,215 @@
+body {
+  padding-top: 50px;
+  background-image: url('../images/background.jpg');
+  background-size: 100%;
+  background-repeat:no-repeat;
+}
+
+#root {
+  padding: 40px 0px;
+  text-align: center;
+}
+
+.attribution {
+  position: fixed;
+  bottom: 40px;
+  color: white;
+  background-color: white;
+  opacity: 0.8;
+}
+
+.main {
+  display: flex;
+  padding: 0;
+}
+
+.panel-default {
+  width: 300px;
+  margin-left: 50px;
+}
+
+/* main table */
+
+.table {
+  box-shadow: 0 0 1em #ddd;
+  background-color: white;
+  width: 800px;
+}
+
+.table th {
+  text-align: center;
+}
+
+.table .home, .table .away {
+  font-weight: bold;
+  display: inline-block;
+  min-width: 200px;
+}
+
+.home-goals {
+  margin-right: 15px;
+}
+
+.away-goals {
+  margin-left: 15px;
+}
+
+.table .home {
+  text-align: right;
+  margin-right: 15px;
+}
+
+.table .away {
+  text-align: left;
+  margin-left: 15px;
+}
+
+.table .position {
+  width: 30px;
+}
+
+.table .fixtures {
+  width: 250px;
+}
+
+.table .positive,
+.table .negative { 
+  width: 50px;
+}
+
+.table .total {
+  width: 60px;
+}
+
+/* right panel */
+
+/* header */
+.navbar-brand.title {
+  font-size: 26px;
+}
+
+.navbar > .container {
+  padding-left: 0;
+}
+
+.select-gw label {
+  color: #9d9d9d;
+  margin-right: 20px;
+}
+
+.navbar-form .form-control {
+  width: 50px;
+}
+
+.replay {
+  margin-right: 55px;
+}
+
+.replay-timer {
+  font-size: 26px;
+  margin-right: 36px;  
+  vertical-align: middle;
+}
+
+.select-gw, .controls {
+  margin-right: 8px;
+}
+
+.blink_me {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {  
+  50% { opacity: 0.25; }
+}
+
+.navbar-form.live .controls,
+.navbar-form.live .replay-timer {
+  display: inline-block;
+}
+
+/* scrolling events */
+.footer {
+  background-color: #ddd;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 40px;
+  width: 100%;
+  font-size: 14px;
+  text-align: left;
+  padding: 5px 0px;
+}
+
+.scrolling_events {
+  display: inline-block;
+  position: absolute;
+  overflow: hidden;
+  height: 20px;
+  bottom: 10px;
+  white-space: nowrap;
+}
+
+.scrolling_events .event {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.scrolling_events .team {
+  font-style: italic;
+}
+
+.scrolling_events .goal::before {
+  content: '⚽ '
+}
+
+.scrolling_events .redcard {
+  background: url(../images/red_card.png) no-repeat top left;
+}
+
+.scrolling_events .yellowcard {
+  background: url(../images/yellow_card.png) no-repeat top left;
+}
+
+.scrolling_events .yellowcard,
+.scrolling_events .redcard {
+  display: inline-block;
+  width: 14px;
+  height: 15px;
+  background-size: 12px;
+  background-position: 0px 0px;
+  position: relative;
+  top: 2px;
+  margin-right: 4px;
+}
+
+.scrolling_events .player {
+  font-weight: bold;
+}
+
+/* modal */
+
+.modal-body {
+  font-size: 20px;
+}
+
+@-webkit-keyframes spin2 {
+  from { -webkit-transform: rotate(0deg);}
+  to { -webkit-transform: rotate(360deg);}
+}
+
+@keyframes spin {
+  from { transform: scale(1) rotate(0deg);}
+  to { transform: scale(1) rotate(360deg);}
+}
+
+.glyphicon-repeat {
+  margin-right: 8px;
+}
+
+.glyphicon-refresh-animate {
+  -animation: spin .7s infinite linear;
+  -webkit-animation: spin2 .7s infinite linear;
+  margin-right: 10px;
+}
+

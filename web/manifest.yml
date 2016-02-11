@@ -1,0 +1,7 @@
+---
+applications:
+- name: match-tracker
+  memory: 512M 
+  services:
+  - football_api
+  - Cloudant NoSQL DB-gw

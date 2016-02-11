@@ -1,0 +1,27 @@
+@font-face {
+  font-family: 'sa-digital-number';
+  src: url('sa-digital-number.eot');
+}
+
+@font-face {
+  font-family: 'sa-digital-number';
+  src: url('sa-digital-number.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  font-family: 'sa-digital-number';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  color: yellow;
+  text-shadow: rgb(255, 255, 255) 0px 0px 10px !important;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
