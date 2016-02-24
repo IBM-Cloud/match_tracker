@@ -3,6 +3,7 @@ const program = require('commander')
 const prompt = require('prompt')
 const SetupDBs = require('./setup_dbs.js')
 const UpdateKafkaAuth = require('./update_kakfa_auth.js')
+const BuildMicroservices = require('./build_microservices.js')
 
 const ready = (program) => {
   if (!program.skip_db) {
@@ -11,6 +12,10 @@ const ready = (program) => {
 
   if (!program.skip_kafka) {
     initialise_kafka(program.kafka_user, program.kafka_pass)
+  }
+
+  if (!program.skip_build) {
+    build_microservices()
   }
 }
 
@@ -32,6 +37,13 @@ const initialise_db = (cloudant_user, cloudant_pass) => {
   }).catch(err_handler)
 }
 
+const build_microservices = () => {
+  console.log('Building microservices...')
+  BuildMicroservices().then(() => {
+    console.log('Finished building microservices')
+  }).catch(err_handler)
+}
+
 program
   .option('--cloudant_user [user]', 'Define Cloudant Username')
   .option('--cloudant_pass [pass]', 'Define Cloudant Password')
@@ -39,6 +51,7 @@ program
   .option('--kafka_pass [pass]', 'Define Kafka Password')
   .option('--skip_db', 'Skip Database Initialisation')
   .option('--skip_kafka', 'Skip Kafka Auth Setup')
+  .option('--skip_build', 'Skip Building Microservices')
   .parse(process.argv)
 
 let args = []
