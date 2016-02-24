@@ -4,4 +4,4 @@ applications:
   memory: 512M 
   services:
   - football_api
-  - Cloudant NoSQL DB-gw
+  - football_cloudant

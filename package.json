@@ -1,0 +1,31 @@
+{
+  "name": "match_tracker",
+  "version": "1.0.0",
+  "description": "Match Tracker demo showing how to use Apache Kafka, IBM Bluemix and Twitter Insights to process real-time social media streams.",
+  "scripts": {
+    "deploy": "node scripts/deploy.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IBM-Bluemix/match_tracker.git"
+  },
+  "keywords": [
+    "twitter",
+    "bluemix",
+    "kafka",
+    "nodejs"
+  ],
+  "author": "James Thomas <james@jamesthom.as>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/IBM-Bluemix/match_tracker/issues"
+  },
+  "homepage": "https://github.com/IBM-Bluemix/match_tracker#readme",
+  "dependencies": {
+    "cloudant": "^1.4.1",
+    "commander": "^2.9.0",
+    "prompt": "^1.0.0",
+    "replace-in-file": "^1.0.2"
+  }
+}
