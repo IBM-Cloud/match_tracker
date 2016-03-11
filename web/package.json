@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Front-end web application for Match Tracker ",
   "main": "app.js",
-  "engines" : { "node" : ">=4.0.0" },
+  "engines": {
+    "node": ">=4.0.0"
+  },
   "scripts": {
     "start": "node app.js",
     "start-dev": "webpack -w & npm start",
@@ -14,6 +16,7 @@
   "license": "MIT",
   "dependencies": {
     "cfenv": "^1.0.3",
+    "cheerio": "^0.20.0",
     "classnames": "^2.2.3",
     "cloudant": "^1.4.1",
     "compression": "^1.6.1",
@@ -21,6 +24,7 @@
     "immutable": "^3.7.6",
     "keymirror": "^0.1.1",
     "mockery": "^1.4.0",
+    "moment": "^2.12.0",
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
     "request": "^2.69.0",

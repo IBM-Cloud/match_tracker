@@ -1,60 +1,45 @@
 'use strict'
 const request = require('request')
+const cheerio = require('cheerio')
 const winston = require('winston')
+const moment = require('moment')
 
 class MatchEvents {
-  constructor (credentials) {
+  constructor () {
     this.events_cache = new Map()
-    this.football_api = 'http://football-api.com/api/?Action=fixtures'
-    this.login_url = 'http://football-api.com/letmein'
-    this.ip_url = 'http://football-api.com/wp-admin/admin-ajax.php'
-    this.football_api_key = credentials.api_key
-    this.football_username = credentials.api_username
-    this.football_password = credentials.api_password
-  }
-
-  _check_for_error (response) {
-    if (response.ERROR !== "OK") {
-      const err = new Error('API Response returned error')
-      err._response = response
-      throw err
-    }
-  }
-
-  _parse_response (response) {
-    const parsed_response = JSON.parse(response)
-    this._check_for_error(parsed_response)
-    let events = []
-    if (parsed_response.matches) {
-      events = parsed_response.matches.map(this._parse_match_events)
-    }
-    return events
-  } 
-
-  _parse_and_cache_response (matchdate, response) {
-    const events = this._parse_response(response)
-    this.events_cache.set(matchdate, events)
-    return events
+    this.football_results = 'http://www.bbc.co.uk/sport/football/premier-league/results'
+    this.match_events = 'http://www.bbc.co.uk/sport/football/result/partial/'
   }
 
   _parse_match_events (match) {
-    const event = {events: [], home: match.match_localteam_name, away: match.match_visitorteam_name}
-    if (match.match_events) {
-      event.events = match.match_events.map((event) => {
-        return {type: event.event_type, team: event.event_team, player: event.event_player, min: event.event_minute}
-      })
+    const $ = cheerio.load(match)
+    const event = {
+      home: $('.team-home a').text().trim(), 
+      away: $('.team-away').text().trim()
     }
+
+    event.events = $('.incidents-table tr')
+      .map((i, el) => this._parse_match_event_elem(event, $(el))).get()
+
     return event
   }
 
-  for_date (matchdate) {
-    if (this.events_cache.has(matchdate)) {
-      return Promise.resolve(this.events_cache.get(matchdate))
-    }
+  _parse_match_event_elem (event, el) {
+    const min = el.find('.incident-time').text().trim().replace('\'', '')
+    const type = el.find('.incident-type span').text().trim().toLowerCase() 
 
-    const md = matchdate.split('-').reverse().join('.')
-    const url = `${this.football_api}&APIKey=${this.football_api_key}&match_date=${md}`
+    let player = el.find('.incident-player-home').text().trim()
+    let team = event.home
 
+    if (!player.length) {
+      player = el.find('.incident-player-away').text().trim()
+      team = event.away
+    } 
+
+    return {type: type, team: team, player: player, min: min}
+  } 
+
+  _request (url) {
     return new Promise((resolve, reject) => {
       request(url, (err, response, body) => {
         if (err) {
@@ -63,35 +48,54 @@ class MatchEvents {
         }
         resolve(body)
       })
-    }).then((body) => this._parse_and_cache_response(matchdate, body))
+    })
   }
 
-  refresh_auth (ip_address) {
-    return new Promise((resolve, reject) => {
-      const jar = request.jar()
-      const request_cookies = request.defaults({jar: jar})
+  _retrieve_results () {
+    return this._request(this.football_results)
+  }
 
-      request_cookies.post(this.login_url, {form: {log: this.football_username, pwd: this.football_password}}, (err, response) => {
-        if (err) {
-          return reject(err)
-        }
+  _extract_matches (results_page) {
+    const $ = cheerio.load(results_page)
+    const dates = $('.table-header').map((i, el) => {
+      return $(el).text().trim();
+    }).get()
+    const matches = {}
+    $(".stats-body .table-stats").get().forEach((el, i) => {
+      matches[dates[i]] = $(el).find('tr.report').map((i, el) => {
+        return $(el).attr('id').split('-').pop()
+      }).get()
+    })
+    return matches
+  }
 
-        if (response.statusCode === 302) {
-          winston.info('Logged into Football API. Updating ip address to', ip_address)
-          const form = {action: 'ipForm_save_ips', ip1: ip_address }
-          request_cookies.post(this.ip_url, {form: form}, (err, response) => {
-            if (err) {
-              return reject(err)
-            }
-            winston.info('Successfully update Football API IP address.', response.statusCode)
-            resolve()
-          }) 
-        } else {
-          reject('Unable to login to Football API.')
+  _convert_date_format (matchdate) {
+    return moment(matchdate).format('dddd Do MMMM YYYY') 
+  }
+
+  _retrieve_match (id) {
+    return this._request(`${this.match_events}${id}?teamview=false`)
+  }
+
+  for_date (matchdate) {
+    if (this.events_cache.has(matchdate)) {
+      return Promise.resolve(this.events_cache.get(matchdate))
+    }
+
+    return this._retrieve_results().then(this._extract_matches).then(matches => {
+      const matchdate_matches = matches[this._convert_date_format(matchdate)] || []
+      const matchdate_events = matchdate_matches.map((match_id) => {
+        return this._retrieve_match(match_id).then((result) => this._parse_match_events(result))
+      })
+
+      return Promise.all(matchdate_events).then(resolved => {
+        if (resolved.length) {
+          this.events_cache.set(matchdate, resolved)
         }
+        return resolved
       })
     })
-  } 
+  }
 }
 
 module.exports = MatchEvents
