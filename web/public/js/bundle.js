@@ -9414,6 +9414,7 @@
 	 */
 	var EventInterface = {
 	  type: null,
+	  target: null,
 	  // currentTarget is set when dispatching; no use in copying it here
 	  currentTarget: emptyFunction.thatReturnsNull,
 	  eventPhase: null,
@@ -9447,8 +9448,6 @@
 	  this.dispatchConfig = dispatchConfig;
 	  this.dispatchMarker = dispatchMarker;
 	  this.nativeEvent = nativeEvent;
-	  this.target = nativeEventTarget;
-	  this.currentTarget = nativeEventTarget;
 	
 	  var Interface = this.constructor.Interface;
 	  for (var propName in Interface) {
@@ -9459,7 +9458,11 @@
 	    if (normalize) {
 	      this[propName] = normalize(nativeEvent);
 	    } else {
-	      this[propName] = nativeEvent[propName];
+	      if (propName === 'target') {
+	        this.target = nativeEventTarget;
+	      } else {
+	        this[propName] = nativeEvent[propName];
+	      }
 	    }
 	  }
 	
@@ -13308,7 +13311,10 @@
 	      }
 	    });
 	
-	    nativeProps.children = content;
+	    if (content) {
+	      nativeProps.children = content;
+	    }
+	
 	    return nativeProps;
 	  }
 	
@@ -18781,7 +18787,7 @@
 	
 	'use strict';
 	
-	module.exports = '0.14.6';
+	module.exports = '0.14.7';
 
 /***/ },
 /* 147 */
@@ -21483,26 +21489,15 @@
 	
 	Request.prototype.attach = function(field, file, filename){
 	  if (!this._formData) this._formData = new root.FormData();
-	  this._formData.append(field, file, filename);
+	  this._formData.append(field, file, filename || file.name);
 	  return this;
 	};
 	
 	/**
-	 * Send `data`, defaulting the `.type()` to "json" when
+	 * Send `data` as the request body, defaulting the `.type()` to "json" when
 	 * an object is given.
 	 *
 	 * Examples:
-	 *
-	 *       // querystring
-	 *       request.get('/search')
-	 *         .end(callback)
-	 *
-	 *       // multiple data "writes"
-	 *       request.get('/search')
-	 *         .send({ search: 'query' })
-	 *         .send({ range: '1..5' })
-	 *         .send({ order: 'desc' })
-	 *         .end(callback)
 	 *
 	 *       // manual json
 	 *       request.post('/user')
@@ -21668,6 +21663,7 @@
 	    if (e.total > 0) {
 	      e.percent = e.loaded / e.total * 100;
 	    }
+	    e.direction = 'download';
 	    self.emit('progress', e);
 	  };
 	  if (this.hasListeners('progress')) {
@@ -21829,8 +21825,8 @@
 	  return req;
 	};
 	
-	request.del = del;
-	request.delete = del;
+	request['del'] = del;
+	request['delete'] = del;
 	
 	/**
 	 * PATCH `url` with optional `data` and callback `fn(res)`.
@@ -21941,7 +21937,7 @@
 	Emitter.prototype.on =
 	Emitter.prototype.addEventListener = function(event, fn){
 	  this._callbacks = this._callbacks || {};
-	  (this._callbacks[event] = this._callbacks[event] || [])
+	  (this._callbacks['$' + event] = this._callbacks['$' + event] || [])
 	    .push(fn);
 	  return this;
 	};
@@ -21957,11 +21953,8 @@
 	 */
 	
 	Emitter.prototype.once = function(event, fn){
-	  var self = this;
-	  this._callbacks = this._callbacks || {};
-	
 	  function on() {
-	    self.off(event, on);
+	    this.off(event, on);
 	    fn.apply(this, arguments);
 	  }
 	
@@ -21993,12 +21986,12 @@
 	  }
 	
 	  // specific event
-	  var callbacks = this._callbacks[event];
+	  var callbacks = this._callbacks['$' + event];
 	  if (!callbacks) return this;
 	
 	  // remove all handlers
 	  if (1 == arguments.length) {
-	    delete this._callbacks[event];
+	    delete this._callbacks['$' + event];
 	    return this;
 	  }
 	
@@ -22025,7 +22018,7 @@
 	Emitter.prototype.emit = function(event){
 	  this._callbacks = this._callbacks || {};
 	  var args = [].slice.call(arguments, 1)
-	    , callbacks = this._callbacks[event];
+	    , callbacks = this._callbacks['$' + event];
 	
 	  if (callbacks) {
 	    callbacks = callbacks.slice(0);
@@ -22047,7 +22040,7 @@
 	
 	Emitter.prototype.listeners = function(event){
 	  this._callbacks = this._callbacks || {};
-	  return this._callbacks[event] || [];
+	  return this._callbacks['$' + event] || [];
 	};
 	
 	/**
@@ -22578,11 +22571,11 @@
 
 	'use strict';
 	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	var _events = __webpack_require__(181);
 	
@@ -22674,7 +22667,7 @@
 	      var match_events = this.fixtures.map(function (f) {
 	        return (f.events || []).map(function (e) {
 	          return {
-	            team: e.team === 'localteam' ? f.home : f.away,
+	            team: e.team,
 	            min: parseInt(e.min, 10),
 	            type: e.type,
 	            player: e.player
@@ -22716,8 +22709,8 @@
 	        var match_tweets = this._getMatchTweets(0, cursor);
 	        this.table = this.calculateTable(match_tweets);
 	      } else {
-	        var match_tweets = this._getMatchTweets(this.cursor + 1, cursor);
-	        var offset_table = this.calculateTable(match_tweets);
+	        var _match_tweets = this._getMatchTweets(this.cursor + 1, cursor);
+	        var offset_table = this.calculateTable(_match_tweets);
 	        offset_table.forEach(function (details) {
 	          var previous = _this3.table.find(function (item) {
 	            return item.home === details.home && item.away === details.away;
@@ -22750,9 +22743,9 @@
 	          }
 	          var event_second = event_minute * 60;
 	          if (event.type === "goal" && start <= event_second && event_second <= end) {
-	            if (event.team === 'localteam') {
+	            if (event.team === f.home) {
 	              home_goals++;
-	            } else if (event.team === 'visitorteam') {
+	            } else {
 	              away_goals++;
 	            }
 	          }

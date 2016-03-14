@@ -163,16 +163,16 @@ body {
   content: '⚽ '
 }
 
-.scrolling_events .redcard {
+.scrolling_events .dismissal {
   background: url(../images/red_card.png) no-repeat top left;
 }
 
-.scrolling_events .yellowcard {
+.scrolling_events .booking {
   background: url(../images/yellow_card.png) no-repeat top left;
 }
 
-.scrolling_events .yellowcard,
-.scrolling_events .redcard {
+.scrolling_events .booking,
+.scrolling_events .dismissal {
   display: inline-block;
   width: 14px;
   height: 15px;

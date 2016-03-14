@@ -36,7 +36,7 @@ class MatchEvents {
       team = event.away
     } 
 
-    return {type: type, team: team, player: player, min: min}
+    return {type: type, team: this._convert_team_names(team), player: player.replace('.', '. '), min: min}
   } 
 
   _request (url) {
@@ -71,6 +71,40 @@ class MatchEvents {
 
   _convert_date_format (matchdate) {
     return moment(matchdate).format('dddd Do MMMM YYYY') 
+  }
+
+  _convert_team_names (team_name) {
+    switch(team_name) {
+      case 'Bournemouth':
+        return 'AFC Bournemouth'
+        break
+      case 'Sunderland':
+        return 'Sunderland AFC'
+        break
+      case 'Man City':
+        return 'Manchester City FC'
+        break
+      case 'Man Utd':
+        return 'Manchester United FC'
+        break
+      case 'Newcastle':
+        return 'Newcastle United FC'
+        break
+      case 'West Brom':
+        return 'West Bromwich Albion FC'
+        break
+      case 'Tottenham':
+        return 'Tottenham Hotspur FC'
+        break
+      case 'Swansea':
+      case 'Leicester':
+      case 'Norwich':
+      case 'Stoke':
+        return team_name + ' City FC'
+        break
+      default:
+        return team_name + ' FC'
+    }
   }
 
   _retrieve_match (id) {

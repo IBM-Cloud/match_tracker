@@ -58,19 +58,7 @@ module.exports = (app, creds) => {
       res.json(response)
     }
 
-    const handle = () => gameweek_matches_and_events(gw_id).then(success)
-
-    const retry = (err) => {
-      if (err._response && err._response.ERROR.match(/IP is not recognized/)) {
-        winston.info('Football API returned error due to IP address for account not matching. Attempting to upate....')
-        winston.info('Retrying the API request.')
-        return match_events.refresh_auth(err._response.IP).then(handle)
-      } 
-      
-      throw err
-    }
-
-    handle().catch(retry).catch(fail)
+    gameweek_matches_and_events(gw_id).then(success).catch(fail)
   })
 
   /** hacky way to set dynamic state in the page **/

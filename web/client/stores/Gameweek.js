@@ -55,7 +55,7 @@ class Gameweek extends EventEmitter {
     const match_events = this.fixtures.map(f => {
       return (f.events || []).map(e => {
         return {
-          team: (e.team === 'localteam') ? f.home : f.away,
+          team: e.team,
           min: parseInt(e.min, 10),
           type: e.type,
           player: e.player
@@ -118,9 +118,9 @@ class Gameweek extends EventEmitter {
         }
         const event_second = event_minute * 60
         if (event.type === "goal" && start <= event_second && event_second <= end) {
-          if (event.team === 'localteam') {
+          if (event.team === f.home) {
             home_goals++
-          } else if (event.team === 'visitorteam') {
+          } else {
             away_goals++
           }
         }
