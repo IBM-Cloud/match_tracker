@@ -72,6 +72,12 @@ body {
   width: 250px;
 }
 
+@-moz-document url-prefix() {
+  .table .fixtures {
+    width: 360px;
+  }
+}
+
 .table .positive,
 .table .negative { 
   width: 50px;
