@@ -4,18 +4,30 @@ const prompt = require('prompt')
 const SetupDBs = require('./setup_dbs.js')
 const UpdateKafkaAuth = require('./update_kakfa_auth.js')
 const BuildMicroservices = require('./build_microservices.js')
+const DeployMicroservices = require('./deploy_microservices.js')
+const DeployWebApp = require('./deploy_web_app.js')
 
 const ready = (program) => {
+  let command = Promise.resolve()
+
   if (!program.skip_db) {
-    initialise_db(program.cloudant_user, program.cloudant_pass)
+    command = initialise_db(program.cloudant_user, program.cloudant_pass)
   }
 
   if (!program.skip_kafka) {
-    initialise_kafka(program.kafka_user, program.kafka_pass)
+    command = command.then(() => initialise_kafka(program.kafka_user, program.kafka_pass))
   }
 
   if (!program.skip_build) {
-    build_microservices()
+    command = command.then(() => build_microservices())
+  }
+
+  if (!program.skip_deploy_ms) {
+    command = command.then(() => deploy_microservices())
+  }
+
+  if (!program.skip_deploy_web) {
+    command.then(() => deploy_web_app())
   }
 }
 
@@ -25,25 +37,38 @@ const err_handler = (err) => {
 
 const initialise_kafka = (username, password) => {
   console.log('Updating Kafka Authentication Credentials...')
-  UpdateKafkaAuth(username, password).then(() => {
+  return UpdateKafkaAuth(username, password).then(() => {
     console.log('Finished Updating Kafka Authentication Credentials.')
   }).catch(err_handler)
 }
 
 const initialise_db = (cloudant_user, cloudant_pass) => {
   console.log('Starting Cloudant DB setup...')
-  SetupDBs(cloudant_user, cloudant_pass).then(() => {
+  return SetupDBs(cloudant_user, cloudant_pass).then(() => {
     console.log('Finished Cloudant DB setup')
   }).catch(err_handler)
 }
 
 const build_microservices = () => {
   console.log('Building microservices...')
-  BuildMicroservices().then(() => {
+  return BuildMicroservices().then(() => {
     console.log('Finished building microservices')
   }).catch(err_handler)
 }
 
+const deploy_microservices = () => {
+  console.log('Deploying microservices... (this may take a while!)')
+  return DeployMicroservices().then(() => {
+      console.log('Finished deploying microservices')
+  }).catch(err_handler)
+}
+
+const deploy_web_app = () => {
+  console.log('Deploying web app... (nearly finished!)')
+  return DeployWebApp().then(() => {
+      console.log('Finished deploying web app')
+  }).catch(err_handler)
+}
 program
   .option('--cloudant_user [user]', 'Define Cloudant Username')
   .option('--cloudant_pass [pass]', 'Define Cloudant Password')
@@ -52,6 +77,8 @@ program
   .option('--skip_db', 'Skip Database Initialisation')
   .option('--skip_kafka', 'Skip Kafka Auth Setup')
   .option('--skip_build', 'Skip Building Microservices')
+  .option('--skip_deploy_ms', 'Skip Deploying Microservices')
+  .option('--skip_deploy_web', 'Skip Deploying Web App')
   .parse(process.argv)
 
 let args = []
