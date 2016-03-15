@@ -42,6 +42,10 @@ public class FixtureDocument extends Fixture {
 		this.date = date;
 	}
 	
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	
 	public Boolean update(Fixture fixture) {
 		boolean modified = false;
 		
@@ -57,6 +61,11 @@ public class FixtureDocument extends Fixture {
 		
 		if (fixture.getAwayTeamGoals() != awayTeamGoals) {
 			awayTeamGoals = fixture.getAwayTeamGoals();
+			modified = true;
+		}
+		
+		if (!fixture.getStatus().equals(status)) {
+			status = fixture.getStatus();
 			modified = true;
 		}
 		

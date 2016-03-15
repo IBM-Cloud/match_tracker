@@ -37,6 +37,7 @@ public class FixturesService {
 		String homeTeam = fixtureObj.get("homeTeamName").asString();
 		String awayTeam = fixtureObj.get("awayTeamName").asString();
 		String date = fixtureObj.get("date").asString();
+		String status = fixtureObj.get("status").asString();
 		Integer matchDay = fixtureObj.get("matchday").asInt();
 		
 		JsonObject matchResult = fixtureObj.get("result").asObject();
@@ -50,7 +51,7 @@ public class FixturesService {
 			awayGoals = matchResult.get("goalsAwayTeam").asInt();
 		}
 		
-		return new Fixture(homeTeam, awayTeam, matchDay, date, homeGoals, awayGoals);
+		return new Fixture(homeTeam, awayTeam, matchDay, date, homeGoals, awayGoals, status);
 	}
 	
 	public void getFixtures(Date lastModified) {

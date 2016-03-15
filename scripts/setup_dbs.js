@@ -8,14 +8,14 @@ const DBViews = {
         map: 'function (doc) {\n  emit(doc._id, 1);\n}'
       },
       match_dates: {
-        map: 'function (doc) {\n    emit(doc.date, [doc.homeTeam, doc.awayTeam]);\n}'
+        map: 'function (doc) {\n   if (doc.status !== "POSTPONED") { emit(doc.date, [doc.homeTeam, doc.awayTeam]);}\n}'
       },
       gameweek_days: {
         reduce: 'function (keys, values, rereduce) {\n  return values[0];\n}',
         map: 'function (doc) {\n  var date = doc.date.split(\'T\')[0];\n  emit(date, doc.matchDay);\n}'
       },
       gameweek_matchdays: {
-        map: 'function (doc) {\n    emit([doc.matchDay, doc.date], [doc.homeTeam, doc.awayTeam, doc.homeTeamGoals, doc.awayTeamGoals]);\n}'
+        map: 'function (doc) {\n    if (doc.status !== "POSTPONED") {emit([doc.matchDay, doc.date], [doc.homeTeam, doc.awayTeam, doc.homeTeamGoals, doc.awayTeamGoals]);}\n}'
       }
     }
   },
