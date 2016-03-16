@@ -7,10 +7,32 @@ class Fixtures {
     this.cloudant = Cloudant({account:credentials.username, password:credentials.password})
     this.fixtures_db = this.cloudant.db.use(fixtures_db)
     this.gameweek_dates = new Map()
+    this.matchday_times_cache = new Map()
   }
 
   _is_valid_gw(index) {
     return (index > 0 && index <= 38)
+  }
+
+  matchday_times (matchday) {
+    if (this.matchday_times_cache.has(matchday)) {
+      return Promise.resolve(this.matchday_times_cache.get(matchday))
+    }
+
+    const result = new Promise((resolve, reject) => {
+      this.fixtures_db.view('matches', 'match_dates', {include_docs: true, startkey:matchday, endkey:matchday+"T23:59:59Z"}, (err, body) => {
+        if (err) {
+          reject('Failed to access db view')
+          return
+        }
+
+        const times = [...new Set(body.rows.map(row => row.key.slice(11, 19)))]
+        const gameweek = body.rows[0].doc.matchDay
+        this.matchday_times_cache.set(matchday, {times: times, gameweek: gameweek})
+        resolve({times: times, gameweek: gameweek})
+      })
+    })
+    return result
   }
 
   gameweek_matches(index) {

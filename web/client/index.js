@@ -7,6 +7,7 @@ import ScrollingMatchEvents from './components/ScrollingMatchEvents'
 import LoadingModal from './components/LoadingModal'
 import Gameweek from './stores/Gameweek'
 import GameWeekActions from './actions/GameWeekActions'
+import WebSocket from './utils/WebSocket'
 
 GameWeekActions.loadGameWeek(window.current_gameweek)
 
@@ -33,10 +34,12 @@ class MatchTracker extends React.Component {
 
   componentDidMount () {
     Gameweek.addChangeListener(this._onChange)
+    WebSocket.listen()
   }
 
   componentWillUnmount () {
     Gameweek.removeChangeListener(this._onChange)
+    WebSocket.ignore()
   }
 
   render () {

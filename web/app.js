@@ -1,5 +1,8 @@
 'use strict'
 const express = require('express')
+const app = express()
+const http = require('http').Server(app)
+const io = require('socket.io')(http)
 const compression = require('compression')
 const cfenv = require('cfenv')
 const winston = require('winston')
@@ -15,11 +18,10 @@ if (!db_creds) {
 
 const creds = {username: db_creds.username, password: db_creds.password}
 
-const app = express()
 app.use(express.static('public'))
 app.use(compression())
-routes(app, creds)
+routes(app, io, creds)
 
-app.listen(appEnv.port, () => {
+http.listen(appEnv.port, () => {
   winston.info(`Match Tracker app listening on port ${appEnv.port}.`)
 })

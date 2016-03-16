@@ -38,7 +38,7 @@ describe('Match Events', function() {
       const match = fs.readFileSync('./tests/resources/match', {encoding: 'utf-8'})
       const result = match_events._parse_match_events(match)
       assert.equal(result.events.length, 10)
-      assert.deepEqual(result.events[0], {min: '26', player: 'H.Bellerín', team: 'Arsenal', 'type': 'booking'})
+      assert.deepEqual(result.events[0], {min: '26', player: 'H. Bellerín', team: 'Arsenal FC', 'type': 'booking'})
     })
   })
 

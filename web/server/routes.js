@@ -2,12 +2,15 @@
 const winston = require('winston')
 
 const MatchTweets = require('./match_tweets.js')
+const TweetProcessor = require('./tweet_processor.js')
 const Fixtures = require('./fixtures.js')
 const MatchEvents = require('./match_events.js')
+const LiveUpdates = require('./live_updates.js')
 
-module.exports = (app, creds) => {
+module.exports = (app, io, creds) => {
   const fixtures = new Fixtures(creds, 'fixtures')
   const match_tweets = new MatchTweets(creds, 'match_tweets')
+  const live_updates = new LiveUpdates(creds, 'match_tweets')
   const match_events = new MatchEvents(creds)
 
   const per_second_cache = new Map()
@@ -59,6 +62,20 @@ module.exports = (app, creds) => {
     }
 
     gameweek_matches_and_events(gw_id).then(success).catch(fail)
+  })
+
+  io.on('connection', (socket) => {
+    console.log('user connected to websocket')
+  })
+
+  live_updates.on('updates', doc => {
+    const date = doc.postedTime.slice(0, 10)
+    fixtures.matchday_times(date).then(times_and_gw => {
+      const tp = new TweetProcessor(times_and_gw.times)
+      const result = tp.process(doc)
+      result.gameweek = times_and_gw.gameweek
+      io.emit('updates', result)
+    }).catch(winston.error)
   })
 
   /** hacky way to set dynamic state in the page **/

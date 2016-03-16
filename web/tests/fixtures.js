@@ -63,4 +63,26 @@ describe('Fixtures', function() {
       })
     })
   })
+  describe('#matchday_times()', function () {
+    it('should resolve db results', function (done) {
+      const fixtures = new Fixtures({username: me, password: password}, 'fixtures')
+      fixtures.fixtures_db.view = (db, view, opts, cb) => cb(false, {rows: [{key: '2015-08-08T11:45:00Z', doc: {matchDay: 10}}, {key: '2015-08-08T11:45:00Z'}, {key: '2015-08-08T14:00:00Z'}, {value: 'next', key: '2015-08-08T15:00:00Z'}]}) 
+      fixtures.matchday_times('2018-08-08').then(e => {
+        assert.deepEqual(e, {gameweek: 10, times: ['11:45:00', '14:00:00', '15:00:00']})
+        done()
+      })
+    })
+    it('should cache results', function (done) {
+      const fixtures = new Fixtures({username: me, password: password}, 'fixtures')
+      fixtures.fixtures_db.view = (db, view, opts, cb) => cb(false, {rows: [{key: '2015-08-08T11:45:00Z', doc: {matchDay: 10}}, {key: '2015-08-08T11:45:00Z'}, {key: '2015-08-08T14:00:00Z'}, {value: 'next', key: '2015-08-08T15:00:00Z'}]}) 
+      fixtures.matchday_times('2018-08-08').then(e => {
+        fixtures.fixtures_db = null
+        fixtures.matchday_times('2018-08-08').then(e => {
+          assert.deepEqual(e, {gameweek: 10, times: ['11:45:00', '14:00:00', '15:00:00']})
+          done()
+        })
+      })
+    })
+ 
+  })
 })
