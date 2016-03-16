@@ -3,15 +3,15 @@ import Constants from '../constants/Constants'
 import request from 'superagent'
 
 let GameWeekActions = {
-  paused: false, 
+  paused: false,
 
   loadGameWeek: function (gameweek) {
     clearInterval(this.interval)
     Dispatcher.dispatch({
       actionType: Constants.GAME_WEEK_CHANGE,
-      gameweek: gameweek,
+      gameweek: gameweek
     })
- 
+
     request.get('/api/tweets/gameweek/' + gameweek + '/per_second')
       .end((err, res) => {
         if (err) return console.error(err)
@@ -57,6 +57,13 @@ let GameWeekActions = {
     clearInterval(this.interval)
     Dispatcher.dispatch({
       actionType: Constants.REPLAY_FINISHED
+    })
+  },
+
+  liveUpdate: function (tweet) {
+    Dispatcher.dispatch({
+      actionType: Constants.GAME_WEEK_LIVE_UPDATE,
+      tweet: tweet
     })
   }
 }

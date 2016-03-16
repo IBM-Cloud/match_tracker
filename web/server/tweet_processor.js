@@ -2,6 +2,7 @@
 
 const winston = require('winston')
 const moment = require('moment')
+const teams = require('./teams')
 
 class TweetProcessor {
   constructor (match_times) {
@@ -47,16 +48,16 @@ class TweetProcessor {
       doc.hashtags.forEach((ht) => {
         const team_ht = team_hashtags.indexOf(ht)
         if (team_ht !== -1) {
-          mentioned_teams.push(team_ht)
+          mentioned_teams.push(teams.get(team_ht))
         } else if (ht.length === 6){
           const home = three_letter_teams.indexOf(ht.slice(0, 3)), away = three_letter_teams.indexOf(ht.slice(3, 6))
           if (home !== -1 && away !== -1) {
-            mentioned_teams.push(home, away)
+            mentioned_teams.push(teams.get(home), teams.get(away))
           }
         }
       })
 
-      return mentioned_teams
+      return [...new Set(mentioned_teams)]
   }
 }
 

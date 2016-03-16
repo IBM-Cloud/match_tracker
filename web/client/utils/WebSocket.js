@@ -1,10 +1,12 @@
 import io from 'socket.io-client'
+import GameWeekActions from '../actions/GameWeekActions'
+
 class WebSocket {
   constructor () {
     this.socket = io()
     this.topic = 'updates'
     this.socket.on('connect', () => {
-      console.log('listening to updates');
+      console.log('listening to updates')
     })
     this.socket.on('disconnect', () => {
       console.log('disconnected from updates')
@@ -21,6 +23,7 @@ class WebSocket {
 
   listener (msg) {
     console.log(msg)
+    GameWeekActions.liveUpdate(msg)
   }
 }
 

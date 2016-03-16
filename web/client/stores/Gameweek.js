@@ -68,6 +68,39 @@ class Gameweek extends EventEmitter {
     return match_events
   }
 
+  liveUpdate (tweet) {
+    console.log(tweet)
+    if (tweet.gameweek !== parseInt(this.index, 10)) {
+      return
+    }
+
+    const tweet_fixtures = new Set()
+    const second = this.tweets[tweet.seconds] || {}
+    tweet.teams.forEach(team => {
+      const fixture = this.fixtures.findIndex(elem => elem.home === team || elem.away === team)
+
+      if (!tweet_fixtures.has(fixture)) {
+        const mentions = second[fixture] || [0, 0, 0]
+
+        mentions[0] += 1
+        if (tweet.sentiment === 1) {
+          mentions[1] += 1
+        } else if (tweet.sentiment === -1) {
+          mentions[2] += 1
+        }
+
+        second[fixture] = mentions
+        tweet_fixtures.add(fixture)
+      }
+    })
+    this.tweets[tweet.seconds] = second
+
+    if (tweet.seconds <= this.cursor) {
+      const match_tweets = this._getMatchTweets(0, this.cursor)
+      this.table = this.calculateTable(match_tweets)
+    }
+  }
+
   calculateTable (fixture_tweet_counts) {
     const tweets_table = []
     fixture_tweet_counts.forEach((counts, fixture) => {
@@ -166,6 +199,10 @@ Dispatcher.register(action => {
       break
     case Constants.GAME_WEEK_UPDATE_CURSOR:
       gameweek.updateCursor(action.cursor)
+      gameweek.emitChange()
+      break
+    case Constants.GAME_WEEK_LIVE_UPDATE:
+      gameweek.liveUpdate(action.tweet)
       gameweek.emitChange()
       break
     case Constants.REPLAY_LIVE:

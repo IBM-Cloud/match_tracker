@@ -85,7 +85,8 @@ module.exports = (app, io, creds) => {
     fixtures.gameweeks_dates().then(dates => {
       let i = 1
       for (; i <= 38; i++) {
-        const last_gw_date = Date.parse(dates.get(i).slice(-1))
+        const last_gw_date = Date.parse(dates.get(i)[0])
+        console.log(i, last_gw_date, Date.now())
         if (last_gw_date > Date.now()) {
           break
         }

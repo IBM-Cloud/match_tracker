@@ -55,7 +55,7 @@ class ScrollingMatchEvents extends React.Component {
   render () {
     const style = {left: this.state.left}
     const events = this.props.events.map((event, index) => { 
-      return <span className="event" key={event.min+event.player}><span className={event.type}></span> {event.min}' <span className="player">{event.player}</span> (<span className="team">{event.team}</span>)</span>
+      return <span className="event" key={event.min+event.player+event.type}><span className={event.type}></span> {event.min}' <span className="player">{event.player}</span> (<span className="team">{event.team}</span>)</span>
     }) 
 
     return (

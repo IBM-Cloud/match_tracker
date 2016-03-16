@@ -20287,6 +20287,13 @@
 	    _Dispatcher2.default.dispatch({
 	      actionType: _Constants2.default.REPLAY_FINISHED
 	    });
+	  },
+	
+	  liveUpdate: function liveUpdate(tweet) {
+	    _Dispatcher2.default.dispatch({
+	      actionType: _Constants2.default.GAME_WEEK_LIVE_UPDATE,
+	      tweet: tweet
+	    });
 	  }
 	};
 	
@@ -20634,6 +20641,7 @@
 	  GAME_WEEK_LOADED: null,
 	  GAME_WEEK_CHANGE: null,
 	  GAME_WEEK_UPDATE_CURSOR: null,
+	  GAME_WEEK_LIVE_UPDATE: null,
 	  REPLAY_FINISHED: null,
 	  REPLAY_LIVE: null,
 	  REPLAY_PAUSED: null
@@ -22450,7 +22458,7 @@
 	      var events = this.props.events.map(function (event, index) {
 	        return _react2.default.createElement(
 	          'span',
-	          { className: 'event', key: event.min + event.player },
+	          { className: 'event', key: event.min + event.player + event.type },
 	          _react2.default.createElement('span', { className: event.type }),
 	          ' ',
 	          event.min,
@@ -22690,6 +22698,44 @@
 	      return match_events;
 	    }
 	  }, {
+	    key: 'liveUpdate',
+	    value: function liveUpdate(tweet) {
+	      var _this3 = this;
+	
+	      console.log(tweet);
+	      if (tweet.gameweek !== parseInt(this.index, 10)) {
+	        return;
+	      }
+	
+	      var tweet_fixtures = new Set();
+	      var second = this.tweets[tweet.seconds] || {};
+	      tweet.teams.forEach(function (team) {
+	        var fixture = _this3.fixtures.findIndex(function (elem) {
+	          return elem.home === team || elem.away === team;
+	        });
+	
+	        if (!tweet_fixtures.has(fixture)) {
+	          var mentions = second[fixture] || [0, 0, 0];
+	
+	          mentions[0] += 1;
+	          if (tweet.sentiment === 1) {
+	            mentions[1] += 1;
+	          } else if (tweet.sentiment === -1) {
+	            mentions[2] += 1;
+	          }
+	
+	          second[fixture] = mentions;
+	          tweet_fixtures.add(fixture);
+	        }
+	      });
+	      this.tweets[tweet.seconds] = second;
+	
+	      if (tweet.seconds <= this.cursor) {
+	        var match_tweets = this._getMatchTweets(0, this.cursor);
+	        this.table = this.calculateTable(match_tweets);
+	      }
+	    }
+	  }, {
 	    key: 'calculateTable',
 	    value: function calculateTable(fixture_tweet_counts) {
 	      var tweets_table = [];
@@ -22707,7 +22753,7 @@
 	  }, {
 	    key: 'updateCursor',
 	    value: function updateCursor(cursor) {
-	      var _this3 = this;
+	      var _this4 = this;
 	
 	      if (cursor === this.cursor) return;
 	
@@ -22718,7 +22764,7 @@
 	        var _match_tweets = this._getMatchTweets(this.cursor + 1, cursor);
 	        var offset_table = this.calculateTable(_match_tweets);
 	        offset_table.forEach(function (details) {
-	          var previous = _this3.table.find(function (item) {
+	          var previous = _this4.table.find(function (item) {
 	            return item.home === details.home && item.away === details.away;
 	          });
 	          if (previous) {
@@ -22728,7 +22774,7 @@
 	            previous.home_goals += details.home_goals;
 	            previous.away_goals += details.away_goals;
 	          } else {
-	            _this3.table.push(details);
+	            _this4.table.push(details);
 	          }
 	        });
 	      }
@@ -22803,6 +22849,10 @@
 	      break;
 	    case _Constants2.default.GAME_WEEK_UPDATE_CURSOR:
 	      gameweek.updateCursor(action.cursor);
+	      gameweek.emitChange();
+	      break;
+	    case _Constants2.default.GAME_WEEK_LIVE_UPDATE:
+	      gameweek.liveUpdate(action.tweet);
 	      gameweek.emitChange();
 	      break;
 	    case _Constants2.default.REPLAY_LIVE:
@@ -23143,6 +23193,10 @@
 	
 	var _socket2 = _interopRequireDefault(_socket);
 	
+	var _GameWeekActions = __webpack_require__(164);
+	
+	var _GameWeekActions2 = _interopRequireDefault(_GameWeekActions);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -23175,6 +23229,7 @@
 	    key: 'listener',
 	    value: function listener(msg) {
 	      console.log(msg);
+	      _GameWeekActions2.default.liveUpdate(msg);
 	    }
 	  }]);
 	
