@@ -15,10 +15,42 @@ module.exports = (app, io, creds) => {
 
   const per_second_cache = new Map()
 
+  const update_per_second_cache = (tweet) => {
+    if (!per_second_cache.has(tweet.gameweek)) {
+      return
+    }
+
+    const per_second = per_second_cache.get(tweet.gameweek)
+    const fixture_lookup = new Map()
+    per_second.fixtures.forEach((f, idx) => {
+      fixture_lookup.set(f.home, idx)
+      fixture_lookup.set(f.away, idx)
+    })
+
+    const fixture_indices = tweet.teams.map(team => fixture_lookup.get(team))
+    const fixtures = [...new Set(fixture_indices)]
+
+    const second_tweets = per_second.tweets[tweet.seconds] || {}
+
+    fixtures.forEach(f => {
+      const fixture_tweets = second_tweets[f] || [0, 0, 0]
+      fixture_tweets[0] += 1
+      if (tweet.sentiment === 1) {
+        fixture_tweets[1] += tweet.sentiment
+      } else if (tweet.sentiment === -1) {
+        fixture_tweets[2] += tweet.sentiment
+      }
+
+      second_tweets[f] = fixture_tweets
+    })
+
+    per_second.tweets[tweet.seconds] = second_tweets
+  }
+
   const gameweek_events = (id) => {
     return fixtures.gameweeks_dates().then(dates => {
-      return Promise.all(dates.get(id).map(date => match_events.for_date(date))) 
-    }) 
+      return Promise.all(dates.get(id).map(date => match_events.for_date(date)))
+    })
   }
 
   const gameweek_matches_and_events = (id) => {
@@ -65,7 +97,7 @@ module.exports = (app, io, creds) => {
   })
 
   io.on('connection', (socket) => {
-    console.log('user connected to websocket')
+    winston.info('user connected to websocket')
   })
 
   live_updates.on('updates', doc => {
@@ -74,24 +106,24 @@ module.exports = (app, io, creds) => {
       const tp = new TweetProcessor(times_and_gw.times)
       const result = tp.process(doc)
       result.gameweek = times_and_gw.gameweek
+      update_per_second_cache(result)
       io.emit('updates', result)
     }).catch(winston.error)
   })
 
   /** hacky way to set dynamic state in the page **/
-  app.get('/js/initial_state.js', function(req, res) {
-    res.setHeader('content-type', 'text/javascript');
+  app.get('/js/initial_state.js', function (req, res) {
+    res.setHeader('content-type', 'text/javascript')
 
     fixtures.gameweeks_dates().then(dates => {
       let i = 1
       for (; i <= 38; i++) {
         const last_gw_date = Date.parse(dates.get(i)[0])
-        console.log(i, last_gw_date, Date.now())
         if (last_gw_date > Date.now()) {
           break
         }
       }
-      res.send(`window.current_gameweek = ${--i};`);
+      res.send(`window.current_gameweek = ${--i};`)
     }).catch(winston.error)
   })
 }

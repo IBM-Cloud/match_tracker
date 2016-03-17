@@ -84,9 +84,9 @@ class Gameweek extends EventEmitter {
 
         mentions[0] += 1
         if (tweet.sentiment === 1) {
-          mentions[1] += 1
+          mentions[1] += tweet.sentiment
         } else if (tweet.sentiment === -1) {
-          mentions[2] += 1
+          mentions[2] += tweet.sentiment
         }
 
         second[fixture] = mentions
