@@ -10,6 +10,11 @@ const DeployCommand = (dir, command) => {
     })
     let error = false
 
+    cf.stdout.on('data', (data) => {
+      error = true
+      console.log(`stdout for microservice ${dir.split('/').pop()}: ${data}`)
+    })
+
     cf.stderr.on('data', (data) => {
       error = true
       console.log(`stderr for microservice ${dir.split('/').pop()}: ${data}`)

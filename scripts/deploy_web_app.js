@@ -1,6 +1,5 @@
 'use strict'
 const spawn = require('child_process').spawn
-const fs = require('fs')
 const path = require('path')
 
 const DeployCommand = (dir, command) => {
@@ -9,10 +8,6 @@ const DeployCommand = (dir, command) => {
       cwd: dir
     })
     let error = false
-
-    cf.stdout.on('data', (data) => {
-      console.log(`stdout for web app ${dir.split('/').pop()}: ${data}`)
-    })
 
     cf.stderr.on('data', (data) => {
       error = true

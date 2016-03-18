@@ -29,7 +29,9 @@ public class FixturesMonitor {
 	}
 	
 	protected void start() {
-		scheduleNextTwitterSearch();
+		if (fixturesDB.isInitialized()) {
+			scheduleNextTwitterSearch();
+		}
 		scheduleFixturesUpdateCheck();
 	}
 	
@@ -46,8 +48,13 @@ public class FixturesMonitor {
 	            log.log(Level.INFO, "Checking for updated fixtures...");
 	            
 				try {
+					boolean isInitialised = fixturesDB.isInitialized();
 		            fixturesDB.update(fixturesService.getFixtures());
 		            log.log(Level.INFO, "Finished updating fixtures.");
+		            
+		            if (!isInitialised) {
+		            	scheduleNextTwitterSearch();
+		            }
 				} catch (RemoteServiceUnavailable e) {
 					log.log(Level.WARNING, "Failed to update fixtures due to service failure. Retrying in twenty four hours.");
 				}

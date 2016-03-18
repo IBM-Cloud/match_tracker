@@ -57,7 +57,7 @@ const build_microservices = () => {
 }
 
 const deploy_microservices = () => {
-  console.log('Deploying microservices... (this may take a while!)')
+  console.log('Deploying microservices... (this may take a while! use cf logs to follow progress.')
   return DeployMicroservices().then(() => {
       console.log('Finished deploying microservices')
   }).catch(err_handler)
