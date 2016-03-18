@@ -4,7 +4,7 @@
   "description": "Front-end web application for Match Tracker ",
   "main": "app.js",
   "engines": {
-    "node": ">=4.0.0"
+    "node": ">=5.0.0"
   },
   "scripts": {
     "start": "node app.js",
