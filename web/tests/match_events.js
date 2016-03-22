@@ -33,12 +33,29 @@ describe('Match Events', function() {
       assert.equal(result.home, 'Tottenham')
       assert.equal(result.away, 'Arsenal')
     })
+    it('parse teams from live html', function () {
+      const match_events = new MatchEvents()
+      const match = fs.readFileSync('./tests/resources/live_match', {encoding: 'utf-8'})
+      const result = match_events._parse_match_events(match)
+      assert.equal(result.home, 'Newcastle')
+      assert.equal(result.away, 'Sunderland')
+    })
+ 
     it('parse events from html', function () {
       const match_events = new MatchEvents()
       const match = fs.readFileSync('./tests/resources/match', {encoding: 'utf-8'})
       const result = match_events._parse_match_events(match)
       assert.equal(result.events.length, 10)
       assert.deepEqual(result.events[0], {min: '26', player: 'H. Bellerín', team: 'Arsenal FC', 'type': 'booking'})
+    })
+
+    it('parse live events from html', function () {
+      const match_events = new MatchEvents()
+      const match = fs.readFileSync('./tests/resources/live_match', {encoding: 'utf-8'})
+      const result = match_events._parse_match_events(match)
+      assert.equal(result.events.length, 7)
+      assert.deepEqual(result.events[0], {min: '18', player: 'J. Colback', team: 'Newcastle United FC', 'type': 'booking'})
+      assert.deepEqual(result.events[6], {min: '90', player: 'V. Mannone', team: 'Sunderland AFC', 'type': 'booking'})
     })
   })
 
@@ -47,6 +64,17 @@ describe('Match Events', function() {
       const match_events = new MatchEvents()
       body = fs.readFileSync('./tests/resources/results', {encoding: 'utf-8'})
       match_events._retrieve_results().then(function (_body) {
+        assert.equal(body, _body)
+        done()
+      })
+    })
+  })
+
+  describe('#retrieve_live_scores', function () {
+    it('should retrieve live scores', function (done) {
+      const match_events = new MatchEvents()
+      body = fs.readFileSync('./tests/resources/live_scores', {encoding: 'utf-8'})
+      match_events._retrieve_live_scores().then(function (_body) {
         assert.equal(body, _body)
         done()
       })
@@ -65,6 +93,18 @@ describe('Match Events', function() {
     })
   })
 
+  describe('#retrieve_live_match', function () {
+    it('should retrieve live match html', function (done) {
+      const match_events = new MatchEvents()
+      body = fs.readFileSync('./tests/resources/live_match', {encoding: 'utf-8'})
+      match_events._retrieve_live_match('testing').then(function (_body) {
+        assert.equal(body, _body)
+        assert.equal(options, 'http://www.bbc.co.uk/sport/football/live/partial/testing')
+        done()
+      })
+    })
+  })
+
   describe('#extract_matches', function () {
     it('should turn HTML into matches array', function () {
       const match_events = new MatchEvents()
@@ -73,6 +113,16 @@ describe('Match Events', function() {
       assert.equal(Object.keys(matches).length, 71)
       assert.equal(matches['Saturday 8th August 2015'].length, 6)
       assert.deepEqual(matches['Saturday 8th August 2015'], ['EFBO803169', 'EFBO803162', 'EFBO803170', 'EFBO803167', 'EFBO803163', 'EFBO803168'])
+    })
+  })
+
+  describe('#extract_live_matches', function () {
+    it('should turn HTML into live matches array', function () {
+      const match_events = new MatchEvents()
+      const content = fs.readFileSync('./tests/resources/live_scores', {encoding: 'utf-8'})
+      const matches = match_events._extract_live_matches(content)
+      console.log(typeof matches)
+      assert.deepEqual(matches, ['EFBO803470', 'EFBO803466', 'EFBO803467', 'EFBO803464'])
     })
   })
 

@@ -6,12 +6,14 @@ const TweetProcessor = require('./tweet_processor.js')
 const Fixtures = require('./fixtures.js')
 const MatchEvents = require('./match_events.js')
 const LiveUpdates = require('./live_updates.js')
+const LiveEvents = require('./live_events.js')
 
 module.exports = (app, io, creds) => {
   const fixtures = new Fixtures(creds, 'fixtures')
   const match_tweets = new MatchTweets(creds, 'match_tweets')
   const live_updates = new LiveUpdates(creds, 'match_tweets')
   const match_events = new MatchEvents(creds)
+  const live_events = new LiveEvents(fixtures)
 
   const per_second_cache = new Map()
 
@@ -110,6 +112,12 @@ module.exports = (app, io, creds) => {
       io.emit('updates', result)
     }).catch(winston.error)
   })
+
+  live_events.on('live_events', event => {
+    io.emit('events', event)
+  })
+
+  live_events.start()
 
   /** hacky way to set dynamic state in the page **/
   app.get('/js/initial_state.js', function (req, res) {

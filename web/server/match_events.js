@@ -8,7 +8,9 @@ class MatchEvents {
   constructor () {
     this.events_cache = new Map()
     this.football_results = 'http://www.bbc.co.uk/sport/football/premier-league/results'
+    this.football_live_scores = 'http://www.bbc.co.uk/sport/football/live-scores/premier-league'
     this.match_events = 'http://www.bbc.co.uk/sport/football/result/partial/'
+    this.live_events = 'http://www.bbc.co.uk/sport/football/live/partial/'
   }
 
   _parse_match_events (match) {
@@ -54,6 +56,10 @@ class MatchEvents {
   _retrieve_results () {
     return this._request(this.football_results)
   }
+  
+  _retrieve_live_scores () {
+    return this._request(this.football_live_scores)
+  }
 
   _extract_matches (results_page) {
     const $ = cheerio.load(results_page)
@@ -67,6 +73,17 @@ class MatchEvents {
       }).get()
     })
     return matches
+  }
+
+  _extract_live_matches (live_scores_page) {
+    const $ = cheerio.load(live_scores_page)
+    var live_matches = []
+    $("#live-scores-table").get().map((el, i) => {
+     return $(el).find('tr.live').get().forEach((el, i) => {
+        live_matches.push($(el).attr('id').split('-').pop())
+      })
+    })
+    return live_matches
   }
 
   _convert_date_format (matchdate) {
@@ -111,6 +128,10 @@ class MatchEvents {
     return this._request(`${this.match_events}${id}?teamview=false`)
   }
 
+  _retrieve_live_match (id) {
+    return this._request(`${this.live_events}${id}`)
+  }
+
   for_date (matchdate) {
     if (this.events_cache.has(matchdate)) {
       return Promise.resolve(this.events_cache.get(matchdate))
@@ -128,6 +149,13 @@ class MatchEvents {
         }
         return resolved
       })
+    })
+  }
+
+  live_events () {
+    return this._retrieve_live_scores().then(this._extract_live_matches).then(matches => {
+      const pme = result => this._parse_match_events(result)
+      return Promise.all(matches.map(match => this._retrieve_live_match(match).then(pme)))
     })
   }
 }

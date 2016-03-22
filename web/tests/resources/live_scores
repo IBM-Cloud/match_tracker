@@ -1,0 +1,913 @@
+<html lang="en-gb" class=" blq-js id-svg"><head> <!-- Barlesque 3.8.0 --> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta name="description" content="All the latest football live scores for all leagues and competitions on BBC Sport, including the Barclay's Premier League, Championship, Scottish Premiership, FA Cup, Champions League and more."> <meta name="keywords" content="BBC, Sport">   <title>BBC Sport - Football - Live Scores</title>     
+   
+  <link rel="copyright" href="http://www.bbc.co.uk/terms/" title="Terms of Use"> <link rel="icon" href="http://www.bbc.co.uk/favicon.ico" type="image/x-icon">  <meta name="viewport" content="width = 996"> <meta property="fb:admins" content="100004154058350"> 
+
+<script type="text/javascript">window.bbcredirection={geo:true}</script><script type="text/javascript">window.orb = window.orb || {};</script>
+<script type="text/javascript">/*<![CDATA[*/
+(function(){window.fig=window.fig||{};window.fig.manager={include:function(e){e=e||window;var i=e.document,j=i.cookie,h=j.match(/(?:^|; ?)ckns_orb_fig=([^;]+)/),g,b="";if(!h&&j.indexOf("ckns_orb_nofig=1")>-1){this.setFig(e,{no:1})}else{if(h){h=this.deserialise(decodeURIComponent(RegExp.$1));this.setFig(e,h)}if(window.fig.async&&typeof JSON!="undefined"){var a=(document.cookie.match("(^|; )ckns_orb_cachedfig=([^;]*)")||0)[2];g=a?JSON.parse(a):null;if(g){this.setFig(e,g);b="async"}}i.write('<script src="https://fig.bbc.co.uk/frameworks/fig/1/fig.js"'+b+"><"+"/script>")}},confirm:function(a){a=a||window;if(a.orb&&a.orb.fig&&a.orb.fig("no")){this.setNoFigCookie(a)}if(a.orb===undefined||a.orb.fig===undefined){this.setFig(a,{no:1});this.setNoFigCookie(a)}},setNoFigCookie:function(a){a.document.cookie="ckns_orb_nofig=1; expires="+new Date(new Date().getTime()+1000*60*10).toGMTString()+";"},setFig:function(a,b){(function(){var c=b;a.orb=a.orb||{};a.orb.fig=function(d){return(arguments.length)?c[d]:c}})()},deserialise:function(b){var a={};b.replace(/([a-z]{2}):([0-9]+)/g,function(){a[RegExp.$1]=+RegExp.$2});return a}}})();fig.manager.include();/*]]>*/</script><script src="https://fig.bbc.co.uk/frameworks/fig/1/fig.js"></script>
+<script type="text/javascript"> fig.manager.confirm(); </script>
+
+ <link rel="stylesheet" type="text/css" href="http://static.bbci.co.uk/frameworks/barlesque/3.8.0/desktop/3.5/style/main.css">  <link rel="stylesheet" type="text/css" href="http://static.bbci.co.uk/sport/ui/3.2.526/css/desktop/shared-compiled.css">  <link rel="stylesheet" type="text/css" href="http://static.bbci.co.uk/sport/ui/3.2.526/css/desktop/elements/branding/olympics-2012.css">  <link rel="stylesheet" type="text/css" href="http://static.bbci.co.uk/sport/2.7.640/desktop/styles/core-1-compiled.css" media="screen,print">  <link rel="stylesheet" type="text/css" href="http://static.bbci.co.uk/sport/2.7.640/desktop/styles/core-2-compiled.css" media="screen,print">  <link rel="stylesheet" type="text/css" href="http://static.bbci.co.uk/sport/2.7.640/desktop/styles/print.css" media="print">  <script type="text/javascript">/*<![CDATA[*/ (function(undefined){if(!window.bbc){window.bbc={}}var ROLLING_PERIOD_DAYS=30;window.bbc.Mandolin=function(id,segments,opts){var now=new Date().getTime(),storedItem,DEFAULT_START=now,DEFAULT_RATE=1,COOKIE_NAME="ckpf_mandolin";opts=opts||{};this._id=id;this._segmentSet=segments;this._store=new window.window.bbc.Mandolin.Storage(COOKIE_NAME);this._opts=opts;this._rate=(opts.rate!==undefined)?+opts.rate:DEFAULT_RATE;this._startTs=(opts.start!==undefined)?new Date(opts.start).getTime():new Date(DEFAULT_START).getTime();this._endTs=(opts.end!==undefined)?new Date(opts.end).getTime():daysFromNow(ROLLING_PERIOD_DAYS);this._signupEndTs=(opts.signupEnd!==undefined)?new Date(opts.signupEnd).getTime():this._endTs;this._segment=null;if(typeof id!=="string"){throw new Error("Invalid Argument: id must be defined and be a string")}if(Object.prototype.toString.call(segments)!=="[object Array]"){throw new Error("Invalid Argument: Segments are required.")}if(opts.rate!==undefined&&(opts.rate<0||opts.rate>1)){throw new Error("Invalid Argument: Rate must be between 0 and 1.")}if(this._startTs>this._endTs){throw new Error("Invalid Argument: end date must occur after start date.")}if(!(this._startTs<this._signupEndTs&&this._signupEndTs<=this._endTs)){throw new Error("Invalid Argument: SignupEnd must be between start and end date")}removeExpired.call(this,now);var overrides=window.bbccookies.get().match(/ckns_mandolin_setSegments=([^;]+)/);if(overrides!==null){eval("overrides = "+decodeURIComponent(RegExp.$1)+";");if(overrides[this._id]&&this._segmentSet.indexOf(overrides[this._id])==-1){throw new Error("Invalid Override: overridden segment should exist in segments array")}}if(overrides!==null&&overrides[this._id]){this._segment=overrides[this._id]}else{if((storedItem=this._store.getItem(this._id))){this._segment=storedItem.segment}else{if(this._startTs<=now&&now<this._signupEndTs&&now<=this._endTs&&this._store.isEnabled()===true){this._segment=pick(segments,this._rate);if(opts.end===undefined){this._store.setItem(this._id,{segment:this._segment})}else{this._store.setItem(this._id,{segment:this._segment,end:this._endTs})}log.call(this,"mandolin_segment")}}}log.call(this,"mandolin_view")};window.bbc.Mandolin.prototype.getSegment=function(){return this._segment};function log(actionType,params){var that=this;require(["istats-1"],function(istats){istats.log(actionType,that._id+":"+that._segment,params?params:{})})}function removeExpired(expires){var items=this._store.getItems(),expiresInt=+expires;for(var key in items){if(items[key].end!==undefined&&+items[key].end<expiresInt){this._store.removeItem(key)}}}function getLastExpirationDate(data){var winner=0,rollingExpire=daysFromNow(ROLLING_PERIOD_DAYS);for(var key in data){if(data[key].end===undefined&&rollingExpire>winner){winner=rollingExpire}else{if(+data[key].end>winner){winner=+data[key].end}}}return(winner)?new Date(winner):new Date(rollingExpire)}window.bbc.Mandolin.prototype.log=function(params){log.call(this,"mandolin_log",params)};window.bbc.Mandolin.prototype.convert=function(params){log.call(this,"mandolin_convert",params);this.convert=function(){}};function daysFromNow(n){var endDate;endDate=new Date().getTime()+(n*60*60*24)*1000;return endDate}function pick(segments,rate){var picked,min=0,max=segments.length-1;if(typeof rate==="number"&&Math.random()>rate){return null}do{picked=Math.floor(Math.random()*(max-min+1))+min}while(picked>max);return segments[picked]}window.bbc.Mandolin.Storage=function(name){validateCookieName(name);this._cookieName=name;this._isEnabled=(bbccookies.isAllowed(this._cookieName)===true&&bbccookies.cookiesEnabled()===true)};window.bbc.Mandolin.Storage.prototype.setItem=function(key,value){var storeData=this.getItems();storeData[key]=value;this.save(storeData);return value};window.bbc.Mandolin.Storage.prototype.isEnabled=function(){return this._isEnabled};window.bbc.Mandolin.Storage.prototype.getItem=function(key){var storeData=this.getItems();return storeData[key]};window.bbc.Mandolin.Storage.prototype.removeItem=function(key){var storeData=this.getItems();delete storeData[key];this.save(storeData)};window.bbc.Mandolin.Storage.prototype.getItems=function(){return deserialise(this.readCookie(this._cookieName)||"")};window.bbc.Mandolin.Storage.prototype.save=function(data){window.bbccookies.set(this._cookieName+"="+encodeURIComponent(serialise(data))+"; expires="+getLastExpirationDate(data).toUTCString()+";")};window.bbc.Mandolin.Storage.prototype.readCookie=function(name){var nameEq=name+"=",ca=window.bbccookies.get().split("; "),i,c;validateCookieName(name);for(i=0;i<ca.length;i++){c=ca[i];if(c.indexOf(nameEq)===0){return decodeURIComponent(c.substring(nameEq.length,c.length))}}return null};function serialise(o){var str="";for(var p in o){if(o.hasOwnProperty(p)){str+='"'+p+'"'+":"+(typeof o[p]==="object"?(o[p]===null?"null":"{"+serialise(o[p])+"}"):'"'+o[p].toString()+'"')+","}}return str.replace(/,\}/g,"}").replace(/,$/g,"")}function deserialise(str){var o;str="{"+str+"}";if(!validateSerialisation(str)){throw"Invalid input provided for deserialisation."}eval("o = "+str);return o}var validateSerialisation=(function(){var OBJECT_TOKEN="<Object>",ESCAPED_CHAR='"\\n\\r\\u2028\\u2029\\u000A\\u000D\\u005C',ALLOWED_CHAR="([^"+ESCAPED_CHAR+"]|\\\\["+ESCAPED_CHAR+"])",KEY='"'+ALLOWED_CHAR+'+"',VALUE='(null|"'+ALLOWED_CHAR+'*"|'+OBJECT_TOKEN+")",KEY_VALUE=KEY+":"+VALUE,KEY_VALUE_SEQUENCE="("+KEY_VALUE+",)*"+KEY_VALUE,OBJECT_LITERAL="({}|{"+KEY_VALUE_SEQUENCE+"})",objectPattern=new RegExp(OBJECT_LITERAL,"g");return function(str){if(str.indexOf(OBJECT_TOKEN)!==-1){return false}while(str.match(objectPattern)){str=str.replace(objectPattern,OBJECT_TOKEN)}return str===OBJECT_TOKEN}})();function validateCookieName(name){if(name.match(/ ,;/)){throw"Illegal name provided, must be valid in browser cookie."}}})(); /*]]>*/</script>  <script type="text/javascript">/*<![CDATA[*/ if (typeof bbccookies_flag === 'undefined') { bbccookies_flag = 'ON'; } showCTA_flag = true; cta_enabled = (showCTA_flag && (bbccookies_flag === 'ON')); (function(){var e="ckns_policy",m="Thu, 01 Jan 1970 00:00:00 GMT",k={ads:true,personalisation:true,performance:true,necessary:true};function f(p){if(f.cache[p]){return f.cache[p]}var o=p.split("/"),q=[""];do{q.unshift((o.join("/")||"/"));o.pop()}while(q[0]!=="/");f.cache[p]=q;return q}f.cache={};function a(p){if(a.cache[p]){return a.cache[p]}var q=p.split("."),o=[];while(q.length&&"|co.uk|com|".indexOf("|"+q.join(".")+"|")===-1){if(q.length){o.push(q.join("."))}q.shift()}f.cache[p]=o;return o}a.cache={};function i(o,t,p){var z=[""].concat(a(window.location.hostname)),w=f(window.location.pathname),y="",r,x;for(var s=0,v=z.length;s<v;s++){r=z[s];for(var q=0,u=w.length;q<u;q++){x=w[q];y=o+"="+t+";"+(r?"domain="+r+";":"")+(x?"path="+x+";":"")+(p?"expires="+p+";":"");bbccookies.set(y,true)}}}window.bbccookies={POLICY_REFRESH_DATE_MILLIS:new Date(2015,4,21,0,0,0,0).getTime(),POLICY_EXPIRY_COOKIENAME:"ckns_policy_exp",_setEverywhere:i,cookiesEnabled:function(){var o="ckns_testcookie"+Math.floor(Math.random()*100000);this.set(o+"=1");if(this.get().indexOf(o)>-1){g(o);return true}return false},set:function(o){return document.cookie=o},get:function(){return document.cookie},getCrumb:function(o){if(!o){return null}return decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*"+encodeURIComponent(o).replace(/[\-\.\+\*]/g,"\\$&")+"\\s*\\=\\s*([^;]*).*$)|^.*$"),"$1"))||null},policyRequiresRefresh:function(){var p=new Date();p.setHours(0);p.setMinutes(0);p.setSeconds(0);p.setMilliseconds(0);if(bbccookies.POLICY_REFRESH_DATE_MILLIS<=p.getTime()){var o=bbccookies.getCrumb(bbccookies.POLICY_EXPIRY_COOKIENAME);if(o){o=new Date(parseInt(o));o.setYear(o.getFullYear()-1);return bbccookies.POLICY_REFRESH_DATE_MILLIS>=o.getTime()}else{return true}}else{return false}},_setPolicy:function(o){return h.apply(this,arguments)},readPolicy:function(){return b.apply(this,arguments)},_deletePolicy:function(){i(e,"",m)},isAllowed:function(){return true},_isConfirmed:function(){return c()!==null},_acceptsAll:function(){var o=b();return o&&!(j(o).indexOf("0")>-1)},_getCookieName:function(){return d.apply(this,arguments)},_showPrompt:function(){var o=((!this._isConfirmed()||this.policyRequiresRefresh())&&window.cta_enabled&&this.cookiesEnabled()&&!window.bbccookies_disable);return(window.orb&&window.orb.fig)?o&&(window.orb.fig("no")||window.orb.fig("ck")):o}};bbccookies._getPolicy=bbccookies.readPolicy;function d(p){var o=(""+p).match(/^([^=]+)(?==)/);return(o&&o.length?o[0]:"")}function j(o){return""+(o.ads?1:0)+(o.personalisation?1:0)+(o.performance?1:0)}function h(s){if(typeof s==="undefined"){s=k}if(typeof arguments[0]==="string"){var p=arguments[0],r=arguments[1];if(p==="necessary"){r=true}s=b();s[p]=r}else{if(typeof arguments[0]==="object"){s.necessary=true}}var q=new Date();q.setYear(q.getFullYear()+1);bbccookies.set(e+"="+j(s)+";domain=bbc.co.uk;path=/;expires="+q.toUTCString()+";");bbccookies.set(e+"="+j(s)+";domain=bbc.com;path=/;expires="+q.toUTCString()+";");var o=new Date(q.getTime());o.setMonth(o.getMonth()+1);bbccookies.set(bbccookies.POLICY_EXPIRY_COOKIENAME+"="+q.getTime()+";domain=bbc.co.uk;path=/;expires="+o.toUTCString()+";");bbccookies.set(bbccookies.POLICY_EXPIRY_COOKIENAME+"="+q.getTime()+";domain=bbc.com;path=/;expires="+o.toUTCString()+";");return s}function l(o){if(o===null){return null}var p=o.split("");return{ads:!!+p[0],personalisation:!!+p[1],performance:!!+p[2],necessary:true}}function c(){var o=new RegExp("(?:^|; ?)"+e+"=(\\d\\d\\d)($|;)"),p=document.cookie.match(o);if(!p){return null}return p[1]}function b(o){var p=l(c());if(!p){p=k}if(o){return p[o]}else{return p}}function g(o){return document.cookie=o+"=;expires="+m+";"}function n(){var o='<script type="text/javascript" src="http://static.bbci.co.uk/frameworks/bbccookies/0.6.15/script/bbccookies.js"><\/script>';if(window.bbccookies_flag==="ON"&&!bbccookies._acceptsAll()&&!window.bbccookies_disable){document.write(o)}}n()})(); /*]]>*/</script>      <script type="text/javascript"> if (! window.gloader) { window.gloader = [ "glow", {map: "http://node1.bbcimg.co.uk/glow/glow/map.1.7.7.js"}]; } </script>  <script type="text/javascript" src="http://node1.bbcimg.co.uk/glow/gloader.0.1.6.js"></script><script type="text/javascript" src="http://node1.bbcimg.co.uk/glow/glow/map.1.7.7.js"></script>
+    <!--orb.ws.require.lib--> <script type="text/javascript">/*<![CDATA[*/ if (typeof window.define !== 'function' || typeof window.require !== 'function') { document.write('<script class="js-require-lib" src="http://static.bbci.co.uk/frameworks/requirejs/lib.js"><'+'/script>'); } /*]]>*/</script><script class="js-require-lib" src="http://static.bbci.co.uk/frameworks/requirejs/lib.js"></script> <script type="text/javascript">  bbcRequireMap = {"jquery-1":"http://static.bbci.co.uk/frameworks/jquery/0.4.1/sharedmodules/jquery-1.7.2", "jquery-1.4":"http://static.bbci.co.uk/frameworks/jquery/0.4.1/sharedmodules/jquery-1.4", "jquery-1.9":"http://static.bbci.co.uk/frameworks/jquery/0.4.1/sharedmodules/jquery-1.9.1", "jquery-1.12":"http://static.bbci.co.uk/frameworks/jquery/0.4.1/sharedmodules/jquery-1.12.0.min", "jquery-2.2":"http://static.bbci.co.uk/frameworks/jquery/0.4.1/sharedmodules/jquery-2.2.0.min", "istats-1":"//nav.files.bbci.co.uk/nav-analytics/0.1.0-43/js/istats-1", "swfobject-2":"http://static.bbci.co.uk/frameworks/swfobject/0.1.10/sharedmodules/swfobject-2", "demi-1":"http://static.bbci.co.uk/frameworks/demi/0.10.0/sharedmodules/demi-1", "gelui-1":"http://static.bbci.co.uk/frameworks/gelui/0.9.13/sharedmodules/gelui-1", "cssp!gelui-1/overlay":"http://static.bbci.co.uk/frameworks/gelui/0.9.13/sharedmodules/gelui-1/overlay.css", "relay-1":"http://static.bbci.co.uk/frameworks/relay/0.2.6/sharedmodules/relay-1", "clock-1":"http://static.bbci.co.uk/frameworks/clock/0.1.9/sharedmodules/clock-1", "canvas-clock-1":"http://static.bbci.co.uk/frameworks/clock/0.1.9/sharedmodules/canvas-clock-1", "cssp!clock-1":"http://static.bbci.co.uk/frameworks/clock/0.1.9/sharedmodules/clock-1.css", "jssignals-1":"http://static.bbci.co.uk/frameworks/jssignals/0.3.6/modules/jssignals-1", "jcarousel-1":"http://static.bbci.co.uk/frameworks/jcarousel/0.1.10/modules/jcarousel-1", "bump-3":"//emp.bbci.co.uk/emp/bump-3/bump-3", "plugins/favourite":"http://static.bbci.co.uk/modules/plugin/favourite/1.2.2/modules/plugins/favourite", "personalisation":"http://static.bbci.co.uk/modules/personalisation/0.8.7/modules/personalisation", "sportui/imageGallery":"http://static.bbci.co.uk/sport/ui/3.2.526/modules/sportui/imageGallery", "sportui/expander":"http://static.bbci.co.uk/sport/ui/3.2.526/modules/sportui/expander", "empSwitch":"http://static.bbci.co.uk/sport/ui/3.2.526/modules/empSwitch", "jsonpclient":"http://static.bbci.co.uk/sport/ui/3.2.526/modules/jsonpclient", "sportui/favouritesTray/ui":"http://static.bbci.co.uk/sport/ui/3.2.526/modules/sportui/favouritesTray/ui", "sportui/schedule-carousel":"http://static.bbci.co.uk/sport/ui/3.2.526/modules/sportui/schedule-carousel", "sportui/sprite-animator":"http://static.bbci.co.uk/sport/ui/3.2.526/modules/sportui/sprite-animator", "sportui/jquery.inview":"http://static.bbci.co.uk/sport/ui/3.2.526/modules/sportui/jquery.inview"}; require({ baseUrl: 'http://static.bbci.co.uk/', paths: bbcRequireMap, waitSeconds: 30 }); </script>  <!-- Nav Analytics : 50 -->
+<script type="text/javascript">window.bbcFlagpoles_istats="ON",require.config({paths:{"istats-1":"//nav.files.bbci.co.uk/nav-analytics/0.1.0-50/js/istats-1"}}),require.defined("orb/cookies")||(window.bbccookies?define("orb/cookies",function(){return window.bbccookies}):define("orb/cookies",function(){return{isAllowed:function(e){return!1}}})),require(["istats-1","orb/cookies"],function(e,o){if(o.isAllowed("s1")){var n="//sa.bbc.co.uk/bbc/bbc/s";e.addCollector({name:"default",url:n,separator:"&"});var i="sport.football.live_scores.page";i&&"unknown"!==i&&e.setCountername(i),window.istats_countername&&e.setCountername(window.istats_countername),e.addLabels("ml_name=webmodule&ml_version=50")}});</script>
+
+<script type="text/javascript">/*<![CDATA[*/
+    window.bbcFlagpoles_istats = 'ON';
+    window.orb = window.orb || {};
+
+    if (typeof bbccookies !== 'undefined' && bbccookies.isAllowed('s1')) {
+        var istatsTrackingUrl = '//sa.bbc.co.uk/bbc/bbc/s?name=sport.football.live_scores.page&app_version=2.7.640&page_type=pal_data&sp=football&bbc_site=sport&pal_route=footballLiveScoresCompetition&app_type=web&language=en-GB&pal_webapp=sport&prod_name=sport&app_name=sport';
+        require(['istats-1'], function (istats) {
+            var counterName = (window.istats_countername) ? window.istats_countername : istatsTrackingUrl.match(/[\?&]name=([^&]*)/i)[1];
+            istats.setCountername(counterName);
+
+            istats.addLabels('app_version=2.7.640&page_type=pal_data&sp=football&bbc_site=sport&pal_route=footballLiveScoresCompetition&app_type=web&language=en-GB&pal_webapp=sport&prod_name=sport&app_name=sport');
+            var c = (document.cookie.match(/\bckns_policy=(\d\d\d)/) || []).pop() || '';
+            istats.addLabels({
+                                        'blq_s': '3.5d',
+                    'blq_r': '3.5',
+                    'blq_v': 'default-domestic',
+                    'blq_e': 'pal',
+                                        'bbc_mc': (c ? 'ad' + c.charAt(0) + 'ps' + c.charAt(1) + 'pf' + c.charAt(2) : 'not_set')
+                }
+            );
+        });
+    }
+    /*]]>*/</script>
+    <script type="text/javascript" src="http://static.bbci.co.uk/frameworks/barlesque/3.8.0/desktop/3.5/script/barlesque.js"></script>
+    <script type="text/javascript" src="http://static.bbci.co.uk/sport/ui/3.2.526/js/desktop/shared-compiled.js"></script>
+  
+<!--[if IE 6]>
+        <script type="text/javascript">
+        try {
+            document.execCommand("BackgroundImageCache",false,true);
+        } catch(e) {}
+    </script>
+        <style type="text/css">
+        /* Use filters for IE6 */
+        #blq-blocks a {
+            background-image: none;
+            filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://static.bbci.co.uk/frameworks/barlesque/3.8.0/desktop/3.5//img/blq-blocks_white_alpha.png', sizingMethod='image');
+        }
+        .blq-masthead-focus #blq-blocks a,
+        .blq-mast-text-dark #blq-blocks a {
+            background-image: none;
+            filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://static.bbci.co.uk/frameworks/barlesque/3.8.0/desktop/3.5//img/blq-blocks_grey_alpha.png', sizingMethod='image');
+        }
+        #blq-nav-search button span {
+            background-image: none;
+            filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://static.bbci.co.uk/frameworks/barlesque/3.8.0/desktop/3.5//img/blq-search_grey_alpha.png', sizingMethod='image');
+        }
+        #blq-nav-search button img {
+            position: absolute;
+            left: -999em;    
+        }
+    </style>
+<![endif]-->
+
+<!--[if (IE 7])|(IE 8)>
+    <style type="text/css">
+        .blq-clearfix {
+            display: inline-block;
+        }
+    </style>
+<![endif]-->
+
+<script type="text/javascript">
+     blq.setEnvironment('live');  if (blq.setLabel) blq.setLabel('searchSuggestion', "Search");  if (! /bbc\.co\.uk$/i.test(window.location.hostname) ) { document.documentElement.className += ' blq-not-bbc-co-uk'; } </script>
+
+  <script type="text/javascript"> /*<![CDATA[*/ function oqsSurveyManager(w, flag) { if (flag !== 'OFF') { w.document.write('<script type="text/javascript" src="http://static.bbci.co.uk/frameworks/barlesque/3.8.0/desktop/3.5/script/vendor/edr.min.js"><'+'/script>'); } } oqsSurveyManager(window, 'ON'); /*]]>*/ </script><script type="text/javascript" src="http://static.bbci.co.uk/frameworks/barlesque/3.8.0/desktop/3.5/script/vendor/edr.min.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="istats-1" src="//nav.files.bbci.co.uk/nav-analytics/0.1.0-50/js/istats-1.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="jquery-1.9" src="http://static.bbci.co.uk/frameworks/jquery/0.4.1/sharedmodules/jquery-1.9.1.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="jquery-1" src="http://static.bbci.co.uk/frameworks/jquery/0.4.1/sharedmodules/jquery-1.7.2.js"></script> 
+        <!-- BBCDOTCOM template: desktop journalismVariant: false ipIsAdvertiseCombined: false adsEnabled: true flagpole: ON -->
+            <script type="text/javascript">
+            /*<![CDATA[*/
+
+                        var _sf_startpt = (new Date()).getTime();
+            
+            if (window.bbcdotcom === undefined) {
+                var bbcdotcom = {
+                    adverts: {
+                        keyValues: {
+                            set: function() {}
+                        }
+                    },
+                    advert: {
+                        write: function () {},
+                        show: function () {},
+                        isActive: function () {
+                            return false;
+                        },
+                        layout: function() {
+                            return {
+                                reset: function() {}
+                            }
+                        }
+                    },
+                    config: {
+                        init: function() {},
+                        isActive: function() {},
+                        setSections: function() {},
+                        isAdsEnabled: function() {},
+                        setAdsEnabled: function() {},
+                        isAnalyticsEnabled: function() {},
+                        setAnalyticsEnabled: function() {},
+                        setAssetPrefix: function() {},
+                        setJsPrefix: function() {},
+                        setSwfPrefix: function() {},
+                        setCssPrefix: function() {},
+                        setConfig: function() {},
+                        getJsPrefix: function () {},
+                        getSwfPrefix: function () {},
+                        getCssPrefix: function () {},
+                        setVersion: function () {},
+                        getVersion: function () {}
+                    },
+                    survey: {
+                        init: function(){ return false; }
+                    },
+                    data: {},
+                    init: function() {},
+                    objects: function(str) {
+                        return false;
+                    },
+                    locale: {
+                        set: function() {}
+                    },
+                    setAdKeyValue: function() {},
+                    utils: {
+                        addEvent: function() {},
+                        addHtmlTagClass: function() {},
+                        log: function () {}
+                    },
+                    addLoadEvent: function() {}
+                };
+            }
+            bbcdotcom.objects = function (strName, action, obj) {
+                var i,
+                    len,
+                    args = arguments,
+                    nameParts = strName.split(".");
+                if (action === undefined) {
+                    action = 'valid';
+                }
+                if (obj === undefined) {
+                    obj = window;
+                }
+                for (i = 0, len = nameParts.length; i < len; i++) {
+                    if (obj[nameParts[i]] === undefined) {
+                        if (action === 'create') {
+                            obj[nameParts[i]] = {};
+                        } else {
+                            return false;
+                        }
+                    } else if (typeof obj[nameParts[i]] === 'function') {
+                        if (typeof args[1] !== 'undefined' && args[1] !== null && obj[nameParts[i]](args[1]) !== undefined) {
+                            return obj[nameParts[i]](args[1]);
+                        } else if (obj[nameParts[i]]() !== undefined) {
+                            return obj[nameParts[i]]();
+                        }
+                    }
+                    obj = obj[nameParts[i]];
+                }
+                return obj;
+            };
+            /*]]>*/
+        </script>
+        <style type="text/css">.bbccom_display_none{display:none;}</style>
+        <script type="text/javascript">
+            /*<![CDATA[*/
+            bbcdotcom.objects('bbcdotcom.siteCatalyst', 'create');
+            bbcdotcom.siteCatalyst = {"ch":"","cdp":"3","ce":"UTF-8"};
+            bbcdotcom.objects('bbcdotcom.stats', 'create');
+            /* Create BBC.adverts skeleton */
+            if (window.BBC === undefined) {
+                var BBC = {};
+            }
+            if (window.BBC.adverts === undefined) {
+                BBC.adverts = {
+                    setZone: function () {},
+                    configure: function () {},
+                    write: function () {},
+                    show: function () {},
+                    isActive: function () {
+                        return false;
+                    },
+                    hasStyles: function() {},
+                    setScriptRoot: function () {},
+                    setImgRoot: function () {},
+                    getAdvertTag: function () {},
+                    getSectionPath: function() {},
+                    showPartnerButtons: function() {}
+                };
+            }
+            (function(){
+                if(typeof require !== 'undefined') {
+                    require({
+                        paths:{
+                            "bbcdotcom":"http://static.bbci.co.uk/bbcdotcom/1.11.0/script"
+                        }
+                    });
+                }
+            })();
+            if (typeof orb !== 'undefined' && typeof orb.fig === 'function') {
+                bbcdotcom.data = {
+                    a: orb.fig('ad')? 1 : 0,
+                    b: (0 == orb.fig('uk')) ? 1 : 0,
+                    c: orb.fig('ap')
+                };
+            } else {
+                document.write('<script type="text/javascript" src="http://tps.bbc.com/wwscripts/data">\x3C/script>');
+            }
+            /*]]>*/
+        </script>
+        <script type="text/javascript">
+            /*<![CDATA[*/
+            if (typeof bbcdotcom.data == 'undefined' || typeof bbcdotcom.data.a == 'undefined' || typeof bbcdotcom.data.b == 'undefined' || typeof bbcdotcom.data.c == 'undefined') {
+                bbcdotcom.data = {a:0,b:0,c:0};
+            }
+            if (bbcdotcom.data.a == 1) {
+                document.write('<script type="text/javascript" src="http://www.bbc.co.uk/wwscripts/flag">\x3C/script>');
+            }
+            /*]]>*/
+        </script>                                   <script type="text/javascript">                 /*<![CDATA[*/
+            if (typeof bbcdotcom.flag == 'undefined' || bbcdotcom.flag.a != 1) {
+                                bbcdotcom.data.a = 0;
+            }
+            /*]]>*/
+        </script>
+                            <!-- BEGIN Krux Control Tag for "BBC.com Homepage" -->
+            <!-- Source: /snippet/controltag?confid=JA8mItOH&site=BBC.com%20Homepage&edit=1 -->
+            <script type="text/javascript">
+                /*<![CDATA[*/
+                if (bbcdotcom.data.a == 1 || bbcdotcom.data.b == 1) {
+                    document.write('<script class="kxct" data-id="JZh7-1tL" data-timing="async" data-version="1.9" type="text/javascript">'
+                        + '    window.Krux||((Krux=function(){Krux.q.push(arguments)}).q=[]);'
+                        + '    (function(){'
+                        + '        var k=document.createElement("script");k.type="text/javascript";k.async=true;'
+                        + '        var m,src=(m=location.href.match(/\\bkxsrc=([^&]+)/))&&decodeURIComponent(m[1]);'
+                        + '        k.src = /^https?:\\/\\/([a-z0-9_\\-\\.]+\\.)?krxd\\.net(:\\d{1,5})?\\//i.test(src) ? '
+                        + '           src : src === "disable" ? "" :'
+                        + '        (location.protocol==="https:"?"https:":"http:")+"//cdn.krxd.net/controltag?confid=JZh7-1tL";'
+                        + '        var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(k,s);'
+                        + '    }());'
+                        + decodeURIComponent('%3C') + '/script>');
+                }
+                /*]]>*/
+            </script>
+            <script type="text/javascript">
+                /*<![CDATA[*/
+                if (bbcdotcom.data.a == 1 || bbcdotcom.data.b == 1) {
+                    document.write('<script type="text/javascript">'
+                        + '        window.Krux||((Krux=function(){Krux.q.push(arguments);}).q=[]);'
+                        + '        (function(){'
+                        + '            function  retrieve(n){'
+                        + '                var  m,  k="kx"+n;'
+                        + '                if  (window.localStorage)  {'
+                        + '                    return  window.localStorage[k]  ||  "";'
+                        + '                }  else  if  (navigator.cookieEnabled)  {'
+                        + '                    m  =  document.cookie.match(k+"=([^;]*)");'
+                        + '                    return  (m  &&  unescape(m[1]))  ||  "";'
+                        + '                }  else  {'
+                        + '                    return  "";'
+                        + '                }'
+                        + '            }'
+                        + '            Krux.user  =  retrieve("user");'
+                        + '            Krux.segments  =  retrieve("segs")  &&  retrieve("segs").split(",")  ||  [];'
+                                                + '            var  dfpp  =  [];'
+                        + '            if  (Krux.user)  {'
+                        + '                dfpp.push("khost="  +  encodeURIComponent(location.hostname));'
+                        + '                dfpp.push("kuid="  +  Krux.user);'
+                        + '            }'
+                        + '            for  (var  i  =  0;  i  <  Krux.segments.length;  i++  )  {'
+                        + '                dfpp.push("ksg="  +  Krux.segments[i]);'
+                        + '            }'
+                        + '            Krux.dfppKeyValues  =  dfpp.length  ?  dfpp.join(";")  +  ";"  :  "";'
+                                                + '        })();'
+                        + decodeURIComponent('%3C') + '/script>');
+                }
+                /*]]>*/
+            </script>
+                <script type="text/javascript">
+            /*<![CDATA[*/
+            if (bbcdotcom.data.a == 1 || bbcdotcom.data.b == 1) {
+                                bbcdotcom.assetPrefix = "http://static.bbci.co.uk/bbcdotcom/1.11.0/";
+                document.write('<link rel="stylesheet" type="text/css" href="http://static.bbci.co.uk/bbcdotcom/1.11.0/style/3pt_ads.css" />');
+                if (/[?|&]gpt-on/.test(window.location.href)){
+                    document.write('<script type="text/javascript" src="//www.googletagservices.com/tag/js/gpt.js">\x3C/script>');
+                    document.write('<script type="text/javascript" src="http://static.bbci.co.uk/bbcdotcom/1.11.0/script/bbccom_all.js">\x3C/script>');
+                } else {
+                    document.write('<script type="text/javascript" src="http://static.bbci.co.uk/bbcdotcom/1.11.0/script/orb/analytics-modules.js">\x3C/script>');
+                    document.write('<script type="text/javascript" src="http://static.bbci.co.uk/bbcdotcom/1.11.0/script/bbccom.js">\x3C/script>');
+                }
+            }
+            /*]]>*/
+        </script>                                   <script type="text/javascript">                 /*<![CDATA[*/
+            if (bbcdotcom.data.a == 1 || bbcdotcom.data.b == 1) {
+                                BBC.adverts.setData(bbcdotcom.data);
+                bbcdotcom.config.setAdsEnabled(bbcdotcom.data.a);
+                bbcdotcom.config.setAnalyticsEnabled(bbcdotcom.data.b);
+                bbcdotcom.config.setJsPrefix("http://static.bbci.co.uk/bbcdotcom/1.11.0/script");
+                bbcdotcom.config.setAssetPrefix("http://static.bbci.co.uk/bbcdotcom/1.11.0/");
+                bbcdotcom.config.setVersion("1.11.0");
+                bbcdotcom.config.setSwfPrefix("http://static.bbci.co.uk/bbcdotcom/1.11.0/swf");
+                bbcdotcom.config.setCssPrefix("http://static.bbci.co.uk/bbcdotcom/1.11.0/style");
+                bbcdotcom.dataOrb = {
+                    ads: bbcdotcom.data.a,
+                    stats: bbcdotcom.data.b,
+                    statsProvider: bbcdotcom.data.c
+                };
+                if (/[?|&]gpt-on/.test(window.location.href)) {
+                    bbcdotcom.config.setData(bbcdotcom.dataOrb);
+                    if(document.location.pathname.indexOf("/weather/coast_and_sea") === 0 || (document.getElementsByName("CPS_ASSET_TYPE").length > 0 && document.getElementsByName("CPS_ASSET_TYPE")[0].content === "PGL")){
+                        bbcdotcom.adsToDisplay = ["leaderboard"];
+                    } else if( document.getElementsByName("CPS_ASSET_TYPE").length > 0 && document.getElementsByName("CPS_ASSET_TYPE")[0].content === "MAP" ){
+                        bbcdotcom.adsToDisplay = [];
+                    } else if (document.location.pathname.indexOf("/sport") === 0 ){
+                        bbcdotcom.adsToDisplay = ["leaderboard", "mpu", "sponsor_banner"];
+                    } else {
+                        bbcdotcom.adsToDisplay = ["leaderboard", "mpu", "sponsor_section"];
+                    }
+                    bbcdotcom.init({adsToDisplay: bbcdotcom.adsToDisplay});
+                } else {
+                    bbcdotcom.config.init(undefined, bbcdotcom.dataOrb, window.location, window.document);
+                }
+            }
+            if (bbcdotcom.data.a == 1) {
+                                (function(){
+                    var zoneFile = "3pt_zone_file";
+
+                    bbcdotcom.objects('page', 'create', bbcdotcom);
+                    
+                                        BBC.adverts.setScriptRoot("http://static.bbci.co.uk/bbcdotcom/1.11.0/script/");
+                    BBC.adverts.setImgRoot("http://static.bbci.co.uk/bbcdotcom/1.11.0/img/");
+                    BBC.adverts.init({
+                        domain: "http://www.bbc.co.uk",
+                        location: window.location.pathname,
+                        zoneVersion: zoneFile,
+                        zoneAuto: false,
+                        siteAuto: false,
+                        keywordsAuto: false,
+                        zoneReferrer: document.referrer
+                    });
+                })();
+                if(typeof bbcdotcom !== 'undefined' && typeof bbcdotcom.survey !== 'undefined' && typeof bbcdotcom.survey.init === 'function') {
+                    bbcdotcom.survey.init();
+                }
+            }
+            /*]]>*/
+        </script>
+        <script type="text/javascript">
+        /*<![CDATA[*/
+        if (BBC.adverts.isActive('ads')) {
+            document.write(unescape('%3Cscript id="gnlAdsEnabled" class="bbccom_display_none"%3E%3C/script%3E'));
+        }
+        if (BBC.adverts.isActive('analytics')) {
+            document.write(unescape('%3Cscript id="gnlAnalyticsEnabled" class="bbccom_display_none"%3E%3C/script%3E'));
+        }
+        /*]]>*/
+        </script>
+       <script type="text/javascript"> try { require(['istats-1'], function(istats){ if (typeof(document) != 'undefined' && typeof(document.cookie) != 'undefined') { var cookieAphidMatch = document.cookie.match(/ckpf_APHID=([^;]*)/); if (cookieAphidMatch && typeof(cookieAphidMatch[1]) == 'string') { istats.addLabels({'bbc_hid': cookieAphidMatch[1]}); } } })(); } catch (err) { /* If istats can't be loaded, fail silently */ } </script>    <script type="text/javascript"> (function () { if (!window.require) { throw new Error('idcta: could not find require module'); } if(typeof(map) == 'undefined') { var map = {}; } if(!!document.createElementNS && !!document.createElementNS('http://www.w3.org/2000/svg', "svg").createSVGRect) { document.documentElement.className += ' id-svg'; } var ptrt = RegExp("[\\?&]ptrt=([^&#]*)").exec(document.location.href); var ENDPOINT_CONFIG = ('/idcta/config?callback&amp;lang=en-GB&ptrt=' + encodeURI((ptrt ? ptrt[1] : document.location.href))).replace(/\&amp;/g, '&'); var ENDPOINT_TRANSLATIONS = '/idcta/translations?callback&locale=en-GB'; map['idapp-1'] = '//static.bbci.co.uk/idapp/0.72.16/modules/idapp/idapp-1'; map['idcta'] = 'http://static.bbci.co.uk/id/0.34.73/modules/idcta'; map['idcta/config'] = ['//www.bbc.co.uk' + ENDPOINT_CONFIG, 'http://static.bbci.co.uk/id/0.34.73/modules/idcta/fallbackConfig']; map['idcta/translations'] = ['//www.bbc.co.uk' + ENDPOINT_TRANSLATIONS, 'http://static.bbci.co.uk/id/0.34.73/modules/idcta/fallbackTranslations']; require({paths: map}); /* * Temporary code * To be removed when old id-statusbar-config is no longer supported */ define('id-statusbar-config', ['idcta/id-config'], function(conf) { return conf; }); define('idcta/id-statusbar-config', ['idcta/id-config'], function(conf) { return conf; }); })(); </script> <script type="text/javascript"> try { /* Users downgraded after IDP tokens were invalidated */ require(['idcta/idCookie'], function(idCookie){ idCookie.downgradeUser(); }); } catch(error) { /* Fail silently in case idCookie is not defined */ } </script>     <link rel="canonical" href="http://www.bbc.co.uk/sport/football/live-scores/premier-league"> <link rel="alternate" hreflang="en" href="http://www.bbc.com/sport/football/live-scores/premier-league"> <link rel="alternate" hreflang="en-gb" href="http://www.bbc.co.uk/sport/football/live-scores/premier-league">  <!--[if lte IE 6]> <link type="text/css" href="http://static.bbci.co.uk/sport/2.7.640/desktop/styles/ie6.css" rel="stylesheet"/> <![endif]--> <!--[if IE 7]> <link type="text/css" href="http://static.bbci.co.uk/sport/2.7.640/desktop/styles/ie7.css" rel="stylesheet"/> <![endif]--> <style type="text/css" media="screen"> .link-block { width: 100%; background-color: #FFCCCC; font-family: sans-serif; font-size: 1.2em; position: fixed; bottom: 0; } .link-block ul { text-align:center; margin: 0 auto; } .link-block li { display: inline-block; margin: 8px 10px; padding: 4px; } </style>  <link rel="stylesheet" href="http://static.bbci.co.uk/onesport/2.8.1282/css/compiled/desktop-medals.css"> <!--[if lt IE 9]> <script src="http://static.bbci.co.uk/onesport/2.8.1282/modules/vendor/html5shiv.js"></script> <![endif]-->  <script type="text/javascript"> (function (window) { window.onesport = {}; }(window)); </script> <!--[if IE 7]> <script type="text/javascript">onesport.isIE7 = true;</script> <![endif]--> <!--[if IE 8]> <script type="text/javascript">onesport.isIE8 = true;</script> <![endif]--> <script type="text/javascript"> (function (onesport) { onesport.enhanced = (onesport.isIE8 || ('addEventListener' in window && 'querySelector' in document && 'localStorage' in window)); onesport.config = {"staticPrefix":"http:\/\/static.bbci.co.uk\/onesport\/2.8.1282","inlineJs":["compiled\/inline-desktop"],"env":"live","redirection":null,"rumConfig":{"product":"sport","url_params":{"api_key":"c63bsbs8dcnzvqs3ynuagh6j"},"server":"http:\/\/bbc.api.mashery.com\/analytics","edition":"domestic"}}; onesport.moduleJs = []; onesport.currentBreakpoint = 'wide'; var docWriteScriptTag = function (path) { document.write('<script type="text/javascript" src="' + onesport.config.staticPrefix + '/js/' + path + '.js"><' + '/script>'); }, i, iLimit; for (i = 0, iLimit = onesport.config.inlineJs.length; i < iLimit; i++) { docWriteScriptTag(onesport.config.inlineJs[i]); }  define('config', function () { return onesport.config; }); define('onesport', function () { return onesport; }); }(onesport)); </script><script type="text/javascript" src="http://static.bbci.co.uk/onesport/2.8.1282/js/compiled/inline-desktop.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="idcta/idCookie" src="http://static.bbci.co.uk/id/0.34.73/modules/idcta/idCookie.js"></script><style id="font-face-test">@font-face {font-family:"font";src:url("https://")}</style> <script> if (onesport.redirector) onesport.redirector.go(); </script>     <!--#set var="PAL_NAV_CSS_SUCCESS" value="1" --> <link rel="stylesheet" href="http://static.bbci.co.uk/onesport/2.8.1282/css/compiled/desktop-nav.css">                            <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="idcta/id-config" src="http://static.bbci.co.uk/id/0.34.73/modules/idcta/id-config.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="idcta/webtoolkit.base64" src="http://static.bbci.co.uk/id/0.34.73/modules/idcta/webtoolkit.base64.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="idcta/apiUtils" src="http://static.bbci.co.uk/id/0.34.73/modules/idcta/apiUtils.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="idcta/config" src="//www.bbc.co.uk/idcta/config?callback&amp;lang=en-GB&amp;ptrt=http://www.bbc.co.uk/sport/football/live-scores/premier-league"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="idcta/translations" src="//www.bbc.co.uk/idcta/translations?callback&amp;locale=en-GB"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="idcta/es6-promise" src="http://static.bbci.co.uk/id/0.34.73/modules/idcta/es6-promise.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="jsonloader" src="http://static.bbci.co.uk/sport/2.7.640/desktop/modules/jsonloader.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="livescores" src="http://static.bbci.co.uk/sport/2.7.640/desktop/modules/livescores.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="livescoresui" src="http://static.bbci.co.uk/sport/2.7.640/desktop/modules/livescoresui.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="aistable" src="http://static.bbci.co.uk/sport/2.7.640/desktop/modules/aistable.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="date" src="http://static.bbci.co.uk/sport/2.7.640/desktop/modules/date.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="effects" src="http://static.bbci.co.uk/sport/2.7.640/desktop/modules/effects.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="filter" src="http://static.bbci.co.uk/sport/2.7.640/desktop/modules/filter.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="http://static.bbci.co.uk/onesport/2.8.1282/modules/compiled/all-desktop.js" src="http://static.bbci.co.uk/onesport/2.8.1282/modules/compiled/all-desktop.js"></script><link href="http://node1.bbcimg.co.uk/glow/glow/1.7.7/widgets/widgets.css" rel="stylesheet" type="text/css" class="gloaded async"><link rel="stylesheet" type="text/css" media="screen" href="http://static.bbci.co.uk/modules/sharetools/v1/style/slim.css"><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="idcta/idcta-1" src="http://static.bbci.co.uk/id/0.34.73/modules/idcta/idcta-1.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="gelui-1" src="http://static.bbci.co.uk/frameworks/gelui/0.9.13/sharedmodules/gelui-1.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="videprinter" src="http://static.bbci.co.uk/sport/2.7.640/desktop/modules/videprinter.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="jssignals-1" src="http://static.bbci.co.uk/frameworks/jssignals/0.3.6/modules/jssignals-1.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="idcta/tokenRefresh" src="http://static.bbci.co.uk/id/0.34.73/modules/idcta/tokenRefresh.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="gelui-1/overlay" src="http://static.bbci.co.uk/frameworks/gelui/0.9.13/sharedmodules/gelui-1/overlay.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="gelui-1/autosuggest" src="http://static.bbci.co.uk/frameworks/gelui/0.9.13/sharedmodules/gelui-1/autosuggest.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="gelui-1/carousel" src="http://static.bbci.co.uk/frameworks/gelui/0.9.13/sharedmodules/gelui-1/carousel.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="gelui-1/core" src="http://static.bbci.co.uk/frameworks/gelui/0.9.13/sharedmodules/gelui-1/core.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="gelui-1/widget" src="http://static.bbci.co.uk/frameworks/gelui/0.9.13/sharedmodules/gelui-1/widget.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="jcarousel-1" src="http://static.bbci.co.uk/frameworks/jcarousel/0.1.10/modules/jcarousel-1.js"></script><link type="text/css" rel="stylesheet" href="http://static.bbci.co.uk/frameworks/gelui/0.9.13/sharedmodules/gelui-1/overlay.css"><style>@-webkit-keyframes popaoaikgtcusuvcudidebczqeoxutsxpumobt {50% {-webkit-transform:scale(1.2);}100% {-webkit-transform:scale(1);}}@keyframes popaoaikgtcusuvcudidebczqeoxutsxpumobt {50% {-webkit-transform:scale(1.2);transform:scale(1.2);}100% {-webkit-transform:scale(1);transform:scale(1);}}#aoaikgtcusuvcudidebczqeoxutsxpumobt{padding:0;margin:0;font:13px Arial,Helvetica;text-transform:none;font-size: 100%;vertical-align:baseline;line-height:normal;color:#fff;position:static;border:solid 2px #fff !important;box-sizing:content-box !important;color:#fff !important;display:block !important;height:auto !important;margin:0 !important;opacity:0.9 !important;padding:7px 10px !important;position:fixed !important;visibility:visible !important;width:auto !important;z-index:2147483647 !important;-webkit-border-radius:5px !important;-webkit-box-shadow:0px 0px 20px #000 !important;-webkit-box-sizing:content-box !important;}.aoaikgtcusuvcudidebczqeoxutsxpumobt-blocked{padding:0;margin:0;font:13px Arial,Helvetica;text-transform:none;font-size: 100%;vertical-align:baseline;line-height:normal;color:#fff;position:static;color:#AAA !important;display:inline !important;text-decoration:line-through !important;}#aoaikgtcusuvcudidebczqeoxutsxpumobt br{display:block !important;padding:0;margin:0;font:13px Arial,Helvetica;text-transform:none;font-size: 100%;vertical-align:baseline;line-height:normal;color:#fff;position:static;}#aoaikgtcusuvcudidebczqeoxutsxpumobt span{background:transparent !important;padding:0;margin:0;font:13px Arial,Helvetica;text-transform:none;font-size: 100%;vertical-align:baseline;line-height:normal;color:#fff;position:static;}#aoaikgtcusuvcudidebczqeoxutsxpumobt div{padding:0;margin:0;font:13px Arial,Helvetica;text-transform:none;font-size: 100%;vertical-align:baseline;line-height:normal;color:#fff;position:static;border:0 !important;margin:0 !important;padding:0 !important;width:auto !important;letter-spacing:normal !important;font:13px Arial,Helvetica !important;text-align:left !important;text-shadow:none !important;text-transform:none !important;word-spacing:normal !important;}#aoaikgtcusuvcudidebczqeoxutsxpumobt a{padding:0;margin:0;font:13px Arial,Helvetica;text-transform:none;font-size: 100%;vertical-align:baseline;line-height:normal;color:#fff;position:static;font-weight:normal !important;background:none !important;text-decoration:underline !important;color:#fff !important;}a#aoaikgtcusuvcudidebczqeoxutsxpumobt-gear{padding:0;margin:0;font:13px Arial,Helvetica;text-transform:none;font-size: 100%;vertical-align:baseline;line-height:normal;color:#fff;position:static;text-decoration:none !important;position:absolute !important;display:none !important;font-size:20px !important;width:20px !important;height:20px !important;line-height:20px !important;text-align:center !important;background-color:rgba(255,255,255,.8) !important;background-image:url(chrome-extension://mlomiejdfkolichcflejclcbmpeaniij/data/images/gear.svg) !important;background-size:16px 16px !important;background-position:center center !important;background-repeat:no-repeat !important;text-decoration:none !important;}a#aoaikgtcusuvcudidebczqeoxutsxpumobt-gear:hover{-webkit-animation-name:popaoaikgtcusuvcudidebczqeoxutsxpumobt !important;animation-name:popaoaikgtcusuvcudidebczqeoxutsxpumobt !important;-webkit-animation-duration:0.3s !important;animation-duration:0.3s !important;}#aoaikgtcusuvcudidebczqeoxutsxpumobt:hover #aoaikgtcusuvcudidebczqeoxutsxpumobt-gear{text-decoration:none !important;display:inline-block !important;}@media print{#aoaikgtcusuvcudidebczqeoxutsxpumobt{display:none !important;}}</style><style type="text/css">#edr_survey .edr_lwrap iframe {width:100%;height:100%;}#edr_survey .edr_go {opacity:0;display:block;filter:alpha(opacity = 0);position:absolute;font-size:0;background-color:#000;margin:0;padding:0;z-index:1000000;}#edr_survey .edr_go:focus {opacity:1;filter:alpha(opacity = 50);background-color:rgba(0, 0, 0, 0.01);}#edr_survey .edr_lb {position:fixed;top:0;left:0;right:0;bottom:0;z-index:999998;display:none;}</style></head> <body class="sport disable-wide-advert" cz-shortcut-listen="true">        <!-- BBCDOTCOM body first -->
+                        <div id="bbccom_interstitial_ad" class="bbccom_display_none"></div>
+            <div id="bbccom_interstitial" class="bbccom_display_none">
+                <script type="text/javascript">
+                    /*<![CDATA[*/
+                    if (window.bbcdotcom && bbcdotcom.slot) {
+                        (function () {
+                            if (window.bbcdotcom && bbcdotcom.config.isActive('ads')) {
+                                googletag.cmd.push(function () {
+                                    googletag.display('bbccom_interstitial');
+                                });
+                            }
+                        }());
+                    }
+                    /*]]>*/
+                </script>
+            </div>
+                            <div id="bbccom_wallpaper_ad" class="bbccom_display_none"></div>
+        <div id="bbccom_wallpaper" class="bbccom_display_none">
+            <script type="text/javascript">
+                /*<![CDATA[*/
+                if (window.bbcdotcom && bbcdotcom.slot) {
+                    (function () {
+                        var wallpaper;
+                        if (window.bbcdotcom && bbcdotcom.config.isActive('ads')) {
+                            if (bbcdotcom.config.isAsync()) {
+                                googletag.cmd.push(function () {
+                                    googletag.display('bbccom_wallpaper');
+                                });
+                            } else {
+                                googletag.display("wallpaper");
+                            }
+                            wallpaper = bbcdotcom.adverts.adRegister.getAd('wallpaper');
+                            if (wallpaper !== null && wallpaper !== undefined) {
+                                wallpaper.setDomElement('bbccom_wallpaper');
+                            }
+                        }
+                    }());
+                } else {
+                    BBC.adverts.write("wallpaper",false);
+
+                    /*<![CDATA[*/
+                    body= document.getElementsByTagName('body');
+                    aTags = document.getElementsByTagName('a');
+                    if('undefined' != typeof aTags && 'undefined' != typeof aTags[0] && -1 !== aTags[0].href.indexOf('http://ad.doubleclick.net')) {
+                        body[0].removeChild(aTags[0]);
+                    }
+                    /*]]>*/
+                }
+                /*]]>*/
+            </script>
+        </div>
+      <noscript>&lt;p style="position: absolute; top: -999em"&gt;&lt;img src="//sa.bbc.co.uk/bbc/bbc/s?name=sport.football.live_scores.page&amp;ml_name=webmodule&amp;ml_version=50&amp;blq_js_enabled=0&amp;blq_s=3.5d&amp;blq_r=3.5&amp;blq_v=default-domestic&amp;blq_e=pal&amp;app_version=2.7.640&amp;page_type=pal_data&amp;sp=football&amp;bbc_site=sport&amp;pal_route=footballLiveScoresCompetition&amp;app_type=web&amp;language=en-GB&amp;pal_webapp=sport&amp;prod_name=sport&amp;app_name=sport" height="1" width="1" alt=""&gt;&lt;/p&gt;</noscript>  <!-- Begin iStats 20100118 (UX-CMC 1.1009.3) --> <script type="text/javascript">/*<![CDATA[*/ if (typeof bbccookies !== 'undefined' && bbccookies.isAllowed('s1')) { (function () { require(['istats-1'], function (istats) { istatsTrackingUrl = istats.getDefaultURL(); if (istats.isEnabled() && bbcFlagpoles_istats === 'ON') { sitestat(istatsTrackingUrl); } else { window.ns_pixelUrl = istatsTrackingUrl; /* used by Flash library to track */ } function sitestat(n) { var j = document, f = j.location, b = ""; if (j.cookie.indexOf("st_ux=") != -1) { var k = j.cookie.split(";"); var e = "st_ux", h = document.domain, a = "/"; if (typeof ns_ != "undefined" && typeof ns_.ux != "undefined") { e = ns_.ux.cName || e; h = ns_.ux.cDomain || h; a = ns_.ux.cPath || a } for (var g = 0, f = k.length; g < f; g++) { var m = k[g].indexOf("st_ux="); if (m != -1) { b = "&" + decodeURI(k[g].substring(m + 6)) } } bbccookies.set(e + "=; expires=" + new Date(new Date().getTime() - 60).toGMTString() + "; path=" + a + "; domain=" + h); } window.ns_pixelUrl = n;  } }); })(); } else { window.istats = {enabled: false}; } /*]]>*/</script> <!-- End iStats (UX-CMC) -->  
+ <div id="blq-global"> <noscript> &lt;div id="blq-no-js-banner"&gt; &lt;p&gt;For a better experience on your device, try our &lt;a href="http://m.bbc.co.uk"&gt;mobile site&lt;/a&gt;.&lt;/p&gt; &lt;/div&gt; </noscript> <div id="blq-pre-mast" lang="en-GB"> <!-- Pre mast --> 
+<!-- BBCDOTCOM leaderboard template:client-side journalismVariant: false ipIsAdvertiseCombined: false adsEnabled: true flagpole: ON showAdAboveBlq: false blqLeaderboardAd: true -->
+ </div> </div>  <script type="text/html" id="blq-bbccookies-tmpl"><![CDATA[ <div id="bbccookies-prompt" class="bbccookies-d"> <h2> Cookies on the BBC website </h2> <p> The BBC has updated its cookie policy. We use cookies to ensure that we give you the best experience on our website. This includes cookies from third party social media websites if you visit a page which contains embedded content from social media. Such third party cookies may track your use of the BBC website.<span class="bbccookies-international-message"> We and our partners also use cookies to ensure we show you advertising that is relevant to you.</span> If you continue without changing your settings, we'll assume that you are happy to receive all cookies on the BBC website. However, you can <a href="/privacy/cookies/managing/cookie-settings.html">change your cookie settings</a> at any time. </p> <ul> <li id="bbccookies-continue"> <button type="button" id="bbccookies-continue-button">Continue</button> </li> <li id="bbccookies-more"><a href="/privacy/cookies/bbc">Find out more</a></li></ul> </div> ]]></script> <script type="text/javascript">/*<![CDATA[*/ (function(){if(bbccookies._showPrompt()){var i=document,b=i.getElementById("blq-pre-mast"),f=i.getElementById("blq-global"),h=i.getElementById("blq-container"),c=i.getElementById("blq-bbccookies-tmpl"),a,g,e;if(b&&i.createElement){a=i.createElement("div");a.id="bbccookies";e=c.innerHTML;e=e.replace("<"+"![CDATA[","").replace("]]"+">","");a.innerHTML=e;if(f){f.insertBefore(a,b)}else{h.insertBefore(a,b)}g=i.getElementById("bbccookies-continue-button");g.onclick=function(){a.parentNode.removeChild(a);return false};bbccookies._setPolicy(bbccookies.readPolicy())}}})(); /*]]>*/</script>  <div id="blq-masthead" class="blq-clearfix blq-mast-bg-white blq-masthead-focus blq-lang-en-gb blq-ltr"> <span id="blq-mast-background"><span></span></span>  <div id="blq-mast" class="blq-rst">  <div id="blq-mast-bar" class="blq-masthead-container blq-default-domestic"> <div id="blq-blocks"> <a href="/" hreflang="en-GB"> <abbr title="British Broadcasting Corporation" class="blq-home"> <img src="http://static.bbci.co.uk/frameworks/barlesque/3.8.0/desktop/3.5/img/blq-blocks_grey_alpha.png" alt="BBC" width="84" height="24"> </abbr> </a> </div> <div id="blq-acc-links"> <h2 id="page-top">Accessibility links</h2> <ul>  <li><a href="#blq-content">Skip to content</a></li>  <li><a href="#blq-local-nav">Skip to local navigation</a></li>  <li><a href="/accessibility/">Accessibility Help</a></li> </ul> </div> <div id="blq-sign-in" class="blq-gel">   <div id="id-status" class="blq-id-v4" style="display: block;"> <div class="id-out id-gel"> <h2 class="blq-hide">BBC iD</h2> <a href="https://ssl.bbc.co.uk/id/signin?ptrt=http%3A%2F%2Fwww.bbc.co.uk%2Fsport%2Ffootball%2Flive-scores%2Fpremier-league" id="blq-idstatus-link" style="width: 110px; background-position: -16px 50%;" class="blq-idstatus-signin"> <span class="id-icon"> <span></span> </span> <span id="blq-idstatus-text">Sign in</span> <span class="id-spinner"></span> <span class="blq-dropdown-arrow"> <span></span> </span> </a> </div> <div id="id-status-nav" style="width: 164px;"> <div class="id-in blq-rst"> <ul> <li> <a name="idDash" class="blq-nogo has-ptrt idDash" href="https://ssl.bbc.co.uk/id/settings"> Settings </a> </li> <li> <a name="idSignout" class="blq-nogo has-ptrt idSignout" href="https://ssl.bbc.co.uk/id/signout"> Sign out </a> </li> </ul> </div> </div> </div>               </div> <div id="blq-nav" role="navigation"> <h2>BBC navigation</h2>     <ul id="blq-nav-main">   <li id="blq-nav-news"> <a href="http://www.bbc.co.uk/news/">News</a> </li>    <li id="blq-nav-sport"> <a href="http://www.bbc.co.uk/sport">Sport</a> </li>    <li id="blq-nav-weather"> <a href="http://www.bbc.co.uk/weather/">Weather</a> </li>    <li id="blq-nav-iplayer"> <a href="/iplayer/">iPlayer</a> </li>    <li id="blq-nav-tv"> <a href="/tv/">TV</a> </li>    <li id="blq-nav-radio"> <a href="/radio/">Radio</a> </li>    <li id="blq-nav-more"> <a href="#blq-footlinks">More…</a> </li>   </ul>   <div id="blq-nav-search"> <form method="get" action="http://search.bbc.co.uk/search" accept-charset="utf-8" id="blq-search-form" role="search"> <div>  <input type="hidden" name="go" value="toolbar">  <input type="hidden" name="uri" value="/sport/football/live-scores/premier-league">    <input type="hidden" name="scope" value="sport">  <label for="blq-search-q" class="blq-hide">Search term:</label> <input id="blq-search-q" type="text" name="q" value="" maxlength="128" placeholder="Search" autocomplete="off"> <button id="blq-search-btn" type="submit"><span><img src="http://static.bbci.co.uk/frameworks/barlesque/3.8.0/desktop/3.5/img/blq-search_grey_alpha.png" width="13" height="13" alt="Search"></span></button> </div> </form> </div>  </div> </div> </div> <div id="blq-panel" class="blq-rst" style="display: none;"> <div id="blq-panel-more" class="blq-masthead-container  blq-clearfix" lang="en-GB" dir="ltr" style="display: none;"> <div class="blq-panel-container panel-paneltype-more"> <div class="panel-header"> <h2> <a href="#blq-footlinks">  More…  </a> </h2> </div> <div class="panel-component panel-links">       <ul>   <li> <a href="/cbbc">CBBC</a> </li>    <li> <a href="/cbeebies">CBeebies</a> </li>    <li> <a href="/food/">Food</a> </li>   </ul>  <ul>   <li> <a href="/iwonder">iWonder</a> </li>    <li> <a href="/education">Bitesize</a> </li>    <li> <a href="/travel/">Travel</a> </li>   </ul>  <ul>   <li> <a href="/music/">Music</a> </li>    <li> <a href="http://www.bbc.com/earth">Earth</a> </li>    <li> <a href="/arts">Arts</a> </li>   </ul>  <ul>   <li> <a href="/makeitdigital" id="makeitdigital">Make It Digital</a> </li>    <li> <a href="/taster" id="taster">Taster</a> </li>    <li> <a href="/local/">Local</a> </li>   </ul>   </div> </div> </div> <div id="blq-panel-promo" class="blq-masthead-container"></div> </div></div> <div id="blq-container-outer" class="blq-default-domestic blq-ltr">  <div id="blq-container" class="blq-lang-en-gb"> <div id="blq-container-inner" lang="en-gb">   <div id="blq-main" class="blq-clearfix bp-wide font-face no-keyboard-navigation-in-use">       <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>        <script type="text/javascript"> if (onesport.isIE7) { document.getElementsByTagName('body')[0].className += ' ie7'; } else if (onesport.isIE8) { document.getElementsByTagName('body')[0].className += ' ie8'; } document.getElementById('blq-main').className += ' bp-wide'; if (onesport.enhanced && onesport.features.fontFace()) { document.getElementById('blq-main').className += ' font-face';  } </script>   <div class="nav-top-sponsor">                     <div id="bbccom_sponsor_banner_1_2_3_4" class="bbccom_slot">
+            <div id="bbccom_sponsor_banner" class="bbccom_advert bbccom_display_none">
+                <div id="bbccom_sponsor_banner_text">IN ASSOCIATION WITH</div>
+                <div id="bbccom_sponsor_banner_image">
+                    <script type="text/javascript">
+                        if (window.bbcdotcom && bbcdotcom.slot) {
+                            bbcdotcom.slot('sponsor_banner', [1,2,3,4]);
+                        } else {
+                            BBC.adverts.write("sponsor_banner",false);
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            if (window.bbcdotcom && bbcdotcom.show) {
+                bbcdotcom.show();
+            } else {
+                BBC.adverts.show("sponsor_banner");
+            }
+        </script>
+     </div>      <!--#set var="PAL_NAV_HTML_SUCCESS" value="1" --> <div class=" nav-top nav-top--not-full-width "> <header class=" global-header  " role="banner" data-istats-container="header"> <div class="gel-wrap"> <a class="global-header__logo" href="/sport" data-istats-container="sport-logo"> <span class="vh">BBC Sport</span> <span class="global-header__logo-img" aria-hidden="true"> <!--[if gte IE 9]><!--> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 30"><path d="M8.5 17.4l-3.1-1.9c-2-1.2-3.4-2.4-4.2-3.6C.4 10.7 0 9.3 0 7.8c0-2.3.8-4.2 2.4-5.6C3.9.8 6 0 8.5 0c2.4 0 4.6.7 6.6 2.1v4.8c-2.1-2-4.3-3-6.7-3-1.4-.1-2.5.2-3.3.9-.9.6-1.3 1.4-1.3 2.4 0 .9.3 1.7 1 2.5.6.8 1.7 1.6 3.1 2.4L11 14c3.5 2.1 5.3 4.8 5.3 8.1 0 2.3-.8 4.2-2.3 5.7-1.5 1.5-3.5 2.2-6 2.2-2.8 0-5.4-.9-7.7-2.7V22c2.2 2.9 4.8 4.3 7.7 4.3 1.3 0 2.4-.4 3.2-1.1.9-.7 1.3-1.6 1.3-2.7-.2-1.8-1.4-3.5-4-5.1zm12 12.3V.4h9.1c2.7 0 4.9.8 6.6 2.3 1.6 1.5 2.4 3.5 2.4 6.1 0 1.7-.4 3.2-1.3 4.5-.8 1.3-2 2.3-3.4 2.9-1.5.6-3.5.9-6.2.9h-3v12.7h-4.2zm8.4-25.6h-4.3v9.1h4.5c1.7 0 3-.4 3.9-1.2.9-.8 1.4-2 1.4-3.4-.1-3-1.9-4.5-5.5-4.5zM56.3 0c4.4 0 8.1 1.4 11.1 4.3s4.4 6.4 4.4 10.8c0 4.3-1.5 7.9-4.5 10.7-3 2.8-6.7 4.2-11.3 4.2-4.3 0-7.9-1.4-10.8-4.2-2.9-2.8-4.3-6.4-4.3-10.6 0-4.4 1.5-8 4.4-10.8 2.9-3 6.5-4.4 11-4.4zm.1 4c-3.3 0-6 1-8.1 3.1-2.1 2.1-3.2 4.8-3.2 8s1.1 5.8 3.2 7.9c2.1 2.1 4.8 3.1 8 3.1s5.9-1.1 8-3.2c2.1-2.1 3.2-4.8 3.2-8 0-3.1-1.1-5.7-3.2-7.8C62.2 5 59.6 4 56.4 4zm20.5 25.7V.4h7.2c2.9 0 5.2.7 6.9 2.2 1.7 1.5 2.6 3.4 2.6 5.9 0 1.7-.4 3.2-1.3 4.4-.8 1.2-2 2.2-3.6 2.8.9.6 1.8 1.5 2.7 2.5.9 1.1 2.1 2.9 3.7 5.5 1 1.7 1.8 2.9 2.4 3.7l1.5 2.1h-4.9l-1.3-1.9c0-.1-.1-.2-.2-.4l-.8-1.2-1.3-2.1-1.4-2.3c-.8-1.2-1.6-2.2-2.3-2.9-.7-.7-1.3-1.2-1.9-1.5-.6-.3-1.5-.5-2.9-.5h-1.1v12.7h-4zM82.3 4h-1.2v9.2h1.6c2.1 0 3.5-.2 4.3-.5.8-.4 1.4-.9 1.8-1.6.4-.7.6-1.6.6-2.5 0-.9-.2-1.8-.7-2.5-.5-.7-1.2-1.3-2-1.6-1-.4-2.4-.5-4.4-.5zM96 .4h24v3.7h-10v25.6h-4.1V4.1H96V.4z"></path></svg> <!--<![endif]--> </span> </a>       <a href="/sport/football" class="global-header__section">Football  </a>     <a class="global-header__all-sports-button" href="/sport/all-sports"> <span aria-hidden="true" class="ico ico-burger global-header__burger"></span><span class="global-header__all-sports-text" aria-hidden="true">All Sport</span> <span class="global-header__acc-all-sports-enhanced vh">Open All Sport menu</span></a> </div> </header> <nav class="primary-nav" role="navigation" data-istats-container="primary-nav"> <div class="gel-wrap"> <ul class="primary-nav__items">   <li class=" primary-nav__item primary-nav__item--pinned primary-nav__item--all-sports  primary-nav__item--with-icon " aria-hidden="true"> <a href="/sport/all-sports" class="primary-nav__link">  <span aria-hidden="true" class="ico ico-burger primary-nav__item-icon"></span><span class="primary-nav__link-text">All Sport</span> </a> </li>  <li class=" primary-nav__item primary-nav__item--pinned    "> <a href="/sport/my-sport" class="primary-nav__link"> <span class="primary-nav__link-text">My Sport</span> </a> </li>   <li class=" primary-nav__item  primary-nav__item--first "> <a href="/sport" class="primary-nav__link"><span class="primary-nav__link-text">Home</span></a> </li>  <li class=" primary-nav__item  primary-nav__item--active  primary-nav__item--full-highlight    "> <a href="/sport/football" class="primary-nav__link"><span class="primary-nav__link-text">Football</span></a> </li>  <li class=" primary-nav__item   "> <a href="/sport/formula1" class="primary-nav__link"><span class="primary-nav__link-text">Formula 1</span></a> </li>  <li class=" primary-nav__item   "> <a href="/sport/cricket" class="primary-nav__link"><span class="primary-nav__link-text">Cricket</span></a> </li>  <li class=" primary-nav__item   "> <a href="/sport/rugby-union" class="primary-nav__link"><span class="primary-nav__link-text">Rugby U</span></a> </li>  <li class=" primary-nav__item   "> <a href="/sport/rugby-league" class="primary-nav__link"><span class="primary-nav__link-text">Rugby L</span></a> </li>  <li class=" primary-nav__item   "> <a href="/sport/tennis" class="primary-nav__link"><span class="primary-nav__link-text">Tennis</span></a> </li>  <li class=" primary-nav__item   "> <a href="/sport/golf" class="primary-nav__link"><span class="primary-nav__link-text">Golf</span></a> </li>  <li class=" primary-nav__item   "> <a href="/sport/athletics" class="primary-nav__link"><span class="primary-nav__link-text">Athletics</span></a> </li>  </ul> </div> <a href="javascript:void(0);" class="primary-nav__acc-open-close-primary-nav-flyout vh">Open All Sport menu</a></nav> <div class="primary-nav-flyout__relative-wrapper"> <nav class="primary-nav-flyout" role="navigation" data-istats-container="primary-nav-flyout"> <div class="gel-wrap"> <div class="primary-nav-flyout__wrap clearfix">  <div class=" primary-nav-flyout__section primary-nav-flyout__section--open primary-nav-flyout__section--contains-only-primaries  ">  <ul class="primary-nav-flyout__items">  <li class=" primary-nav-flyout__item  "> <a href="/sport" class="primary-nav-flyout__link"> <span class="primary-nav-flyout__link-wrapper"> <span class="primary-nav-flyout__link-text">BBC Sport Home</span> </span> </a> </li>  <li class=" primary-nav-flyout__item primary-nav-flyout__item--active "> <a href="/sport/football" class="primary-nav-flyout__link"> <span class="primary-nav-flyout__link-wrapper"> <span class="primary-nav-flyout__link-text">Football</span> </span> </a> </li>  <li class=" primary-nav-flyout__item  "> <a href="/sport/formula1" class="primary-nav-flyout__link"> <span class="primary-nav-flyout__link-wrapper"> <span class="primary-nav-flyout__link-text">Formula 1</span> </span> </a> </li>  <li class=" primary-nav-flyout__item  "> <a href="/sport/cricket" class="primary-nav-flyout__link"> <span class="primary-nav-flyout__link-wrapper"> <span class="primary-nav-flyout__link-text">Cricket</span> </span> </a> </li>  <li class=" primary-nav-flyout__item  "> <a href="/sport/rugby-union" class="primary-nav-flyout__link"> <span class="primary-nav-flyout__link-wrapper"> <span class="primary-nav-flyout__link-text">Rugby Union</span> </span> </a> </li>  <li class=" primary-nav-flyout__item  "> <a href="/sport/rugby-league" class="primary-nav-flyout__link"> <span class="primary-nav-flyout__link-wrapper"> <span class="primary-nav-flyout__link-text">Rugby League</span> </span> </a> </li>  <li class=" primary-nav-flyout__item  "> <a href="/sport/tennis" class="primary-nav-flyout__link"> <span class="primary-nav-flyout__link-wrapper"> <span class="primary-nav-flyout__link-text">Tennis</span> </span> </a> </li>  <li class=" primary-nav-flyout__item  "> <a href="/sport/golf" class="primary-nav-flyout__link"> <span class="primary-nav-flyout__link-wrapper"> <span class="primary-nav-flyout__link-text">Golf</span> </span> </a> </li>  <li class=" primary-nav-flyout__item  "> <a href="/sport/athletics" class="primary-nav-flyout__link"> <span class="primary-nav-flyout__link-wrapper"> <span class="primary-nav-flyout__link-text">Athletics</span> </span> </a> </li>  <li class=" primary-nav-flyout__item  "> <a href="/sport/my-sport" class="primary-nav-flyout__link"> <span class="primary-nav-flyout__link-wrapper"> <span class="primary-nav-flyout__link-text">My Sport</span> </span> </a> </li>   </ul> </div>  <div class=" primary-nav-flyout__section  primary-nav-flyout__section--main-section ">   <h3 tabindex="0" role="link" class="primary-nav-flyout__section-title"><span class="primary-nav-flyout__acc-section-title-open-close-text vh">Open</span>  <span class="primary-nav-flyout__section-title-text">A-Z Sports</span> <span aria-hidden="true" class="ico primary-nav-flyout__chevron ico-chevron-down"></span>  <span class="primary-nav-flyout__acc-section-title-menu-text vh">sub-menu</span></h3>   <ul class="primary-nav-flyout__items">  <li class=" primary-nav-flyout__item  "> <a href="/sport/american-football" class="primary-nav-flyout__link"> <span class="primary-nav-flyout__link-wrapper"> <span class="primary-nav-flyout__link-text">American Football</span> </span> </a> </li>  <li class=" primary-nav-flyout__item  "> <a href="/sport/athletics" class="primary-nav-flyout__link"> <span class="primary-nav-flyout__link-wrapper"> <span class="primary-nav-flyout__link-text">Athletics</span> </span> </a> </li>  <li class=" primary-nav-flyout__item  "> <a href="/sport/get-inspired/bodypositive" class="primary-nav-flyout__link"> <span class="primary-nav-flyout__link-wrapper"> <span class="primary-nav-flyout__link-text">BodyPositive</span> </span> </a> </li>  <li class=" primary-nav-flyout__item  "> <a href="/sport/boxing" class="primary-nav-flyout__link"> <span class="primary-nav-flyout__link-wrapper"> <span class="primary-nav-flyout__link-text">Boxing</span> </span> </a> </li>  <li class=" primary-nav-flyout__item  "> <a href="/sport/cricket" class="primary-nav-flyout__link"> <span class="primary-nav-flyout__link-wrapper"> <span class="primary-nav-flyout__link-text">Cricket</span> </span> </a> </li>  <li class=" primary-nav-flyout__item  "> <a href="/sport/cycling" class="primary-nav-flyout__link"> <span class="primary-nav-flyout__link-wrapper"> <span class="primary-nav-flyout__link-text">Cycling</span> </span> </a> </li>  <li class=" primary-nav-flyout__item  "> <a href="/sport/disability-sport" class="primary-nav-flyout__link"> <span class="primary-nav-flyout__link-wrapper"> <span class="primary-nav-flyout__link-text">Disability Sport</span> </span> </a> </li>  <li class=" primary-nav-flyout__item  "> <a href="/sport/football" class="primary-nav-flyout__link"> <span class="primary-nav-flyout__link-wrapper"> <span class="primary-nav-flyout__link-text">Football</span> </span> </a> </li>  <li class=" primary-nav-flyout__item  "> <a href="/sport/formula1" class="primary-nav-flyout__link"> <span class="primary-nav-flyout__link-wrapper"> <span class="primary-nav-flyout__link-text">Formula 1</span> </span> </a> </li>  <li class=" primary-nav-flyout__item  "> <a href="/sport/northern-ireland/gaelic-games" class="primary-nav-flyout__link"> <span class="primary-nav-flyout__link-wrapper"> <span class="primary-nav-flyout__link-text">Gaelic Games</span> </span> </a> </li>  <li class=" primary-nav-flyout__item  "> <a href="/sport/get-inspired" class="primary-nav-flyout__link"> <span class="primary-nav-flyout__link-wrapper"> <span class="primary-nav-flyout__link-text">Get Inspired</span> </span> </a> </li>  <li class=" primary-nav-flyout__item  "> <a href="/sport/golf" class="primary-nav-flyout__link"> <span class="primary-nav-flyout__link-wrapper"> <span class="primary-nav-flyout__link-text">Golf</span> </span> </a> </li>  <li class=" primary-nav-flyout__item  "> <a href="/sport/horse-racing" class="primary-nav-flyout__link"> <span class="primary-nav-flyout__link-wrapper"> <span class="primary-nav-flyout__link-text">Horse Racing</span> </span> </a> </li>  <li class=" primary-nav-flyout__item  "> <a href="/sport/motorsport" class="primary-nav-flyout__link"> <span class="primary-nav-flyout__link-wrapper"> <span class="primary-nav-flyout__link-text">Motorsport</span> </span> </a> </li>  <li class=" primary-nav-flyout__item  "> <a href="/sport/olympics" class="primary-nav-flyout__link"> <span class="primary-nav-flyout__link-wrapper"> <span class="primary-nav-flyout__link-text">Olympic Sports</span> </span> </a> </li>  <li class=" primary-nav-flyout__item  "> <a href="/sport/rugby-league" class="primary-nav-flyout__link"> <span class="primary-nav-flyout__link-wrapper"> <span class="primary-nav-flyout__link-text">Rugby League</span> </span> </a> </li>  <li class=" primary-nav-flyout__item  "> <a href="/sport/rugby-union" class="primary-nav-flyout__link"> <span class="primary-nav-flyout__link-wrapper"> <span class="primary-nav-flyout__link-text">Rugby Union</span> </span> </a> </li>  <li class=" primary-nav-flyout__item  "> <a href="/sport/snooker" class="primary-nav-flyout__link"> <span class="primary-nav-flyout__link-wrapper"> <span class="primary-nav-flyout__link-text">Snooker</span> </span> </a> </li>  <li class=" primary-nav-flyout__item  "> <a href="/sport/swimming" class="primary-nav-flyout__link"> <span class="primary-nav-flyout__link-wrapper"> <span class="primary-nav-flyout__link-text">Swimming</span> </span> </a> </li>  <li class=" primary-nav-flyout__item  "> <a href="/sport/tennis" class="primary-nav-flyout__link"> <span class="primary-nav-flyout__link-wrapper"> <span class="primary-nav-flyout__link-text">Tennis</span> </span> </a> </li>  <li class=" primary-nav-flyout__item  "> <a href="/sport/winter-sports" class="primary-nav-flyout__link"> <span class="primary-nav-flyout__link-wrapper"> <span class="primary-nav-flyout__link-text">Winter Sports</span> </span> </a> </li>  <li class=" primary-nav-flyout__item  "> <a href="/sport/all-sports" class="primary-nav-flyout__link"> <span class="primary-nav-flyout__link-wrapper"> <span class="primary-nav-flyout__link-text">Full Sports A-Z</span> </span> </a> </li>   </ul> <a href="javascript:void(0);" class="primary-nav-flyout__acc-section-bottom-close vh">Close A-Z Sports sub-menu</a></div>  <div class=" primary-nav-flyout__section   ">   <h3 tabindex="0" role="link" class="primary-nav-flyout__section-title"><span class="primary-nav-flyout__acc-section-title-open-close-text vh">Open</span>  <span class="primary-nav-flyout__section-title-text">Events</span> <span aria-hidden="true" class="ico primary-nav-flyout__chevron ico-chevron-down"></span>  <span class="primary-nav-flyout__acc-section-title-menu-text vh">sub-menu</span></h3>   <ul class="primary-nav-flyout__items">  <li class=" primary-nav-flyout__item  "> <a href="/sport/football/european-championship/euro-2016" class="primary-nav-flyout__link"> <span class="primary-nav-flyout__link-wrapper"> <span class="primary-nav-flyout__link-text">Euro 2016</span> </span> </a> </li>  <li class=" primary-nav-flyout__item  "> <a href="/sport/olympics/rio-2016" class="primary-nav-flyout__link"> <span class="primary-nav-flyout__link-wrapper"> <span class="primary-nav-flyout__link-text">Rio 2016</span> </span> </a> </li>   </ul> <a href="javascript:void(0);" class="primary-nav-flyout__acc-section-bottom-close vh">Close Events sub-menu</a></div>  <div class=" primary-nav-flyout__section   ">   <h3 tabindex="0" role="link" class="primary-nav-flyout__section-title"><span class="primary-nav-flyout__acc-section-title-open-close-text vh">Open</span>  <span class="primary-nav-flyout__section-title-text">Around the UK</span> <span aria-hidden="true" class="ico primary-nav-flyout__chevron ico-chevron-down"></span>  <span class="primary-nav-flyout__acc-section-title-menu-text vh">sub-menu</span></h3>   <ul class="primary-nav-flyout__items">  <li class=" primary-nav-flyout__item  "> <a href="/sport/england" class="primary-nav-flyout__link"> <span class="primary-nav-flyout__link-wrapper"> <span class="primary-nav-flyout__link-text">England</span> </span> </a> </li>  <li class=" primary-nav-flyout__item  "> <a href="/sport/scotland" class="primary-nav-flyout__link"> <span class="primary-nav-flyout__link-wrapper"> <span class="primary-nav-flyout__link-text">Scotland</span> </span> </a> </li>  <li class=" primary-nav-flyout__item  "> <a href="/sport/wales" class="primary-nav-flyout__link"> <span class="primary-nav-flyout__link-wrapper"> <span class="primary-nav-flyout__link-text">Wales</span> </span> </a> </li>  <li class=" primary-nav-flyout__item  "> <a href="/sport/northern-ireland" class="primary-nav-flyout__link"> <span class="primary-nav-flyout__link-wrapper"> <span class="primary-nav-flyout__link-text">Northern Ireland</span> </span> </a> </li>   </ul> <a href="javascript:void(0);" class="primary-nav-flyout__acc-section-bottom-close vh">Close Around the UK sub-menu</a></div>  <div class=" primary-nav-flyout__section   ">   <a href="/iplayer/tv/categories/sport" class="primary-nav-flyout__section-title primary-nav-flyout__section-title--link"><span class="primary-nav-flyout__acc-section-title-open-close-text vh">Open</span>  <span class="primary-nav-flyout__section-title-text">Programmes<span aria-hidden="true" class="ico primary-nav-flyout__chevron-right ico-chevron-right-thin"></span></span> <span aria-hidden="true" class="ico primary-nav-flyout__chevron ico-chevron-down"></span>  <span class="primary-nav-flyout__acc-section-title-menu-text vh">sub-menu</span></a>   <ul class="primary-nav-flyout__items">  <li class=" primary-nav-flyout__item  "> <a href="/programmes/b007t9y1" class="primary-nav-flyout__link"> <span class="primary-nav-flyout__link-wrapper"> <span class="primary-nav-flyout__link-text">Match of the Day</span> </span> </a> </li>  <li class=" primary-nav-flyout__item  "> <a href="/5live/programmes/genres/sport/current" class="primary-nav-flyout__link"> <span class="primary-nav-flyout__link-wrapper"> <span class="primary-nav-flyout__link-text">5 Live Sport</span> </span> </a> </li>  <li class=" primary-nav-flyout__item  "> <a href="/sport/sports-personality" class="primary-nav-flyout__link"> <span class="primary-nav-flyout__link-wrapper"> <span class="primary-nav-flyout__link-text">Sports Personality</span> </span> </a> </li>  <li class=" primary-nav-flyout__item  "> <a href="/sport/17151954" class="primary-nav-flyout__link"> <span class="primary-nav-flyout__link-wrapper"> <span class="primary-nav-flyout__link-text">Sport on the BBC</span> </span> </a> </li>   <li class="primary-nav-flyout__item primary-nav-flyout__item--section-title-replica-link"> <a href="/iplayer/tv/categories/sport" class="primary-nav-flyout__link"> <span class="primary-nav-flyout__link-text">All Programmes</span> </a> </li>  </ul> <a href="javascript:void(0);" class="primary-nav-flyout__acc-section-bottom-close vh">Close Programmes sub-menu</a></div>  </div> </div> <a href="javascript:void(0);" class="primary-nav-flyout__acc-close-flyout vh">Close All Sport menu</a></nav> </div> <script type="text/javascript"> onesport.moduleJs.push( function () { require( ['module/nav-3/columniser/controller', 'module/nav-3/primary-nav-flyout/controller'], function (columniserController, flyoutController) { columniserController.init(); flyoutController.init(); } ); require(['module/nav-3/primary-nav/controller'], function (primaryNavController) { primaryNavController.init(); }); require(['module/nav-3/primary-nav-flyout-sections/controller'], function (sectionsController) { sectionsController.init(); }); } ); </script>  <nav class=" secondary-nav secondary-nav--has-shortcuts-or-items-or-more-than-one-crumb  " role="navigation" data-istats-container="secondary-nav" data-shortcuts-title="Football"> <div class="gel-wrap"> <div class="secondary-nav__items-wrap"> <ul class="secondary-nav__items secondary-nav__items--not-shortcuts"> <script type="text/javascript"> (function(onesport){ if (onesport.enhanced && onesport.currentBreakpoint !== 'compact' && onesport.currentBreakpoint !== 'small' && !onesport.primaryNavActiveWrapped()) { document.write('<style>.secondary-nav__item--dynamic-crumb--styled-inline { display: none; }</style>'); } }(window.onesport)); </script><style>.secondary-nav__item--dynamic-crumb--styled-inline { display: none; }</style>    <li class="secondary-nav__item secondary-nav__item--crumb secondary-nav__item--dynamic-crumb secondary-nav__item--lowest-crumb secondary-nav__item--dynamic-crumb--showing-in-primary-nav">   <a class="secondary-nav__link" href="/sport/football" data-href="/sport/football"><span class="secondary-nav__acc-lowest-crumb-enhanced vh">Open</span> <span class="secondary-nav__link-text">Football</span> <span aria-hidden="true" class="ico secondary-nav__chevron ico-chevron-down"></span> <span class="secondary-nav__acc-lowest-crumb-menu-text-enhanced vh">menu</span></a>   </li>     <li class=" secondary-nav__item secondary-nav__item--active secondary-nav__item--first-non-crumb "> <a class="secondary-nav__link" href="/sport/football/live-scores"> <span class="secondary-nav__link-text">Live Scores</span> </a> </li>   <li class=" secondary-nav__item   "> <a class="secondary-nav__link" href="/sport/football/results"> <span class="secondary-nav__link-text">Results</span> </a> </li>   <li class=" secondary-nav__item   "> <a class="secondary-nav__link" href="/sport/football/fixtures"> <span class="secondary-nav__link-text">Fixtures</span> </a> </li>   <li class=" secondary-nav__item   "> <a class="secondary-nav__link" href="/sport/football/tables"> <span class="secondary-nav__link-text">Tables</span> </a> </li>   <li class=" secondary-nav__item   "> <a class="secondary-nav__link" href="/sport/football/gossip"> <span class="secondary-nav__link-text">Gossip</span> </a> </li>   <li class=" secondary-nav__item   "> <a class="secondary-nav__link" href="/sport/football/transfers"> <span class="secondary-nav__link-text">Transfers</span> </a> </li>   <li class=" secondary-nav__item   "> <a class="secondary-nav__link" href="/sport/football/teams"> <span class="secondary-nav__link-text">All Teams</span> </a> </li>   <li class=" secondary-nav__item   "> <a class="secondary-nav__link" href="/sport/football/leagues-competitions"> <span class="secondary-nav__link-text">Leagues &amp; Cups</span> </a> </li>   <li class=" secondary-nav__item   "> <a class="secondary-nav__link" href="/sport/football/fa-cup"> <span class="secondary-nav__link-text">FA Cup</span> </a> </li>   <li class=" secondary-nav__item   "> <a class="secondary-nav__link" href="/sport/football/european"> <span class="secondary-nav__link-text">European</span> </a> </li>   <li class=" secondary-nav__item   "> <a class="secondary-nav__link" href="/sport/football/womens"> <span class="secondary-nav__link-text">Women</span> </a> </li>   <li aria-hidden="true" class="secondary-nav__item secondary-nav__item--more" style="display: none;"><a class="secondary-nav__link secondary-nav__link" href="#"><span class="secondary-nav__link-text"><span>More</span><span class="ico secondary-nav__arrow-down ico-arrow-down-filled-white"></span></span></a><div class="secondary-nav__more-tab-border-blanker"></div></li></ul> <ul class="secondary-nav__items secondary-nav__items--shortcuts">  </ul> </div> </div> </nav><div aria-hidden="true" class="secondary-nav-more__relative-wrapper"><div class="secondary-nav-more" data-istats-container="secondary-nav-more"><div class="gel-wrap"><ul class="secondary-nav-more__items clearfix"></ul></div></div></div> <script type="text/javascript"> onesport.moduleJs.push( function () { require(['module/nav-3/dynamic-crumb/controller'], function (navDynamicCrumbController) { navDynamicCrumbController.init(); }); require(['module/nav-3/more/controller'], function (navMoreController) { navMoreController.init(); }); } ); </script>   <div class="secondary-nav-flyout__relative-wrapper"> <nav class="secondary-nav-flyout clearfix" data-istats-container="secondary-nav-flyout" data-lowest-crumb-label="Football">   <div class="secondary-nav-flyout__columns clearfix">  <div class=" secondary-nav-flyout__column secondary-nav-flyout__column--left "> <ul class="secondary-nav-flyout__items">  <li class=" secondary-nav-flyout__item secondary-nav-flyout__item--active ">  <a href="/sport/football/live-scores" class="secondary-nav-flyout__item-link">Live Scores</a>  </li>  <li class=" secondary-nav-flyout__item  ">  <a href="/sport/football/results" class="secondary-nav-flyout__item-link">Results</a>  </li>  <li class=" secondary-nav-flyout__item  ">  <a href="/sport/football/fixtures" class="secondary-nav-flyout__item-link">Fixtures</a>  </li>  <li class=" secondary-nav-flyout__item  ">  <a href="/sport/football/tables" class="secondary-nav-flyout__item-link">Tables</a>  </li>  <li class=" secondary-nav-flyout__item  ">  <a href="/sport/football/gossip" class="secondary-nav-flyout__item-link">Gossip</a>  </li>  <li class=" secondary-nav-flyout__item  ">  <a href="/sport/football/transfers" class="secondary-nav-flyout__item-link">Transfers</a>  </li>  </ul> </div>  <div class=" secondary-nav-flyout__column  "> <ul class="secondary-nav-flyout__items">  <li class=" secondary-nav-flyout__item  ">  <a href="/sport/football/teams" class="secondary-nav-flyout__item-link">All Teams</a>  </li>  <li class=" secondary-nav-flyout__item  ">  <a href="/sport/football/leagues-competitions" class="secondary-nav-flyout__item-link">Leagues &amp; Cups</a>  </li>  <li class=" secondary-nav-flyout__item  ">  <a href="/sport/football/fa-cup" class="secondary-nav-flyout__item-link">FA Cup</a>  </li>  <li class=" secondary-nav-flyout__item  ">  <a href="/sport/football/european" class="secondary-nav-flyout__item-link">European</a>  </li>  <li class=" secondary-nav-flyout__item  ">  <a href="/sport/football/womens" class="secondary-nav-flyout__item-link">Women</a>  </li>  <li class=" secondary-nav-flyout__item  ">  <a href="/sport/football" class="secondary-nav-flyout__item-link">Football Home</a>  </li>  </ul> </div>  </div>   <a href="javascript:void(0);" class="secondary-nav-flyout__acc-close vh">Close Football menu</a></nav> </div> <script type="text/javascript"> onesport.moduleJs.push( function () { require(['module/nav-3/secondary-nav-flyout/controller'], function (flyoutController) { flyoutController.init(); }); } ); </script>    <script type="text/javascript"> if (onesport.config.isNativeApp) { onesport.moduleJs.push( function () { require(['module/nav-3/top/view'], function (navTopView) { navTopView.init(); }); } ); } </script> </div>      <script type="text/javascript">
+    require (
+    {baseUrl: "http://static.bbci.co.uk/sport/2.7.640/desktop/modules/"},
+    ["jquery-1", "jsonloader", "livescores", "livescoresui"],
+    function($, jsonloader, liveScores, liveScoresUI) {
+        $(document).ready(function() {
+            window.jsonLoader.model.addModule({
+                renderer: {
+                    src: liveScores,
+                    id: "livescores"
+                },
+                moduleObject: {
+                    id: "livescores"
+                },
+                feedObject: {
+                    updatePeriod: 30,
+                    dataSource:"http://polling.bbc.co.uk/sport/shared/football/live-scores/competition/118996114/20160321.json",
+                    getDataOnLoad:false
+                }
+            });
+
+            liveScoresUI.init("http://polling.bbc.co.uk", "Mon, 21 Mar 2016 00:00:00 +0000", "118996114");
+        });
+        // Force IE7 to show the controls.
+        $("td.match-score").load(function() {
+            $(".live-scores-day-navigator").show();
+            $(".live-scores-dropdowns").show();
+            $(".refresh-icon").show();
+            $("#refresh-text").show();
+            $("td.match-score").addClass('hover-enabled').addClass('live-scores-show');
+        });
+    }
+);
+</script>
+ <div id="blq-content" class="stats">                     <div id="bbccom_leaderboard_1_2_3_4" class="bbccom_slot">
+        <div class="bbccom_advert bbccom_display_none" id="bbccom_leaderboard">
+            <script type="text/javascript">
+                if (window.bbcdotcom && bbcdotcom.slot) {
+                    bbcdotcom.slot('leaderboard', [1,2,3,4]);
+                } else {
+                    BBC.adverts.write("leaderboard", true);
+                }
+            </script>
+        </div>
+        <script type="text/javascript">
+            if (window.bbcdotcom && bbcdotcom.show) {
+                bbcdotcom.show();
+            } else {
+                BBC.adverts.show("leaderboard");
+            }
+        </script>
+    </div>
+     <div class="headline-wrapper"> <h1 class="live-scores-title"><span>Live Scores:</span> Football</h1>  <div class="share-tools-toolbar blq-clearfix"> <div class="share-tools-container"> <div class="bbc-st bbc-st-slim bbc-st-colour bbc-st-light bbc-st-disable-counts" id="bbc-st-toolbar-1" style="font-size: 0.769231em;"> <a href="/modules/sharetools/share?url=http://www.bbc.co.uk/sport/football/live-scores/premier-league&amp;appId=sport">Share this page</a> <div class="bbc-st-wrapper bbc-st-rst bbc-st-v1"><div class="bbc-st-count"></div><ul class="bbc-st-buttons"><li class="bbc-st-share-cta"><a href="#" title="Share this page to other places">Share</a></li><li class="bbc-st-facebook-cta"><a href="#" title="Share this page on Facebook">Facebook</a></li><li class="bbc-st-twitter-cta"><a href="#" title="Share this page on Twitter">Twitter</a></li></ul></div></div>  </div>  </div>                      <div id="bbccom_sponsor_live-scores_1_2_3_4" class="bbccom_slot">
+            <div id="bbccom_sponsor_live-scores" class="bbccom_advert bbccom_display_none">
+                <div id="bbccom_sponsor_live-scores_text">IN ASSOCIATION WITH</div>
+                <div id="bbccom_sponsor_live-scores_image">
+                    <script type="text/javascript">
+                        if (window.bbcdotcom && bbcdotcom.slot) {
+                            bbcdotcom.slot('sponsor_live-scores', [1,2,3,4]);
+                        } else {
+                            BBC.adverts.write("sponsor_live-scores",false);
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            if (window.bbcdotcom && bbcdotcom.show) {
+                bbcdotcom.show();
+            } else {
+                BBC.adverts.show("sponsor_live-scores");
+            }
+        </script>
+     </div> <div class="stats-body" role="main"> <ul id="live-score-tabs"> <li><a href="/sport/football/live-scores" class="selected" id="show_live">By Competition</a></li> <li><a href="/sport/football/live-scores/videprinter" id="show_vide">Videprinter</a></li> </ul> <div id="live-scores-body" class="competition id-118996114">
+<div id="live-scores-content-wrapper" class="competition-118996114">
+    <div id="live-scores-filter-bar" class="dateBar">
+        <noscript>
+    &lt;div class="no-js-live-scores-day-navigator"&gt;
+        &lt;label&gt;Choose date:&lt;/label&gt;
+        &lt;ul&gt;
+            &lt;li class="first"&gt;
+                                    &lt;a href="/sport/football/live-scores/todayminus2"&gt;Sat 19 Mar&lt;/a&gt;
+                            &lt;/li&gt;
+            &lt;li&gt;
+                                    Sun 20 Mar                            &lt;/li&gt;
+            &lt;li&gt;
+                                    &lt;a href="/sport/football/live-scores/today"&gt;Mon 21 Mar&lt;/a&gt;
+                            &lt;/li&gt;
+            &lt;li&gt;
+                                    &lt;a href="/sport/football/live-scores/tomorrow"&gt;Tue 22 Mar&lt;/a&gt;
+                            &lt;/li&gt;
+            &lt;li class="tomorrow"&gt;
+                                    &lt;a href="/sport/football/live-scores/todayplus2"&gt;Wed 23 Mar&lt;/a&gt;
+                            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+</noscript>
+         <div class="live-scores-day-navigator">
+    <label>Choose date:</label>
+    <button type="button" class="    live-scores-yesterday
+">
+        <span>previous day</span>
+    </button>
+    <div class="live-scores-today">Sun 20 Mar</div>
+    <button type="button" class="    live-scores-tomorrow
+">
+        <span>next day</span>
+    </button>
+</div>
+<div class="live-scores-dropdowns">
+    <div class="drop-down-filter">
+          <noscript>  &lt;div class="drop-down-filter" id="filter-fixtures-no-js"&gt; &lt;form method="get" id="filter-nav"&gt; &lt;fieldset&gt; &lt;label for="group-drop-down" class="non-js-live-scores"&gt;Show me:&lt;/label&gt; &lt;select id="group-drop-down" name="filter"&gt; &lt;option value=""&gt;Please select&lt;/option&gt;  &lt;optgroup label="English"&gt;   &lt;option value="premier-league" selected="selected"&gt; Premier League (4) &lt;/option&gt;   &lt;/optgroup&gt;  &lt;optgroup label="Scottish"&gt;   &lt;option value="scottish-premiership" &gt; Scottish Premiership (1) &lt;/option&gt;   &lt;/optgroup&gt;  &lt;optgroup label="European &amp;amp; World"&gt;                                &lt;/optgroup&gt;  &lt;optgroup label="Women"&gt;        &lt;/optgroup&gt;  &lt;/select&gt; &lt;input id="filter-nav-submit" type="submit" value="Update" /&gt; &lt;/fieldset&gt;   &lt;/form&gt; &lt;/div&gt;  </noscript> <div class="drop-down-filter live-scores-fixtures" id="filter-fixtures"> <form method="get" id="filter-nav"> <input type="hidden" class="hidden" id="day" name="day" value="yesterday"> <fieldset> <label for="group-drop-down">Show me:</label>    <select id="uk-group-drop-down" name="filter"> <option value="">UK &amp; Ireland Competitions</option>  <optgroup label="English">   <option value="competition-118996114" selected="selected"> Premier League (4) </option>   </optgroup>  <optgroup label="Scottish">   <option value="competition-118996176"> Scottish Premiership (1) </option>   </optgroup>  <optgroup label="Women">   <option value="competition-118998132"> The FA Women's Cup (7) </option>    <option value="competition-999999991"> Women's Premier North (7) </option>    <option value="competition-999999992"> Women's Premier South (4) </option>   </optgroup>  </select>  <span>OR</span>   <select id="int-group-drop-down" name="filter"> <option value="">European &amp; International</option>  <optgroup label="European &amp; World">   <option value="competition-999999995"> Australian A-League (2) </option>    <option value="competition-119000919"> Austrian Bundesliga (1) </option>    <option value="competition-119000950"> Danish Superliga (4) </option>    <option value="competition-119001012"> Dutch Eredivisie (4) </option>    <option value="competition-119000981"> French Ligue 1 (3) </option>    <option value="competition-119000986"> German Bundesliga (2) </option>    <option value="competition-119001136"> Greek Superleague (4) </option>    <option value="competition-119001017"> Italian Serie A (8) </option>    <option value="competition-119001043"> Norwegian Tippeligaen (5) </option>    <option value="competition-119001048"> Portuguese Primeira Liga (6) </option>    <option value="competition-999999990"> Russian Premier League (3) </option>    <option value="competition-119001074"> Spanish La Liga (4) </option>    <option value="competition-119001105"> Swiss Super League (3) </option>    <option value="competition-119001110"> Turkish Super Lig (4) </option>    <option value="competition-999999988"> United States Major League Soccer (7) </option>   </optgroup>  </select>    <button class="update" id="filter-nav-submit">Update</button> </fieldset>   </form> </div>     </div>
+</div>
+    </div>
+    <div id="live-scores-data" class="fixtures-table full-table-medium">
+        <div class="refresh-rate blq-clearfix">
+            <p class="refresh">
+            <!-- start of no js markup for auto refresh  -->
+            <noscript>
+                &lt;span class="no-js-refresh"&gt;Refresh this page to get updates&lt;/span&gt;
+            </noscript>
+            <!-- end of no js markup for auto refresh -->
+            <span class="refresh-icon">&nbsp;</span><span id="refresh-text">Page updates automatically</span>
+            </p>
+            <span class="live-scores-timezone">All times UK</span>
+        </div>
+                    <div class="competition-title-bar" style="display: block;">
+                <h2>Barclays Premier League</h2>
+            </div>
+                <div id="matches-wrapper" style="display: block;">
+                            <table id="live-scores-table" class="table-stats main-table">
+                    <caption>Live Scores matches</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col" class="match-score main-header"><span class="hidden-text">Match score</span></th>
+                            <th scope="col" class="match-link main-header"><span class="hidden-text">Match link</span></th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <td colspan="2">
+                                <div class="league-links">
+            View all <a href="/sport/football/premier-league/fixtures"> Premier League fixtures</a>
+        | View all <a href="/sport/football/premier-league/results"> Premier League results</a><br>
+        View all <a href="/sport/football/fixtures">Football fixtures</a> |
+    View all <a href="/sport/football/results">Football results</a>
+</div>
+                            </td>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                                                                                    <tr id="match-row-EFBO803470" class="report">
+                                    <td class="match-score hover-enabled live-scores-show">
+                                                                            <button class="hidden-text">Show stats panel</button>
+                                        <span class="team-home">Newcastle</span>
+                                        <span class="score">
+                                                                                            1 - 1                                                                                    </span>
+                                        <span class="team-away">Sunderland</span>
+                                        <span class="elapsed-time">Result</span>
+                                    </td>
+                                                                            <td class="match-link">
+                                            <a href="/sport/football/35796804">Report</a>
+                                        </td>
+                                                                    </tr>
+                                <tr id="match-panel-EFBO803470" class="panel-showing live">
+                                    <td class="details-table-container" colspan="2"></td>
+                                </tr>
+                                <tr class="row-spacer"><td colspan="2">&nbsp;</td></tr>
+                                                                                                                <tr id="match-row-EFBO803466" class="report">
+                                    <td class="match-score hover-enabled live-scores-show">
+                                                                            <button class="hidden-text">Show stats panel</button>
+                                        <span class="team-home">Southampton</span>
+                                        <span class="score">
+                                                                                            3 - 2                                                                                    </span>
+                                        <span class="team-away">Liverpool</span>
+                                        <span class="elapsed-time">Result</span>
+                                    </td>
+                                                                            <td class="match-link">
+                                            <a href="/sport/football/35796778">Report</a>
+                                        </td>
+                                                                    </tr>
+                                <tr id="match-panel-EFBO803466" class="panel-showing live">
+                                    <td class="details-table-container" colspan="2"></td>
+                                </tr>
+                                <tr class="row-spacer"><td colspan="2">&nbsp;</td></tr>
+                                                                                                                <tr id="match-row-EFBO803467" class="report">
+                                    <td class="match-score hover-enabled live-scores-show">
+                                                                            <button class="hidden-text">Show stats panel</button>
+                                        <span class="team-home">Man City</span>
+                                        <span class="score">
+                                                                                            0 - 1                                                                                    </span>
+                                        <span class="team-away">Man Utd</span>
+                                        <span class="elapsed-time">Result</span>
+                                    </td>
+                                                                            <td class="match-link">
+                                            <a href="/sport/football/35796811">Report</a>
+                                        </td>
+                                                                    </tr>
+                                <tr id="match-panel-EFBO803467" class="panel-showing live">
+                                    <td class="details-table-container" colspan="2"></td>
+                                </tr>
+                                <tr class="row-spacer"><td colspan="2">&nbsp;</td></tr>
+                                                                                                                <tr id="match-row-EFBO803464" class="report">
+                                    <td class="match-score hover-enabled live-scores-show">
+                                                                            <button class="hidden-text">Show stats panel</button>
+                                        <span class="team-home">Tottenham</span>
+                                        <span class="score">
+                                                                                            3 - 0                                                                                    </span>
+                                        <span class="team-away">Bournemouth</span>
+                                        <span class="elapsed-time">Result</span>
+                                    </td>
+                                                                            <td class="match-link">
+                                            <a href="/sport/football/35796776">Report</a>
+                                        </td>
+                                                                    </tr>
+                                <tr id="match-panel-EFBO803464" class="panel-showing live">
+                                    <td class="details-table-container" colspan="2"></td>
+                                </tr>
+                                <tr class="row-spacer"><td colspan="2">&nbsp;</td></tr>
+                                                                        </tbody>
+                </table>
+                    </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+ </div>  <div id="pane_vide" style="display: none;">  <div class="fixtures-table full-table-medium videprinter-msg" id="live-scores-no-data"> <div class="banner">Live scores will appear here</div> <div class="details"> <p>Click on <strong>By Competition</strong> to view the latest results and upcoming fixtures.</p> </div> </div>  <table aria-live="assertive" aria-relevant="additions" aria-atomic="false" class="hideTable"> <thead> <tr> <th scope="col">Action</th> <th scope="col">Competition</th> <th scope="col">Match status / score</th> <th scope="col">What happened?</th> </tr> </thead> <tbody>  <tr class="row_blank hideRow tempRow" data-marker=""> <td class="col_action"><span title=""></span></td> <td class="col_comp" title=""></td> <td class="col_status"> <span class="ht"></span> <span class=""></span> <span class="at"></span> </td> <td class="col_comment"></td> </tr>  </tbody> </table> </div> 
+   <p class="disclaimer">Please note: All times UK. Fixtures are subject to change. The BBC is not responsible for any changes that may be made.</p>
+             <div id="bbccom_adsense_mpu" class="bbccom_adsense bbccom_display_none">
+            <script type="text/javascript">
+                if (BBC.adverts.isActive('ads')) {
+                    bbc_adsense_slot = "adsense_mpu"; bbc_adsense_country = "rest";
+                    document.write('<script type="text/javascript" src="http://static.bbci.co.uk/bbcdotcom/1.11.0/script/adsense_write.js">\x3C/script>');
+                }
+            </script>
+        </div>
+        <script type="text/javascript">BBC.adverts.show("adsense_mpu");</script>
+     </div> <div class="stats-aside" role="complementary">             <div id="bbccom_mpu_1_2_3_4" class="bbccom_slot">
+            <div class="bbccom_advert bbccom_display_none" id="bbccom_mpu">
+                <script type="text/javascript">
+                    if (window.bbcdotcom && bbcdotcom.slot) {
+                        bbcdotcom.slot('mpu', [1,2,3,4]);
+                    } else {
+                        BBC.adverts.write("mpu",true);
+                    }
+                </script>
+            </div>
+            <script type="text/javascript">
+                if (window.bbcdotcom && bbcdotcom.show) {
+                    bbcdotcom.show();
+                } else {
+                    BBC.adverts.show("mpu");
+                }
+            </script>
+        </div>
+     <div id="table-wrapper">      <div class="container-narrow-table"> <div class="league-table table-narrow"> <h2 class="table-header">As It Stands Table</h2>  <div class="drop-down-filter">   <form method="get" id="ais-filter-nav"> <fieldset> <label for="single-competition-drop-down">Show me:</label><select id="single-competition-drop-down" name="competitionFilter">    <option value="118996114" selected="selected"> Premier League </option>    <option value="118996115"> Championship </option>    <option value="118996116"> League One </option>    <option value="118996117"> League Two </option>    <option value="118996118"> National League </option>    <option value="118996176"> Scottish Premiership </option>    <option value="118996177"> Scottish Championship </option>    <option value="118996178"> Scottish League One </option>    <option value="118996179"> Scottish League Two </option>    <option value="118999958"> Champions League </option>    <option value="118999989"> Europa League </option>    <option value="119001880"> World Cup </option>    <option value="119002035"> European Championship </option>   </select> <input id="single-filter-nav-submit" type="submit" value="Update"> </fieldset> </form>   </div>        <table class="table-stats" id="ais_table_118996114"> <caption>Barclays Premier League summary table; it charts each team by position, team name, games played, total goal difference and points</caption>  <thead> <tr class="header"> <th class="position" scope="col" title="Position">Pos<span>ition</span></th> <th class="team-name" scope="col">Team</th> <th class="played" scope="col" title="Played">P<span>layed</span></th> <th class="goal-difference" scope="col" title="Goal Difference">G<span>oal </span>D<span>ifference</span></th> <th class="points" scope="col" title="Points">P<span>oin</span>ts</th> </tr> </thead>  <tfoot>   <tr> <td colspan="5"> <p class="full-table-link"><a href="/sport/football/premier-league/table">View full table</a></p> </td> </tr>    </tfoot>  <tbody>   <tr class="team first">   <td class="position"><span class="no-movement">No Movement</span> <span class="position-number">1</span></td>   <td class="team-name">  <a href="/sport/football/teams/leicester-city">Leicester</a>  </td> <td class="played">31</td> <td class="goal-difference">23</td> <td class="points">66</td> </tr>    <tr class="team">   <td class="position"><span class="no-movement">No Movement</span> <span class="position-number">2</span></td>   <td class="team-name">  <a href="/sport/football/teams/tottenham-hotspur">Tottenham</a>  </td> <td class="played">31</td> <td class="goal-difference">32</td> <td class="points">61</td> </tr>    <tr class="team">   <td class="position"><span class="no-movement">No Movement</span> <span class="position-number">3</span></td>   <td class="team-name">  <a href="/sport/football/teams/arsenal">Arsenal</a>  </td> <td class="played">30</td> <td class="goal-difference">18</td> <td class="points">55</td> </tr>    <tr class="team">   <td class="position"><span class="no-movement">No Movement</span> <span class="position-number">4</span></td>   <td class="team-name">  <a href="/sport/football/teams/manchester-city">Man City</a>  </td> <td class="played">30</td> <td class="goal-difference">20</td> <td class="points">51</td> </tr>    <tr class="team divider">   <td class="position"><span class="no-movement">No Movement</span> <span class="position-number">5</span></td>   <td class="team-name">  <a href="/sport/football/teams/west-ham-united">West Ham</a>  </td> <td class="played">30</td> <td class="goal-difference">12</td> <td class="points">50</td> </tr>    <tr class="team divider">   <td class="position"><span class="no-movement">No Movement</span> <span class="position-number">6</span></td>   <td class="team-name">  <a href="/sport/football/teams/manchester-united">Man Utd</a>  </td> <td class="played">30</td> <td class="goal-difference">11</td> <td class="points">50</td> </tr>    <tr class="team">   <td class="position"><span class="no-movement">No Movement</span> <span class="position-number">7</span></td>   <td class="team-name">  <a href="/sport/football/teams/southampton">Southampton</a>  </td> <td class="played">31</td> <td class="goal-difference">9</td> <td class="points">47</td> </tr>    <tr class="team">   <td class="position"><span class="no-movement">No Movement</span> <span class="position-number">8</span></td>   <td class="team-name">  <a href="/sport/football/teams/stoke-city">Stoke</a>  </td> <td class="played">31</td> <td class="goal-difference">-3</td> <td class="points">46</td> </tr>    <tr class="team">   <td class="position"><span class="no-movement">No Movement</span> <span class="position-number">9</span></td>   <td class="team-name">  <a href="/sport/football/teams/liverpool">Liverpool</a>  </td> <td class="played">29</td> <td class="goal-difference">5</td> <td class="points">44</td> </tr>    <tr class="team">   <td class="position"><span class="no-movement">No Movement</span> <span class="position-number">10</span></td>   <td class="team-name">  <a href="/sport/football/teams/chelsea">Chelsea</a>  </td> <td class="played">30</td> <td class="goal-difference">4</td> <td class="points">41</td> </tr>    <tr class="team">   <td class="position"><span class="no-movement">No Movement</span> <span class="position-number">11</span></td>   <td class="team-name">  <a href="/sport/football/teams/west-bromwich-albion">West Brom</a>  </td> <td class="played">30</td> <td class="goal-difference">-7</td> <td class="points">39</td> </tr>    <tr class="team">   <td class="position"><span class="no-movement">No Movement</span> <span class="position-number">12</span></td>   <td class="team-name">  <a href="/sport/football/teams/everton">Everton</a>  </td> <td class="played">29</td> <td class="goal-difference">10</td> <td class="points">38</td> </tr>    <tr class="team">   <td class="position"><span class="no-movement">No Movement</span> <span class="position-number">13</span></td>   <td class="team-name">  <a href="/sport/football/teams/afc-bournemouth">Bournemouth</a>  </td> <td class="played">31</td> <td class="goal-difference">-12</td> <td class="points">38</td> </tr>    <tr class="team">   <td class="position"><span class="no-movement">No Movement</span> <span class="position-number">14</span></td>   <td class="team-name">  <a href="/sport/football/teams/watford">Watford</a>  </td> <td class="played">30</td> <td class="goal-difference">-2</td> <td class="points">37</td> </tr>    <tr class="team">   <td class="position"><span class="no-movement">No Movement</span> <span class="position-number">15</span></td>   <td class="team-name">  <a href="/sport/football/teams/swansea-city">Swansea</a>  </td> <td class="played">31</td> <td class="goal-difference">-9</td> <td class="points">36</td> </tr>    <tr class="team">   <td class="position"><span class="no-movement">No Movement</span> <span class="position-number">16</span></td>   <td class="team-name">  <a href="/sport/football/teams/crystal-palace">Crystal Palace</a>  </td> <td class="played">30</td> <td class="goal-difference">-8</td> <td class="points">33</td> </tr>    <tr class="team">   <td class="position"><span class="no-movement">No Movement</span> <span class="position-number">17</span></td>   <td class="team-name">  <a href="/sport/football/teams/norwich-city">Norwich</a>  </td> <td class="played">31</td> <td class="goal-difference">-22</td> <td class="points">28</td> </tr>    <tr class="team divider">   <td class="position"><span class="no-movement">No Movement</span> <span class="position-number">18</span></td>   <td class="team-name">  <a href="/sport/football/teams/sunderland">Sunderland</a>  </td> <td class="played">30</td> <td class="goal-difference">-19</td> <td class="points">26</td> </tr>    <tr class="team">   <td class="position"><span class="no-movement">No Movement</span> <span class="position-number">19</span></td>   <td class="team-name">  <a href="/sport/football/teams/newcastle-united">Newcastle</a>  </td> <td class="played">30</td> <td class="goal-difference">-26</td> <td class="points">25</td> </tr>    <tr class="team">   <td class="position"><span class="no-movement">No Movement</span> <span class="position-number">20</span></td>   <td class="team-name">  <a href="/sport/football/teams/aston-villa">Aston Villa</a>  </td> <td class="played">31</td> <td class="goal-difference">-36</td> <td class="points">16</td> </tr>   </tbody>  </table>     </div> </div>   <script type="text/javascript"> require( { baseUrl: "http://static.bbci.co.uk/sport/2.7.640/desktop/modules/" }, ['jquery-1','jsonloader', 'aistable'], function($, jsonLoader, aisTable) { aisTable.init( 'http://polling.bbc.co.uk/sport/shared/football/as-it-stands/', '118996114' ); } );  </script>     </div>         <div id="bbccom_partner_buttons" class="partner_buttons_4cols bbccom_display_none">
+        <div class="bbccom_text_left">Advertising Partners</div>
+        <div class="row1">
+            <div id="bbccom_partner_button1" class="col1">
+                <script type="text/javascript">BBC.adverts.write("partner_button1",false);</script>
+            </div>
+            <script type="text/javascript">BBC.adverts.show("partner_button1");</script>
+            <div id="bbccom_partner_button4" class="col4"><!-- 4th column is here -->
+                <script type="text/javascript">BBC.adverts.write("partner_button4",false);</script>
+            </div>
+            <script type="text/javascript">BBC.adverts.show("partner_button4");</script>
+            <div id="bbccom_partner_button3" class="col3">
+                <script type="text/javascript">BBC.adverts.write("partner_button3",false);</script>
+            </div>
+            <script type="text/javascript">BBC.adverts.show("partner_button3");</script>
+            <div id="bbccom_partner_button2" class="col2"><!-- 2nd column is here -->
+                <script type="text/javascript">BBC.adverts.write("partner_button2",false);</script>
+            </div>
+            <script type="text/javascript">BBC.adverts.show("partner_button2");</script>
+        </div>
+        <div id="bbccom_partner_button5" class="row3">
+            <div id="bbccom_partner_button5_notused" class="col1">
+                <script type="text/javascript">BBC.adverts.write("partner_button5",false);</script>
+            </div>
+            <script type="text/javascript">BBC.adverts.show("partner_button5");</script>
+            <div id="bbccom_partner_button8" class="col4"><!-- 4th column is here -->
+                <script type="text/javascript">BBC.adverts.write("partner_button8",false);</script>
+            </div>
+            <script type="text/javascript">BBC.adverts.show("partner_button8");</script>
+            <div id="bbccom_partner_button7" class="col3">
+                <script type="text/javascript">BBC.adverts.write("partner_button7",false);</script>
+            </div>
+            <script type="text/javascript">BBC.adverts.show("partner_button7");</script>
+            <div id="bbccom_partner_button6" class="col2"><!-- 2nd column is here -->
+                <script type="text/javascript">BBC.adverts.write("partner_button6",false);</script>
+            </div>
+            <script type="text/javascript">BBC.adverts.show("partner_button6");</script>
+        </div>
+    </div>
+    <script type="text/javascript">BBC.adverts.showPartnerButtons();</script>
+     </div> </div>   <div id="footer-services" class="blq-clearfix"> <div id="services" data-istats-container="footer_services"> <h2>Services</h2> <ul> <li><a href="http://news.bbc.co.uk/sport1/hi/15561688.stm" class="services-mobile">Mobile</a></li> <li><a href="/sport/0/27047614" class="services-interactive-tv">Connected TV</a></li> <li><a href="http://news.bbc.co.uk/sport1/hi/15890345.stm" class="services-news-feed">News Feeds</a></li> <li><a href="http://www.bbc.co.uk/podcasts" class="services-podcasts">Podcasts</a></li> </ul> </div> <div id="about" data-istats-container="footer_about-bbc-sport"> <h2>About BBC Sport</h2> <ul> <li><a href="http://news.bbc.co.uk/sport1/hi/front_page/15560234.stm">News Sources</a></li> <li><a href="http://news.bbc.co.uk/sport1/hi/front_page/15561348.stm">Help &amp; FAQs</a></li> </ul> </div> </div>   <script type="text/javascript" src="http://static.bbci.co.uk/onesport/2.8.1282/js/onesport-for-desktop/body-last.js"></script>    <script type="text/javascript"> var _sf_async_config={}; /** CONFIGURATION START **/ _sf_async_config.uid = 50924; _sf_async_config.domain = "bbc.co.uk"; _sf_async_config.sections = "sport,football,live-scores,premier-league"; _sf_async_config.region = "domestic";  _sf_async_config.path = "bbc.co.uk/sport/football/live-scores/premier-league";   _sf_async_config.title = "Live Scores - Football - BBC Sport";   (function() { var noCookies = true; var cookiePrefix = '_chartbeat'; if ("object" === typeof bbccookies && typeof bbccookies.readPolicy == 'function') { noCookies = !bbccookies.readPolicy().performance; } if (noCookies && document.cookie.indexOf(cookiePrefix) !== -1) { var cookieSplit = document.cookie.split(';'); var cookieLength = cookieSplit.length; while (cookieLength--) { var cookie = cookieSplit[cookieLength].replace(/^\s+|\s+$/g, ''); var cookieName = cookie.split('=')[0]; if (cookieName.indexOf(cookiePrefix) === 0) { document.cookie = cookieName + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;'; } } } _sf_async_config.noCookies = noCookies; })(); /** CONFIGURATION END **/ (function(){ function loadChartbeat() { window._sf_endpt=(new Date()).getTime(); var e = document.createElement("script"); e.setAttribute("language", "javascript"); e.setAttribute("type", "text/javascript"); e.setAttribute('src', '//static.chartbeat.com/js/chartbeat.js'); document.body.appendChild(e); } var oldonload = window.onload; window.onload = (typeof window.onload != "function") ? loadChartbeat : function() { oldonload(); loadChartbeat(); }; })(); </script>       </div>   <!--[if IE 6]> <div id="blq-ie6-upgrade"> <p> <span>You're using the Internet Explorer 6 browser to view the BBC website. Our site will work much better if you change to a more modern browser. It's free, quick and easy.</span> <a href="http://www.browserchoice.eu/">Find out more <span>about upgrading your browser</span> here&hellip;</a> </p> </div> <![endif]-->  <div id="blq-foot" lang="en-gb" class="blq-rst blq-clearfix blq-foot-transparent blq-foot-text-dark" role="contentinfo"> <div id="blq-footlinks"> <h2 class="blq-hide">BBC links</h2>       <ul>                    <li class="blq-footlinks-row" role="presentation"> <ul class="blq-footlinks-row-list" role="presentation"> <li><a href="http://m.bbc.co.uk/sport/football/live-scores/premier-league" id="blq-footer-mobile">Mobile site</a></li><li><a href="/terms/">Terms of Use</a></li><li><a href="/aboutthebbc/">About the BBC</a></li> </ul> </li>                <li class="blq-footlinks-row" role="presentation"> <ul class="blq-footlinks-row-list" role="presentation"> <li><a href="/privacy/">Privacy</a></li><li><a href="/accessibility/">Accessibility Help</a></li> </ul> </li>                <li class="blq-footlinks-row" role="presentation"> <ul class="blq-footlinks-row-list" role="presentation"> <li><a href="/privacy/cookies/about">Cookies</a></li><li><a href="/contact/">Contact the BBC</a></li> </ul> </li>           <li class="blq-footlinks-row" role="presentation"> <ul class="blq-footlinks-row-list" role="presentation"> <li><a href="/guidance/">Parental Guidance</a></li> </ul> </li>             </ul> <script type="text/javascript">/*<![CDATA[*/ (function() { var mLink = document.getElementById('blq-footer-mobile'), stick = function() { var d = new Date (); d.setYear(d.getFullYear() + 1); d = d.toUTCString(); window.bbccookies.set('ckps_d=m;domain=.bbc.co.uk;path=/;expires=' + d ); window.bbccookies.set('ckps_d=m;domain=.bbc.com;path=/;expires=' + d ); }; if (mLink) {  if (mLink.addEventListener) { mLink.addEventListener('click', stick, false); } else if (mLink.attachEvent) { mLink.attachEvent('onclick', stick); } } })(); /*]]>*/</script>  </div>  <div id="blq-foot-blocks" class="blq-footer-image-dark"><img src="http://static.bbci.co.uk/frameworks/barlesque/3.8.0/desktop/3.5/img/blocks/dark.png" width="84" height="24" alt="BBC"></div>             <div id="bbccom_bottom" class="bbccom_display_none" style="width:468px; text-align:right;">
+            <script type="text/javascript">BBC.adverts.write("bottom",true);</script>
+        </div>
+        <script type="text/javascript">BBC.adverts.show("bottom");</script>
+     <p id="blq-disclaim"><span id="blq-copy">Copyright © 2016 BBC.</span> <a href="/help/web/links/">The BBC is not responsible for the content of external sites. Read more.</a></p> <div id="blq-obit"><p><strong>This page is best viewed in an up-to-date web browser with style sheets (CSS) enabled. While you will be able to view the content of this page in your current browser, you will not be able to get the full visual experience. Please consider upgrading your browser software or enabling style sheets (CSS) if you are able to do so.</strong></p></div> </div> </div> 
+<!-- BBCDOTCOM analytics template:client-side journalismVariant: false ipIsAdvertiseCombined: false adsEnabled: true flagpole: ON -->
+
+    
+                    <!-- START: BBCCOM-5908: SiteCatalyst new responsive tag -->
+        <script type="text/javascript">
+            /*<![CDATA[*/
+            if (BBC.adverts.isActive('analytics')) {
+                if (bbcdotcom && bbcdotcom.analytics) {
+                    bbcdotcom.analytics.init();
+                    bbcdotcom.analytics.page();
+                }
+            }
+            /*]]>*/
+        </script>
+        <!-- END: BBCCOM-5908: SiteCatalyst new responsive tag -->
+        
+
+            <!-- Start comScore Tag -->
+        <script type="text/javascript">
+            /*<![CDATA[*/
+            if (BBC.adverts.isActive('analytics')) {
+                document.write("\x3Cscript src='" + (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js'>\x3C/script>");
+            }
+            /*]]>*/
+        </script>
+        <script type="text/javascript">
+            /*<![CDATA[*/
+            if (BBC.adverts.isActive('analytics')) {
+                COMSCORE.beacon({
+                    c1:2,
+                    c2:"6035051",
+                    c3:"",
+                    c4:"http://www.bbc.co.uk/",
+                    c5:"",
+                    c6:"",
+                    c15:""
+                });
+            }
+            /*]]>*/
+        </script>
+        <noscript>
+            &lt;img src="http://b.scorecardresearch.com/p?c1=2&amp;c2=19293874&amp;ns_site=bbc&amp;name=sport.football.live-scores.premier-league" height="1" width="1" alt=""&gt;
+        </noscript>
+        <!-- End comScore Tag -->
+
+
+
+            <!-- Start Nielsen Online SiteCensus V6.0 -->
+        <script type="text/javascript">
+            /*<![CDATA[*/
+            if (BBC.adverts.isActive('nielsen-au')) {
+                <!-- COPYRIGHT 2009 Nielsen Online -->
+                document.write('<script type="text/javascript" src="' + ('https:' == document.location.protocol ? 'https:' : 'http:') + '//secure-au.imrworldwide.com/v60.js">\x3C/script>');
+            }
+            /*]]>*/
+        </script>                                   <script type="text/javascript">                 /*<![CDATA[*/
+            if (BBC.adverts.isActive('nielsen-au')) {
+                nol_t({cid:"au-bbc",content:"0",server:"secure-au"}).record().post();
+            }
+            /*]]>*/
+        </script>
+        <!-- End Nielsen Online SiteCensus V6.0 -->
+
+
+            <!-- Start Nielsen Online SiteCensus V6.0 -->
+        <script type="text/javascript">
+            /*<![CDATA[*/
+            if (BBC.adverts.isActive('nielsen-nz')) {
+                <!-- COPYRIGHT 2009 Nielsen Online -->
+                document.write('<script type="text/javascript" src="' + ('https:' == document.location.protocol ? 'https:' : 'http:') + '//secure-nz.imrworldwide.com/v60.js">\x3C/script>');
+            }
+            /*]]>*/
+        </script>                                   <script type="text/javascript">                 /*<![CDATA[*/
+            if (BBC.adverts.isActive('nielsen-nz')) {
+                nol_t({cid:"nz-bbc",content:"0",server:"secure-nz"}).record().post();
+            }
+            /*]]>*/
+        </script>
+        <!-- End Nielsen Online SiteCensus V6.0 -->
+
+
+            <!-- Start Nielsen Online SiteCensus V6.0 -->
+        <script type="text/javascript">
+            /*<![CDATA[*/
+            if (BBC.adverts.isActive('nielsen-us')) {
+                <!-- COPYRIGHT 2010 Nielsen Online -->
+               (function () {
+                   var d = new Image(1, 1);
+                   d.onerror = d.onload = function () {
+                       d.onerror = d.onload = null;
+                   };
+                   d.src = [('https:' == document.location.protocol ? 'https:' : 'http:') + "//secure-us.imrworldwide.com/cgi-bin/m?ci=us-804789h&amp;cg=0&amp;cc=1&amp;si=", encodeURI(window.location.href), "&amp;rp=",
+                   encodeURI(document.referrer), "&amp;ts=compact&amp;rnd=", (new Date()).getTime()].join('');
+                })();
+            }
+            /*]]>*/
+        </script>
+        <!-- End Nielsen Online SiteCensus V6.0 -->
+
+
+            <!-- Effective Measure BBCCOM-1195 -->
+        <script type="text/javascript">
+            /*<![CDATA[*/
+            if (BBC.adverts.isActive('analytics')) {
+                (function() {
+                    var em = document.createElement('script'); em.type = 'text/javascript'; em.async = true;
+                    em.src = ('https:' == document.location.protocol ? 'https://me-ssl' : 'http://me-cdn') + '.effectivemeasure.net/em.js';
+                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(em, s);
+                })();
+            }
+            /*]]>*/
+        </script>
+        <!-- End Effective Measure -->
+
+            <!-- Start BBCCOM-5811: Chartbeat Part 2/2 -->
+        <script type="text/javascript">
+            /*<![CDATA[*/
+            if (BBC.adverts.isActive('analytics') && window.location.pathname === '/'
+                && window.bbccookies && bbccookies.readPolicy('performance')
+            ) {
+                var getMetaPropertyContent = function(property) {
+                    var metas = document.getElementsByTagName('meta'),
+                        i;
+                    for (i = 0; i < metas.length; i++) {
+                        if (metas[i].getAttribute("property") == property) {
+                            return metas[i].getAttribute("content");
+                        }
+                    }
+                    return '';
+                };
+                var wwhpEdition = getMetaPropertyContent('wwhp-edition');
+                var _sf_async_config={};
+                /** CONFIGURATION START **/
+                _sf_async_config.uid = 50924;
+                _sf_async_config.domain = "bbc.co.uk";
+                _sf_async_config.title = "Homepage"+(wwhpEdition !== '' ? ' - '+wwhpEdition : '');
+                _sf_async_config.sections = "Homepage"+(wwhpEdition !== '' ? ', Homepage - '+wwhpEdition : '');
+                _sf_async_config.region = wwhpEdition;
+                _sf_async_config.path = "/"+(wwhpEdition !== '' ? '?'+wwhpEdition : '');
+                /** CONFIGURATION END **/
+                (function(){
+                  function loadChartbeat() {
+                    window._sf_endpt=(new Date()).getTime();
+                    var e = document.createElement("script");
+                    e.setAttribute("language", "javascript");
+                    e.setAttribute("type", "text/javascript");
+                    e.setAttribute('src', '//static.chartbeat.com/js/chartbeat.js');
+                    document.body.appendChild(e);
+                  }
+                  var oldonload = window.onload;
+                  window.onload = (typeof window.onload != "function") ?
+                     loadChartbeat : function() { oldonload(); loadChartbeat(); };
+                })();
+            }
+            /*]]>*/
+        </script>
+        <!-- End BBCCOM-5811: Chartbeat Part 2/2 -->
+
+    
+<!-- BBCDOTCOM Body Last -->
+ </div> </div>     <script type="text/javascript" src="http://static.bbc.co.uk/modules/sharetools/v1/script/sharetools.js"></script><script type="text/javascript" src="http://node1.bbcimg.co.uk/glow/glow/1.7.7/core/core.js" class="gloaded sync"></script>
+<script type="text/javascript" src="http://node1.bbcimg.co.uk/glow/glow/1.7.7/widgets/widgets.js" class="gloaded sync"></script>
+
+ <script type="text/javascript"> if (typeof require !== 'undefined') { require(['istats-1'], function(istats){ istats.track('external', { region: document.getElementById('blq-main') }); istats.track('download', { region: document.getElementById('blq-main') }); }); } </script>  <script type="text/html" id="blq-panel-template-promo"><![CDATA[ <div id="blq-panel-promo" class="blq-masthead-container"></div> ]]></script> <script type="text/html" id="blq-panel-template-more"><![CDATA[ <div id="blq-panel-more" class="blq-masthead-container  blq-clearfix" lang="en-GB" dir="ltr"> <div class="blq-panel-container panel-paneltype-more"> <div class="panel-header"> <h2> <a href="#blq-footlinks">  More&hellip;  </a> </h2> </div> <div class="panel-component panel-links">       <ul>   <li> <a href="/cbbc"  >CBBC</a> </li>    <li> <a href="/cbeebies"  >CBeebies</a> </li>    <li> <a href="/food/"  >Food</a> </li>   </ul>  <ul>   <li> <a href="/iwonder"  >iWonder</a> </li>    <li> <a href="/education"  >Bitesize</a> </li>    <li> <a href="/travel/"  >Travel</a> </li>   </ul>  <ul>   <li> <a href="/music/"  >Music</a> </li>    <li> <a href="http://www.bbc.com/earth"  >Earth</a> </li>    <li> <a href="/arts"  >Arts</a> </li>   </ul>  <ul>   <li> <a href="/makeitdigital" id="makeitdigital" >Make It Digital</a> </li>    <li> <a href="/taster" id="taster" >Taster</a> </li>    <li> <a href="/local/"  >Local</a> </li>   </ul>   </div> </div> ]]></script>            <script type="text/javascript">require(["istats-1","orb/cookies"],function(i,o){o.isAllowed("s1")&&i.invoke()});</script>                 <div class="glowNoMask" style="margin: 0px; padding: 0px; position: absolute; width: 100%; top: 0px; left: 0px; overflow: auto; z-index: 9900; visibility: hidden; opacity: 0; background: rgb(0, 0, 0);"></div><div class="glow177-overlay glowNoMask " aria-hidden="true" id="bbc-st-share-panel" role="tooltip" aria-live="polite" tabindex="0" style="z-index: 9990; width: 210px;"><div class="overlay-focalPoint" tabindex="-1"></div><div class="bbc-st-panel bbc-st-sharepanel glow177-infoPanel-pointB"><div class="infoPanel-pointerT">&nbsp;</div><div class="panel-main"><div class="panel-hd"><h5>Share this page</h5></div><div class="panel-bd"><ul class="bbc-st-all"><li class="bbc-st-first"><a href="#" title="Share this page on Delicious" class="bbc-st-delicious-cta">Delicious</a> <span></span></li><li><a href="#" title="Share this page on Digg" class="bbc-st-digg-cta">Digg</a> <span></span></li><li><a href="#" title="Share this page on Facebook" class="bbc-st-facebook-cta">Facebook</a> <span></span></li><li><a href="#" title="Share this page on Google" class="bbc-st-google-cta">Google</a> <span></span></li><li><a href="#" title="Share this page on Linkedin" class="bbc-st-linkedin-cta">Linkedin</a> <span></span></li><li><a href="#" title="Share this page on Reddit" class="bbc-st-reddit-cta">Reddit</a> <span></span></li><li><a href="#" title="Share this page on StumbleUpon" class="bbc-st-stumbleupon-cta">StumbleUpon</a> <span></span></li><li><a href="#" title="Share this page on Twitter" class="bbc-st-twitter-cta">Twitter</a> <span></span></li></ul></div><div class="panel-ft"><p class="bbc-st-explain"><a href="http://www.bbc.co.uk/help/web/sharing.shtml">Read more about these links.</a></p></div><a href="#" class="panel-close" title="Close">Close</a></div><div class="infoPanel-pointerB">&nbsp;</div></div><div class="panelAccess">End of panel. <a href="#">Back to top of panel</a><a href="#">Close Panel</a></div></div><div class="glow177-cssTest" style="height:0;position:absolute;visibility:hidden;top:-20px;display:block"></div><script language="javascript" type="text/javascript" src="//static.chartbeat.com/js/chartbeat.js"></script><div id="edr_survey"></div><script id="hiddenlpsubmitdiv" style="display: none;"></script><script>try{(function() { for(var lastpass_iter=0; lastpass_iter < document.forms.length; lastpass_iter++){ var lastpass_f = document.forms[lastpass_iter]; if(typeof(lastpass_f.lpsubmitorig2)=="undefined"){ lastpass_f.lpsubmitorig2 = lastpass_f.submit; if (typeof(lastpass_f.lpsubmitorig2)=='object'){ continue;}lastpass_f.submit = function(){ var form=this; var customEvent = document.createEvent("Event"); customEvent.initEvent("lpCustomEvent", true, true); var d = document.getElementById("hiddenlpsubmitdiv"); if (d) {for(var i = 0; i < document.forms.length; i++){ if(document.forms[i]==form){ if (typeof(d.innerText) != 'undefined') { d.innerText=i.toString(); } else { d.textContent=i.toString(); } } } d.dispatchEvent(customEvent); }form.lpsubmitorig2(); } } }})()}catch(e){}</script><script src="http://polling.bbc.co.uk/sport/shared/football/live-scores/20160320.json?callback=window.jsonLoader.model.getFeedById(1).callback&amp;client=bbcfmtj&amp;cachebuster=cb145857749874310076" type="text/javascript"></script><script src="http://polling.bbc.co.uk/sport/shared/football/as-it-stands/118996114.json?callback=window.jsonLoader.model.getFeedById(0).callback&amp;client=bbcfmtj&amp;cachebuster=cb145857751282646119" type="text/javascript"></script></body><div></div><div></div></html>

@@ -1,0 +1,143 @@
+
+                                    
+    <tr class='report' id='match-row-EFBO803470'>
+        <td class='statistics show' title='Show latest match stats'>
+            <button class="js-hide">Show</button>
+        </td>
+
+        
+        <td class='match-details'>
+            <p>
+                <span class='team-home teams'>
+                                        <a href='/sport/football/teams/newcastle-united'>Newcastle</a>                </span>
+                  <span class='score'> <abbr title='Score'> 1-1 </abbr> </span>                  <span class='team-away teams'>
+                    <a href='/sport/football/teams/sunderland'>Sunderland</a>                </span>
+                                            </p>
+        </td>
+
+        
+    <td class='time'>
+                    Full time
+            </td>
+
+        <td class='status'>
+                            	<a class='report' href='/sport/football/35796804'>Report</a>
+                    </td>
+    </tr>
+                
+                <tr class='panel-showing live' id='match-panel-EFBO803470'>
+                    <td colspan='4' class='details-table-container'>
+                        <table class='details-table'>
+    <caption>This table contains the latest match details.</caption>
+    <thead>
+            <tr>
+                <td scope='col' class='shots'>
+                                        <div class='home-shots'>
+                        <span class='shots-ratio' style='width:100px'>
+                            <span class='off-target' style='width:53px'></span>
+                            <span class='on-target'></span>
+                        </span>
+                        <span class='goal-count-home'>17 <span class='text-on-target'>(8)</span></span>
+                    </div>
+                    <span class='shots-on-target'>Shots<br/><span class='text-on-target'>on target</span></span>
+                    <div class='away-shots'>
+                        <span class='shots-ratio' style='width:82px;'>
+                            <span class='off-target' style='width:59px'></span>
+                            <span class='on-target'></span>
+                        </span>
+                         <span class='goal-count-away'>14 <span class='text-on-target'>(4)</span></span>
+                     </div>
+                                    </td>
+                <td scope='col' class='summary'>
+                                    </td>
+            </tr>
+    </thead>
+    <tbody>
+            <tr>
+                <td class='incidents-container'>
+                                            <table class='incidents-table'>
+                        <caption>Table holding variations of events during the match.</caption>
+                            <tbody>
+                                                                                                            <tr>
+            <td class='incident-player-home'>
+            J.Colback        </td>
+        <td class='incident-type yellow-card'><span>Booking</span></td>
+        <td class='incident-time'>    
+    18'
+</td>
+        <td class='incident-type'></td>
+        <td class='incident-player-away'></td>
+    </tr>
+                                                                                                                                                <tr>
+            <td class='incident-player-home'>
+            D.Janmaat        </td>
+        <td class='incident-type yellow-card'><span>Booking</span></td>
+        <td class='incident-time'>    
+    36'
+</td>
+        <td class='incident-type'></td>
+        <td class='incident-player-away'></td>
+    </tr>
+                                                                                                                                                
+<tr>
+            <td class='incident-player-home'></td>
+        <td class='incident-type'></td>
+        <td class='incident-time'>    
+    44'
+</td>
+        <td class='incident-type goal'><span>Goal</span></td>
+        <td class='incident-player-away'>
+            J.Defoe        </td>
+    </tr>
+                                                                                                                                                <tr>
+            <td class='incident-player-home'>
+            J.Shelvey        </td>
+        <td class='incident-type yellow-card'><span>Booking</span></td>
+        <td class='incident-time'>    
+    52'
+</td>
+        <td class='incident-type'></td>
+        <td class='incident-player-away'></td>
+    </tr>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+<tr>
+            <td class='incident-player-home'>
+            A.Mitrovic        </td>
+        <td class='incident-type goal'><span>Goal</span></td>
+        <td class='incident-time'>    
+    83'
+</td>
+        <td class='incident-type'></td>
+        <td class='incident-player-away'></td>
+    </tr>
+                                                                                                                                                <tr>
+            <td class='incident-player-home'>
+            A.Mitrovic        </td>
+        <td class='incident-type yellow-card'><span>Booking</span></td>
+        <td class='incident-time'>    
+    84'
+</td>
+        <td class='incident-type'></td>
+        <td class='incident-player-away'></td>
+    </tr>
+                                                                                                                                                                                                                    <tr>
+            <td class='incident-player-home'></td>
+        <td class='incident-type'></td>
+        <td class='incident-time'>    
+    90'
+</td>
+        <td class='incident-type yellow-card'><span>Booking</span></td>
+        <td class='incident-player-away'>
+            V.Mannone        </td>
+    </tr>
+                                                                                                </tbody>
+                        </table>
+                                    </td>
+                <td class='summary'>
+                                    </td>
+            </tr>
+    </tbody>
+</table>
+                    </td>
+                </tr>
+ 

@@ -6,8 +6,23 @@ class Fixtures {
   constructor(credentials, fixtures_db) {
     this.cloudant = Cloudant({account:credentials.username, password:credentials.password})
     this.fixtures_db = this.cloudant.db.use(fixtures_db)
+
+    // if we get updates to the fixtures, clear the cache to trigger a re-built
+    const feed = this.fixtures_db.follow({since: 'now', include_docs: true})
+    feed.on('change', change => this._clear_cache)
+    feed.on('error', err => {
+      winston.error('Errors following fixtures updates:')
+      winston.error(err)
+    })
+    feed.follow()
+
     this.gameweek_dates = new Map()
     this.matchday_times_cache = new Map()
+  }
+
+  _clear_cache () {
+    this.gameweek_dates.clear()
+    this.matchday_times_cache.clear()
   }
 
   _is_valid_gw(index) {
@@ -27,7 +42,7 @@ class Fixtures {
         }
 
         const times = [...new Set(body.rows.map(row => row.key.slice(11, 19)))]
-        const gameweek = body.rows[0].doc.matchDay
+        const gameweek = body.rows.length ? body.rows[0].doc.matchDay : null
         this.matchday_times_cache.set(matchday, {times: times, gameweek: gameweek})
         resolve({times: times, gameweek: gameweek})
       })
