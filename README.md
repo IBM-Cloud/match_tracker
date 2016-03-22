@@ -15,18 +15,18 @@ See demo application running [here](http://match-tracker.mybluemix.net/).
 
 ![match tracker](https://dl.dropboxusercontent.com/u/10404736/match-tracker-architecture.png)
 
-Fixtures Monitor service tracks the fixtures for upcoming football matches. Each
+[Fixtures Monitor](https://github.com/IBM-Bluemix/match_tracker/tree/master/microservices/fixtures_monitor) service tracks the fixtures for upcoming football matches. Each
 time a match starts, the services sends a message to a message queue. 
 
-Twitter Search service listens for these messages and start polling for all
+[Twitter Search](https://github.com/IBM-Bluemix/match_tracker/tree/master/microservices/match_twitter_search) service listens for these messages and start polling for all
 mentions of the match using Twitter Insights whilst the match is live. 
 
 Search results are sent to another message queue for processing.
 
-Tweet Processor service parses the incoming search results from the queue and
+[Tweet Processor](https://github.com/IBM-Bluemix/match_tracker/tree/master/microservices/match_tweet_processor) service parses the incoming search results from the queue and
 stores the relevant data in a Cloudant database.
 
-Web Application connects to Cloudant to retrieve summary statistics about
+[Web Application](https://github.com/IBM-Bluemix/match_tracker/tree/master/web) connects to Cloudant to retrieve summary statistics about
 processed tweets during page load. Live updates to the summaries are sent over
 a WebSocket to the client.
 
