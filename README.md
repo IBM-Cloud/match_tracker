@@ -9,7 +9,7 @@ using a scalable microservice architecture.
 Combines Apacke Kafka, Twitter Insights and CouchDB with
 Java Microservices and a Node.JS + React frontend web application.
 
-See demo application running [here](http://match-tracker.mybluemix.net/).
+See demo application running [http://match-tracker.mybluemix.net/](http://match-tracker.mybluemix.net/).
 
 ## Architecture
 
