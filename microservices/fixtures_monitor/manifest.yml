@@ -4,7 +4,7 @@ applications:
   path: target/fixtures-0.0.1-SNAPSHOT-jar-with-dependencies.jar
   no-route: true
   services:
-    - football_kafka
-    - football_cloudant
+    - Message Hub-hp
+    - Cloudant NoSQL DB-gw
   env:
     JAVA_OPTS: -Djava.security.auth.login.config=$HOME/app/jaas.conf

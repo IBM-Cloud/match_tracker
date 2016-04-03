@@ -1,3 +1,18 @@
+/**
+ * Copyright 2016 IBM Corp. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the “License”);
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *  https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an “AS IS” BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 'use strict'
 const winston = require('winston')
 
@@ -38,8 +53,8 @@ module.exports = (app, io, creds) => {
       return score
     }, [0, 0])
     console.log('goals', goals)
-    fixture.goals = goals 
- 
+    fixture.goals = goals
+
     return fixture
   }
 
@@ -107,8 +122,10 @@ module.exports = (app, io, creds) => {
     const gw_id = parseInt(req.params.id, 10)
 
     if (!per_second_cache.has(gw_id)) {
-      winston.error(`Missing cache for gameweek ${gw_id}`)
-      res.status(500)
+      winston.info(`Retrieving cache for gameweek ${gw_id}`)
+      cache_matches_and_events(gw_id).then(() => {
+        res.json(per_second_cache.get(gw_id))
+      })
       return
     }
 
@@ -152,29 +169,34 @@ module.exports = (app, io, creds) => {
     }).catch(error => winston.error(error))
   }
 
-  let gw = 1
-  cache_matches_and_events(gw).then(() => {
-    winston.info('Starting to load gameweek cache...')
-    const promises = []
-    while (++gw <= 38) {
-      promises.push(cache_matches_and_events(gw))
-    }
-    Promise.all(promises).then(() => winston.info('Finished loading gameweek cache'))
+  const get_current_gw = () => {
+    return fixtures.gameweeks_dates().then(dates => {
+      let i = 1
+      for (; i <= 38; i++) {
+        const last_gw_date = Date.parse(dates.get(i)[0])
+        if (last_gw_date > Date.now()) {
+          i--
+          break
+        }
+      }
+      return i
+    }).catch(winston.error)
+  }
+
+  get_current_gw().then(gw => {
+    winston.info(`Starting to load gameweek cache from ${gw}...`)
+    cache_matches_and_events(gw).then(() => {
+      const promises = []
+      while (++gw <= 38) {
+        promises.push(cache_matches_and_events(gw))
+      }
+      Promise.all(promises).then(() => winston.info('Finished loading gameweek cache')).catch(winston.error)
+    })
   })
 
   /** hacky way to set dynamic state in the page **/
   app.get('/js/initial_state.js', function (req, res) {
     res.setHeader('content-type', 'text/javascript')
-
-    fixtures.gameweeks_dates().then(dates => {
-      let i = 1
-      for (; i <= 38; i++) {
-        const last_gw_date = Date.parse(dates.get(i)[0])
-        if (last_gw_date > Date.now()) {
-          break
-        }
-      }
-      res.send(`window.current_gameweek = ${--i};`)
-    }).catch(winston.error)
+    get_current_gw().then(i => res.send(`window.current_gameweek = ${i};`))
   })
 }

@@ -17,7 +17,7 @@
     "nodejs"
   ],
   "author": "James Thomas <james@jamesthom.as>",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/IBM-Bluemix/match_tracker/issues"
   },
