@@ -68,6 +68,25 @@ class Gameweek extends EventEmitter {
     return match_events
   }
 
+  liveEvents (event) {
+    console.log('called liveEvents')
+    console.log(event)
+    if (event.gameweek !== parseInt(this.index, 10)) {
+      return
+    }
+
+    const fixture = this.fixtures.find(elem => elem.home === event.events.home && elem.away === event.events.away)
+    if (!fixture) {
+      console.log('Unable to find fixture for match event', event)
+      return
+    }
+
+    fixture.goals = event.events.goals
+    fixture.events = event.events.events
+    const match_tweets = this._getMatchTweets(0, this.cursor)
+    this.table = this.calculateTable(match_tweets)
+  }
+
   liveUpdate (tweet) {
     console.log(tweet)
     if (tweet.gameweek !== parseInt(this.index, 10)) {
@@ -126,11 +145,7 @@ class Gameweek extends EventEmitter {
       offset_table.forEach(details => {
         const previous = this.table.find(item => (item.home === details.home && item.away === details.away))
         if (previous) {
-          previous.total += details.total
-          previous.positive += details.positive
-          previous.negative += details.negative
-          previous.home_goals += details.home_goals
-          previous.away_goals += details.away_goals
+          ['total', 'positive', 'negative', 'home_goal', 'away_goals'].forEach(label => previous[label] += details[label])
         } else {
           this.table.push(details)
         }
@@ -150,7 +165,7 @@ class Gameweek extends EventEmitter {
           event_minute += 15
         }
         const event_second = event_minute * 60
-        if (event.type === "goal" && start <= event_second && event_second <= end) {
+        if (event.type.match('goal') && start <= event_second && event_second <= end) {
           if (event.team === f.home) {
             home_goals++
           } else {
@@ -203,6 +218,10 @@ Dispatcher.register(action => {
       break
     case Constants.GAME_WEEK_LIVE_UPDATE:
       gameweek.liveUpdate(action.tweet)
+      gameweek.emitChange()
+      break
+    case Constants.GAME_WEEK_LIVE_EVENTS:
+      gameweek.liveEvents(action.events)
       gameweek.emitChange()
       break
     case Constants.REPLAY_LIVE:

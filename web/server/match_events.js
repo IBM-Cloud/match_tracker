@@ -10,14 +10,14 @@ class MatchEvents {
     this.football_results = 'http://www.bbc.co.uk/sport/football/premier-league/results'
     this.football_live_scores = 'http://www.bbc.co.uk/sport/football/live-scores/premier-league'
     this.match_events = 'http://www.bbc.co.uk/sport/football/result/partial/'
-    this.live_events = 'http://www.bbc.co.uk/sport/football/live/partial/'
+    this.live_events_url = 'http://www.bbc.co.uk/sport/football/live/partial/'
   }
 
   _parse_match_events (match) {
     const $ = cheerio.load(match)
     const event = {
-      home: $('.team-home a').text().trim(), 
-      away: $('.team-away').text().trim()
+      home: this._convert_team_names($('.team-home a').text().trim()), 
+      away: this._convert_team_names($('.team-away').text().trim())
     }
 
     event.events = $('.incidents-table tr')
@@ -38,7 +38,7 @@ class MatchEvents {
       team = event.away
     } 
 
-    return {type: type, team: this._convert_team_names(team), player: player.replace('.', '. '), min: min}
+    return {type: type, team: team, player: player.replace('.', '. '), min: min}
   } 
 
   _request (url) {
@@ -79,7 +79,7 @@ class MatchEvents {
     const $ = cheerio.load(live_scores_page)
     var live_matches = []
     $("#live-scores-table").get().map((el, i) => {
-     return $(el).find('tr.live').get().forEach((el, i) => {
+     return $(el).find('tr.panel-showing.live').get().forEach((el, i) => {
         live_matches.push($(el).attr('id').split('-').pop())
       })
     })
@@ -105,7 +105,8 @@ class MatchEvents {
         return 'Manchester United FC'
         break
       case 'Newcastle':
-        return 'Newcastle United FC'
+      case 'West Ham':
+        return team_name + ' United FC'
         break
       case 'West Brom':
         return 'West Bromwich Albion FC'
@@ -129,7 +130,7 @@ class MatchEvents {
   }
 
   _retrieve_live_match (id) {
-    return this._request(`${this.live_events}${id}`)
+    return this._request(`${this.live_events_url}${id}`)
   }
 
   for_date (matchdate) {

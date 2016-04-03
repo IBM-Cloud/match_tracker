@@ -65,6 +65,13 @@ let GameWeekActions = {
       actionType: Constants.GAME_WEEK_LIVE_UPDATE,
       tweet: tweet
     })
+  },
+
+  liveEvents: function (events) {
+    Dispatcher.dispatch({
+      actionType: Constants.GAME_WEEK_LIVE_EVENTS,
+      events: events
+    })
   }
 }
 

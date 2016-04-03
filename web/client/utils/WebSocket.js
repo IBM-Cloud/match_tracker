@@ -4,7 +4,8 @@ import GameWeekActions from '../actions/GameWeekActions'
 class WebSocket {
   constructor () {
     this.socket = io()
-    this.topic = 'updates'
+    this.tweet_topic = 'updates'
+    this.event_topic = 'events'
     this.socket.on('connect', () => {
       console.log('listening to updates')
     })
@@ -14,16 +15,23 @@ class WebSocket {
   }
 
   listen () {
-    this.socket.on(this.topic, this.listener)
+    this.socket.on(this.tweet_topic, this.tweet_listener)
+    this.socket.on(this.event_topic, this.event_listener)
   }
 
   ignore () {
-    this.socket.removeListener(this.listener)
+    this.socket.removeListener(this.tweet_listener)
+    this.socket.removeListener(this.event_listener)
   }
 
-  listener (msg) {
+  tweet_listener (msg) {
     console.log(msg)
     GameWeekActions.liveUpdate(msg)
+  }
+
+  event_listener (msg) {
+    console.log(msg)
+    GameWeekActions.liveEvents(msg)
   }
 }
 

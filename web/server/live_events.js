@@ -36,20 +36,26 @@ class LiveEvents extends EventEmitter {
     return times.map(time => moment.duration(time).asSeconds() - duration)
   }
 
-  _upcoming_match_delays (start, times) {
-    return [...new Set(this._seconds_until_start(start, times).filter(seconds => seconds >= 0))]
+  _calculate_match_intervals(now, times) {
+    return [...new Set(this._seconds_until_start(now, times))]
+      .filter(s => s > -7200)
+      .map(seconds => {
+        const start = seconds >= 0 ? seconds : 0
+        const end = seconds + 7200
+        return [start, end < 1 ? 1 : end]
+      })
   }
 
   _time_now () {
-    return (new Date()).toTimeString().split(' ')[0]
+    return (new Date()).toJSON().substring(11, 19)
   }
 
-  _queue_match_timer (delay_seconds) {
+  _queue_match_timer (interval) {
     setTimeout(() => {
       winston.info('Match is live, starting event polling...')
-      this._events_polling_end = moment().add(2, 'hours')
+      this._events_polling_end = moment().add(interval[1], 'seconds')
       this._start_events_polling()
-    }, delay_seconds * 1000)
+    }, interval[0] * 1000)
   }
 
   _start_events_polling () {
@@ -57,17 +63,17 @@ class LiveEvents extends EventEmitter {
       return
     }
 
+    this._event_poll()
     this._events_polling = setInterval(() => this._event_poll(), 60 * 1000)
   }
 
   _stop_events_polling () {
     clearInterval(this._events_polling)
-    this._events_polling_end = null
     this._events_polling = null
   }
 
   _should_polling_finish () {
-      return this._events_polling_end.isAfter(moment())
+    return moment().isAfter(this._events_polling_end)
   }
 
   _event_poll () {
@@ -86,8 +92,8 @@ class LiveEvents extends EventEmitter {
     winston.info('Polling for matches live today...')
     this._match_times_today().then(info => {
       winston.info(`Discovered the upcoming match times today: ${info.times}`)
-      const time_delays = this._upcoming_match_delays(this._time_now(), info.times)
-      time_delays.forEach(delay => this._queue_match_timer)
+      const time_delays = this._calculate_match_intervals(this._time_now(), info.times)
+      time_delays.forEach(delay => this._queue_match_timer(delay))
       winston.info(`Queued ${info.times.length} matches for processing, going back to sleep...`)
     }).catch(winston.error)
   }

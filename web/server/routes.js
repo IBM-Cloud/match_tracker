@@ -17,6 +17,32 @@ module.exports = (app, io, creds) => {
 
   const per_second_cache = new Map()
 
+  const update_event_cache = (match, gameweek) => {
+    if (!per_second_cache.has(gameweek)) {
+      return
+    }
+
+    const per_second = per_second_cache.get(gameweek)
+
+    const fixture = per_second.fixtures.find(elem => elem.home === match.events.home && elem.away === match.events.away)
+    if (!fixture) {
+      console.log('Unable to find fixture for match event', match)
+      return
+    }
+
+    fixture.events = match.events.events
+    const goals = fixture.events.reduce((score, e) => {
+      if (e.type.match('goal')) {
+        score[e.team === match.events.home ? 0 : 1]++
+      }
+      return score
+    }, [0, 0])
+    console.log('goals', goals)
+    fixture.goals = goals 
+ 
+    return fixture
+  }
+
   const update_per_second_cache = (tweet) => {
     if (!per_second_cache.has(tweet.gameweek)) {
       return
@@ -80,22 +106,13 @@ module.exports = (app, io, creds) => {
     winston.info('Retrieving information for gameweek', req.params.id)
     const gw_id = parseInt(req.params.id, 10)
 
-    if (per_second_cache.has(gw_id)) {
-      res.json(per_second_cache.get(gw_id))
+    if (!per_second_cache.has(gw_id)) {
+      winston.error(`Missing cache for gameweek ${gw_id}`)
+      res.status(500)
       return
     }
 
-    const fail = e => {
-      winston.error(e)
-      res.status(500)
-    }
-
-    const success = response => {
-      per_second_cache.set(gw_id, response)
-      res.json(response)
-    }
-
-    gameweek_matches_and_events(gw_id).then(success).catch(fail)
+    res.json(per_second_cache.get(gw_id))
   })
 
   io.on('connection', (socket) => {
@@ -114,10 +131,36 @@ module.exports = (app, io, creds) => {
   })
 
   live_events.on('live_events', event => {
-    io.emit('events', event)
+    const date = (new Date()).toISOString().slice(0, 10)
+    fixtures.matchday_times(date).then(times_and_gw => {
+      console.log(event)
+      const update = update_event_cache(event, times_and_gw.gameweek)
+      if (update) {
+        console.log(update)
+        io.emit('events', {events: update, gameweek: times_and_gw.gameweek})
+      } else {
+        console.log('Missing gameweek in cache.')
+      }
+    }).catch(winston.error)
   })
 
   live_events.start()
+
+  const cache_matches_and_events = gw => {
+    return gameweek_matches_and_events(gw).then(data => {
+      per_second_cache.set(gw, data)
+    }).catch(error => winston.error(error))
+  }
+
+  let gw = 1
+  cache_matches_and_events(gw).then(() => {
+    winston.info('Starting to load gameweek cache...')
+    const promises = []
+    while (++gw <= 38) {
+      promises.push(cache_matches_and_events(gw))
+    }
+    Promise.all(promises).then(() => winston.info('Finished loading gameweek cache'))
+  })
 
   /** hacky way to set dynamic state in the page **/
   app.get('/js/initial_state.js', function (req, res) {

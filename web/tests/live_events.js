@@ -36,10 +36,29 @@ describe('LiveEvents', function() {
       assert.deepEqual(live_events._upcoming_match_delays('12:00:00', ['12:00:00', '12:00:00', '13:00:00', '13:00:00']), [0, 3600])
     })
   })
+  describe('#_calculate_match_intervals()', function () {
+    it('should work out intervals for future matches', function () {
+      const live_events = new LiveEvents()
+      assert.deepEqual(live_events._calculate_match_intervals('12:00:00', ['12:00:00']), [[0, 2 * 60 * 60]])
+      assert.deepEqual(live_events._calculate_match_intervals('12:00:00', ['13:00:00']), [[3600, 3 * 60 * 60]])
+    })
+    it('should strip out duplicate intervals', function () {
+      const live_events = new LiveEvents()
+      assert.deepEqual(live_events._calculate_match_intervals('12:00:00', ['12:00:00', '12:00:00']), [[0, 2 * 60 * 60]])
+    })
+    it('should strip out intervals for finished matches', function () {
+      const live_events = new LiveEvents()
+      assert.deepEqual(live_events._calculate_match_intervals('12:00:00', ['10:00:00']), [])
+    })
+    it('should work out intervals for ongoing matches', function () {
+      const live_events = new LiveEvents()
+      assert.deepEqual(live_events._calculate_match_intervals('11:00:00', ['10:00:00']), [[0, 3600]])
+    })
+  })
   describe('#_time_now ()', function () {
     it('should return current time', function () {
       const live_events = new LiveEvents()
-      assert.equal(live_events._time_now(), (new Date()).toTimeString().split(' ')[0])
+      assert.equal(live_events._time_now(), (new Date()).toJSON().substring(11, 19))
     })
   })
   describe('#_should_polling_finish ()', function () {
@@ -88,10 +107,10 @@ describe('LiveEvents', function() {
 
     it('should call setTimeout with delay', function () {
       const live_events = new LiveEvents()
-      live_events._queue_match_timer(100)
+      live_events._queue_match_timer([100, 200])
       live_events._start_events_polling = () => {}
-      assert.ok(live_events._events_polling_end.isAfter(moment().add(119, 'minutes')))
-      assert.ok(live_events._events_polling_end.isBefore(moment().add(121, 'minutes')))
+      assert.ok(live_events._events_polling_end.isAfter(moment().add(199, 'seconds')))
+      assert.ok(live_events._events_polling_end.isBefore(moment().add(201, 'seconds')))
       assert.equal(global.seconds, 100 * 1000)
     })
   })

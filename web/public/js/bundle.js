@@ -20294,6 +20294,13 @@
 	      actionType: _Constants2.default.GAME_WEEK_LIVE_UPDATE,
 	      tweet: tweet
 	    });
+	  },
+	
+	  liveEvents: function liveEvents(events) {
+	    _Dispatcher2.default.dispatch({
+	      actionType: _Constants2.default.GAME_WEEK_LIVE_EVENTS,
+	      events: events
+	    });
 	  }
 	};
 	
@@ -20642,6 +20649,7 @@
 	  GAME_WEEK_CHANGE: null,
 	  GAME_WEEK_UPDATE_CURSOR: null,
 	  GAME_WEEK_LIVE_UPDATE: null,
+	  GAME_WEEK_LIVE_EVENTS: null,
 	  REPLAY_FINISHED: null,
 	  REPLAY_LIVE: null,
 	  REPLAY_PAUSED: null
@@ -22698,6 +22706,28 @@
 	      return match_events;
 	    }
 	  }, {
+	    key: 'liveEvents',
+	    value: function liveEvents(event) {
+	      console.log('called liveEvents');
+	      console.log(event);
+	      if (event.gameweek !== parseInt(this.index, 10)) {
+	        return;
+	      }
+	
+	      var fixture = this.fixtures.find(function (elem) {
+	        return elem.home === event.events.home && elem.away === event.events.away;
+	      });
+	      if (!fixture) {
+	        console.log('Unable to find fixture for match event', event);
+	        return;
+	      }
+	
+	      fixture.goals = event.events.goals;
+	      fixture.events = event.events.events;
+	      var match_tweets = this._getMatchTweets(0, this.cursor);
+	      this.table = this.calculateTable(match_tweets);
+	    }
+	  }, {
 	    key: 'liveUpdate',
 	    value: function liveUpdate(tweet) {
 	      var _this3 = this;
@@ -22768,11 +22798,9 @@
 	            return item.home === details.home && item.away === details.away;
 	          });
 	          if (previous) {
-	            previous.total += details.total;
-	            previous.positive += details.positive;
-	            previous.negative += details.negative;
-	            previous.home_goals += details.home_goals;
-	            previous.away_goals += details.away_goals;
+	            ['total', 'positive', 'negative', 'home_goal', 'away_goals'].forEach(function (label) {
+	              return previous[label] += details[label];
+	            });
 	          } else {
 	            _this4.table.push(details);
 	          }
@@ -22794,7 +22822,7 @@
 	            event_minute += 15;
 	          }
 	          var event_second = event_minute * 60;
-	          if (event.type === "goal" && start <= event_second && event_second <= end) {
+	          if (event.type.match('goal') && start <= event_second && event_second <= end) {
 	            if (event.team === f.home) {
 	              home_goals++;
 	            } else {
@@ -22853,6 +22881,10 @@
 	      break;
 	    case _Constants2.default.GAME_WEEK_LIVE_UPDATE:
 	      gameweek.liveUpdate(action.tweet);
+	      gameweek.emitChange();
+	      break;
+	    case _Constants2.default.GAME_WEEK_LIVE_EVENTS:
+	      gameweek.liveEvents(action.events);
 	      gameweek.emitChange();
 	      break;
 	    case _Constants2.default.REPLAY_LIVE:
@@ -23206,7 +23238,8 @@
 	    _classCallCheck(this, WebSocket);
 	
 	    this.socket = (0, _socket2.default)();
-	    this.topic = 'updates';
+	    this.tweet_topic = 'updates';
+	    this.event_topic = 'events';
 	    this.socket.on('connect', function () {
 	      console.log('listening to updates');
 	    });
@@ -23218,18 +23251,26 @@
 	  _createClass(WebSocket, [{
 	    key: 'listen',
 	    value: function listen() {
-	      this.socket.on(this.topic, this.listener);
+	      this.socket.on(this.tweet_topic, this.tweet_listener);
+	      this.socket.on(this.event_topic, this.event_listener);
 	    }
 	  }, {
 	    key: 'ignore',
 	    value: function ignore() {
-	      this.socket.removeListener(this.listener);
+	      this.socket.removeListener(this.tweet_listener);
+	      this.socket.removeListener(this.event_listener);
 	    }
 	  }, {
-	    key: 'listener',
-	    value: function listener(msg) {
+	    key: 'tweet_listener',
+	    value: function tweet_listener(msg) {
 	      console.log(msg);
 	      _GameWeekActions2.default.liveUpdate(msg);
+	    }
+	  }, {
+	    key: 'event_listener',
+	    value: function event_listener(msg) {
+	      console.log(msg);
+	      _GameWeekActions2.default.liveEvents(msg);
 	    }
 	  }]);
 	
