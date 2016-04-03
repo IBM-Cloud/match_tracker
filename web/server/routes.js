@@ -39,20 +39,19 @@ module.exports = (app, io, creds) => {
 
     const per_second = per_second_cache.get(gameweek)
 
-    const fixture = per_second.fixtures.find(elem => elem.home === match.events.home && elem.away === match.events.away)
+    const fixture = per_second.fixtures.find(elem => elem.home === match.home && elem.away === match.away)
     if (!fixture) {
-      console.log('Unable to find fixture for match event', match)
+      winston.info('Unable to find fixture for match event', match)
       return
     }
 
-    fixture.events = match.events.events
+    fixture.events = match.events
     const goals = fixture.events.reduce((score, e) => {
       if (e.type.match('goal')) {
-        score[e.team === match.events.home ? 0 : 1]++
+        score[e.team === match.home ? 0 : 1]++
       }
       return score
     }, [0, 0])
-    console.log('goals', goals)
     fixture.goals = goals
 
     return fixture
@@ -150,18 +149,14 @@ module.exports = (app, io, creds) => {
   live_events.on('live_events', event => {
     const date = (new Date()).toISOString().slice(0, 10)
     fixtures.matchday_times(date).then(times_and_gw => {
-      console.log(event)
       const update = update_event_cache(event, times_and_gw.gameweek)
-      if (update) {
-        console.log(update)
-        io.emit('events', {events: update, gameweek: times_and_gw.gameweek})
-      } else {
-        console.log('Missing gameweek in cache.')
+      if (!update) {
+        winston.info('Missing gameweek in cache.')
+        return
       }
+      io.emit('events', {events: update, gameweek: times_and_gw.gameweek})
     }).catch(winston.error)
   })
-
-  live_events.start()
 
   const cache_matches_and_events = gw => {
     return gameweek_matches_and_events(gw).then(data => {
@@ -190,7 +185,10 @@ module.exports = (app, io, creds) => {
       while (++gw <= 38) {
         promises.push(cache_matches_and_events(gw))
       }
-      Promise.all(promises).then(() => winston.info('Finished loading gameweek cache')).catch(winston.error)
+      Promise.all(promises).then(() => {
+        winston.info('Finished loading gameweek cache')
+        live_events.start()
+      }).catch(winston.error)
     })
   })
 
