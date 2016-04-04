@@ -97,9 +97,10 @@ module.exports = (app, io, creds) => {
 
   const gameweek_matches_and_events = (id) => {
     return Promise.all([fixtures.gameweek_matches(id), gameweek_events(id)]).then((values) => {
-      const games = values[0], events = values[1] || []
+      const sort_by_home = (a, b) => { return (a.home > b.home) ? 1 : ((b.home > a.home) ? -1 : 0)}
+      const games = values[0].sort(sort_by_home), events = values[1] || []
 
-      events.reduce((previous, next) => previous.concat(next), [])
+      events.reduce((previous, next) => previous.concat(next), []).sort(sort_by_home)
       .forEach((event, index) => games[index].events = event.events)
 
       return match_tweets.per_second(games).then((match_seconds) => {

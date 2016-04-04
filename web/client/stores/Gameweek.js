@@ -160,7 +160,7 @@ class Gameweek extends EventEmitter {
       offset_table.forEach(details => {
         const previous = this.table.find(item => (item.home === details.home && item.away === details.away))
         if (previous) {
-          ['total', 'positive', 'negative', 'home_goal', 'away_goals'].forEach(label => previous[label] += details[label])
+          ['total', 'positive', 'negative', 'home_goals', 'away_goals'].forEach(label => previous[label] += details[label])
         } else {
           this.table.push(details)
         }

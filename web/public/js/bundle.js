@@ -23021,7 +23021,7 @@
 	            return item.home === details.home && item.away === details.away;
 	          });
 	          if (previous) {
-	            ['total', 'positive', 'negative', 'home_goal', 'away_goals'].forEach(function (label) {
+	            ['total', 'positive', 'negative', 'home_goals', 'away_goals'].forEach(function (label) {
 	              return previous[label] += details[label];
 	            });
 	          } else {

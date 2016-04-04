@@ -39,14 +39,12 @@ class MatchTweets {
   }
   
   per_second(fixtures) {
-    // TODO: Need to check for valid number under two hours
-    // Should calculate end key based upon two hours + last fixture
-    // RE-FACTOR
     return new Promise((resolve, reject) => {
       const fixtures_window = this._fixtures_window(fixtures)
       this.retrieve(fixtures_window[0], fixtures_window[1]).then((tweets) => {
         const match_seconds = new Map()
-        const processor = this._fixture_second_processor(fixtures.sort())
+        const sort_by_dt = (a, b) => { return (a.dt > b.dt) ? 1 : ((b.dt > a.dt) ? -1 : 0)}
+        const processor = this._fixture_second_processor(fixtures.sort(sort_by_dt))
         const lookup = this._fixture_lookup(fixtures)
         tweets.forEach(tweet => {
           const sentiment = tweet.value[1]
