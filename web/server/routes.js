@@ -167,9 +167,12 @@ module.exports = (app, io, creds) => {
 
   const get_current_gw = () => {
     return fixtures.gameweeks_dates().then(dates => {
+      const sorted = Array.from(dates).map(gw => [gw[0], gw[1][0]]).sort((a, b) => {
+        return (a[1] < b[1]) ? -1 : (a[1] > b[1]) ? 1 : 0
+      })
       let i = 1
-      for (; i <= 38; i++) {
-        const last_gw_date = Date.parse(dates.get(i)[0])
+      for (; i <= sorted.length; i++) {
+        const last_gw_date = Date.parse(sorted[i][1])
         if (last_gw_date > Date.now()) {
           i--
           break
